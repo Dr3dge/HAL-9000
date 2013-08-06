@@ -1,0 +1,13 @@
+H:\Visual Studio 2010\C_Tutorial_1\C_Tutorial_1\C_Tutorial_1\bin\Release\C_Tutorial_1.exe
+H:\Visual Studio 2010\C_Tutorial_1\C_Tutorial_1\C_Tutorial_1\bin\Release\C_Tutorial_1.pdb
+H:\Visual Studio 2010\C_Tutorial_1\C_Tutorial_1\C_Tutorial_1\obj\x86\Release\ResolveAssemblyReference.cache
+H:\Visual Studio 2010\C_Tutorial_1\C_Tutorial_1\C_Tutorial_1\obj\x86\Release\C_Tutorial_1.exe
+H:\Visual Studio 2010\C_Tutorial_1\C_Tutorial_1\C_Tutorial_1\obj\x86\Release\C_Tutorial_1.pdb
+D:\Users\OZO0001\Visual Studio 2010\Projects\C_Tutorial_1\C_Tutorial_1\C_Tutorial_1\obj\x86\Release\C_Tutorial_1.exe
+D:\Users\OZO0001\Visual Studio 2010\Projects\C_Tutorial_1\C_Tutorial_1\C_Tutorial_1\obj\x86\Release\C_Tutorial_1.pdb
+D:\Users\OZO0001\Visual Studio 2010\Projects\C_Tutorial_1\C_Tutorial_1\C_Tutorial_1\bin\Release\C_Tutorial_1.exe.manifest
+D:\Users\OZO0001\Visual Studio 2010\Projects\C_Tutorial_1\C_Tutorial_1\C_Tutorial_1\bin\Release\C_Tutorial_1.application
+D:\Users\OZO0001\Visual Studio 2010\Projects\C_Tutorial_1\C_Tutorial_1\C_Tutorial_1\bin\Release\C_Tutorial_1.exe
+D:\Users\OZO0001\Visual Studio 2010\Projects\C_Tutorial_1\C_Tutorial_1\C_Tutorial_1\bin\Release\C_Tutorial_1.pdb
+D:\Users\OZO0001\Visual Studio 2010\Projects\C_Tutorial_1\C_Tutorial_1\C_Tutorial_1\obj\x86\Release\C_Tutorial_1.exe.manifest
+D:\Users\OZO0001\Visual Studio 2010\Projects\C_Tutorial_1\C_Tutorial_1\C_Tutorial_1\obj\x86\Release\C_Tutorial_1.application
