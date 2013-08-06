@@ -96,21 +96,9 @@ namespace HAL_9000
         {
             Console.WriteLine("Running the command line");
         }
-        public static void facebookStarted()
+        public static void siteLaunched()
         {
-            Console.WriteLine("Facebook opened successfully");
-        }
-        public static void youtubeStarted()
-        {
-            Console.WriteLine("Youtube opened successfully");
-        }
-        public static void twitterStarted()
-        {
-            Console.WriteLine("Twitter opened successfully");
-        }
-        public static void tumblrStarted()
-        {
-            Console.WriteLine("Tumblr opened successfully");
+            Console.WriteLine("Website launched successfully");
         }
         public static void googleSearched()
         {
@@ -127,6 +115,10 @@ namespace HAL_9000
         public static void runWhat()
         {
             Console.WriteLine("What program do you wish to open?");
+        }
+        public static void websiteWhat()
+        {
+            Console.WriteLine("What website do you wish to open?");
         }
         public static void reboot()
         {
@@ -181,10 +173,7 @@ namespace HAL_9000
         public static void websitesHelp()
         {
             Console.WriteLine();
-            Console.WriteLine("Facebook          -       Opens your browser straight to Facebook");
-            Console.WriteLine("Twitter           -       Opens your browser straight to Twitter");
-            Console.WriteLine("Tumblr            -       Opens your browser straight to Tumblr");
-            Console.WriteLine("Youtube           -       Opens your browser straight to Youtube");
+            Console.WriteLine("Website           -       Launches the desired website");
             Console.WriteLine();
         }
     }

@@ -192,57 +192,9 @@ namespace HAL_9000
 
                     Process.Start(@"HAL's Downloads\\avg_free.exe");
                 }
-                else if (guessInput == "fb" || guessInput == "Fb" || guessInput == "FB" || guessInput == "facebook" || guessInput == "Facebook")
+                else if (guessInput == "goto" || guessInput == "Goto" || guessInput == "website" || guessInput == "Website")
                 {
-                    try
-                    {
-                        Websites.chromeFB();
-                        Writting.facebookStarted();
-                    }
-                    catch
-                    {
-                        Websites.firefoxFB();
-                        Writting.facebookStarted();
-                    }
-                }
-                else if (guessInput == "twitter" || guessInput == "Twitter")
-                {
-                    try
-                    {
-                        Websites.chromeTW();
-                        Writting.twitterStarted();
-                    }
-                    catch
-                    {
-                        Websites.firefoxTU();
-                        Writting.twitterStarted();
-                    }
-                }
-                else if (guessInput == "tumblr" || guessInput == "Tumblr")
-                {
-                    try
-                    {
-                        Websites.chromeTW();
-                        Writting.tumblrStarted();
-                    }
-                    catch
-                    {
-                        Websites.firefoxTU();
-                        Writting.tumblrStarted();
-                    }
-                }
-                else if (guessInput == "yt" || guessInput == "Yt" || guessInput == "YT" || guessInput == "youtube" || guessInput == "Youtube")
-                {
-                    try
-                    {
-                        Websites.chromeYT();
-                        Writting.youtubeStarted();
-                    }
-                    catch
-                    {
-                        Websites.firefoxYT();
-                        Writting.youtubeStarted();
-                    }
+                    Websites.gotoWebsite();
                 }
                 else if (guessInput == "google" || guessInput == "Google")
                 {

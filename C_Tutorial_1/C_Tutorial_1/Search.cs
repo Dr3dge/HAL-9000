@@ -41,6 +41,29 @@ namespace HAL_9000
             Process.Start(@"C:\Program Files\Mozilla Firefox\firefox.exe", "www.youtube.com/results?search_query=" + search);
         }
     }
+    class Websites
+    {
+        public static void gotoWebsite()
+        {
+            Writting.websiteWhat();
+            string website = Console.ReadLine();
+
+            try
+            {
+                Process.Start(@"C:\Program Files\Google\Chrome\Application\chrome.exe", website);
+                Writting.siteLaunched();
+            }
+            catch (FileNotFoundException)
+            {
+                Process.Start(@"C:\Program Files\Google\Chrome\Application\chrome.exe", website);
+                Writting.siteLaunched();
+            }
+            catch
+            {
+                Writting.sorryDave();
+            }
+        }
+    }
     class searchPrograms
     {
         public static void findPrograms()
