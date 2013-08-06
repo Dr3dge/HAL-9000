@@ -178,7 +178,7 @@ namespace HAL_9000
                 {
                     downloadHandler.Handler();
                     WebClient Client = new WebClient();
-                    Client.DownloadFile("http://sdlc-esd.sun.com/ESD6/JSCDL/jdk/7u25-b17/jre-7u25-windows-i586.exe?AuthParam=1375521885_52861f4293da2519cfd8dd92453a4a79&GroupName=JSC&FilePath=/ESD6/JSCDL/jdk/7u25-b17/jre-7u25-windows-i586.exe&File=jre-7u25-windows-i586.exe&BHost=javadl.sun.com",
+                    Client.DownloadFile("http://javadl.sun.com/webapps/download/AutoDL?BundleId=79071",
                             @"HAL's Downloads\jre-7u25-windows-i586.exe");
 
                     Process.Start(@"HAL's Downloads\\jre-7u25-windows-i586.exe");

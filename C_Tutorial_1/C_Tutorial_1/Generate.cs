@@ -44,6 +44,29 @@ namespace HAL_9000
 
                 Console.WriteLine("Here you are: " + randOut);
             }
+            else if (type == "word" || type == "Word")
+            {
+                Console.WriteLine("How long do you want your word?");
+                int numb;
+                string numbIn = Console.ReadLine();
+                try
+                {
+                    numb = Convert.ToInt32(numbIn);
+                }
+                catch (Exception)
+                {
+                    Console.WriteLine("I'm sorry Dave, I'm afraid I can't do that.");
+                    Console.WriteLine("You will get a 6 character word");
+                    numb = 6;
+                }
+
+                var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+                var random = new Random();
+                var randOut = new string(
+                Enumerable.Repeat(chars, numb).Select(s => s[random.Next(s.Length)]).ToArray());
+
+                Console.WriteLine("Here you are: " + randOut);
+            }
         }
     }
 }
