@@ -179,18 +179,18 @@ namespace HAL_9000
                     downloadHandler.Handler();
                     WebClient Client = new WebClient();
                     Client.DownloadFile("http://javadl.sun.com/webapps/download/AutoDL?BundleId=79071",
-                            @"HAL's Downloads\jre-7u25-windows-i586.exe");
+                            @"HAL's Downloads\java.exe");
 
-                    Process.Start(@"HAL's Downloads\\jre-7u25-windows-i586.exe");
+                    Process.Start(@"HAL's Downloads\\java.exe");
                 }
                 else if (guessInput == "install avg" || guessInput == "Install AVG")
                 {
                     downloadHandler.Handler();
                     WebClient Client = new WebClient();
                     Client.DownloadFile("http://af-download.avg.com/filedir/inst/avg_free_stb_all_2013_3345_free.exe",
-                            @"HAL's Downloads\avg_free_stb_all_2013_3345_free.exe");
+                            @"HAL's Downloads\avg_free.exe");
 
-                    Process.Start(@"HAL's Downloads\\avg_free_stb_all_2013_3345_free.exe");
+                    Process.Start(@"HAL's Downloads\\avg_free.exe");
                 }
                 else if (guessInput == "fb" || guessInput == "Fb" || guessInput == "FB" || guessInput == "facebook" || guessInput == "Facebook")
                 {
