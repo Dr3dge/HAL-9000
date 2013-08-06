@@ -10,13 +10,10 @@ namespace HAL_9000
         public static void startWrite()
         {
             Console.WriteLine("Program Execute");
-            Console.WriteLine(".......");
-            Console.WriteLine(".......");
-            Console.WriteLine(".......");
-            Console.WriteLine(".......");
-            Console.WriteLine(".......");
-            Console.WriteLine(".......");
-            Console.WriteLine(".......");
+            Console.WriteLine("................");
+            Console.WriteLine("................");
+            Console.WriteLine("................");
+            Console.WriteLine("................");
             Console.WriteLine("Hello");
             Console.WriteLine("I am HAL 9000");
             Console.WriteLine("Type 'help' in for assistance");
