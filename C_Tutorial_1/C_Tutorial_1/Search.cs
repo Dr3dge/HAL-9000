@@ -77,6 +77,7 @@ namespace HAL_9000
             {
                 DirectoryInfo path = new DirectoryInfo(@"C:\Users\" + userName + "\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs");
                 Process.Start(path + "\\" + toFind + "\\" + toFind + ".lnk");
+                Console.WriteLine(toFind + "launched.");
                 goto End;
             }
             catch
@@ -88,6 +89,7 @@ namespace HAL_9000
             {
                 DirectoryInfo path = new DirectoryInfo(@"D:\Users\" + userName + "\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs");
                 Process.Start(path + "\\" + toFind + "\\" + toFind + ".lnk");
+                Console.WriteLine(toFind + "launched.");
                 goto End;
             }
             catch
@@ -99,6 +101,7 @@ namespace HAL_9000
             {
                 DirectoryInfo path = new DirectoryInfo(@"C:\Users\" + userName + "\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs");
                 Process.Start(path + toFind + ".lnk");
+                Writting.Launched();
                 goto End;
             }
             catch
@@ -110,6 +113,7 @@ namespace HAL_9000
             {
                 DirectoryInfo path = new DirectoryInfo(@"D:\Users\" + userName + "\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs");
                 Process.Start(path + toFind + ".lnk");
+                Console.WriteLine(toFind + "launched.");
                 goto End;
             }
             catch
@@ -121,6 +125,7 @@ namespace HAL_9000
             {
                 DirectoryInfo path = new DirectoryInfo(@"C:\ProgramData\Microsoft\Windows\Start Menu\Programs");
                 Process.Start(path + "\\" + toFind + "\\" + toFind + ".lnk");
+                Writting.Launched();
                 goto End;
             }
             catch
@@ -132,6 +137,7 @@ namespace HAL_9000
             {
                 DirectoryInfo path = new DirectoryInfo(@"C:\ProgramData\Microsoft\Windows\Start Menu\Programs");
                 Process.Start(path + "\\" + toFind + ".lnk");
+                Console.WriteLine(toFind + "launched.");
                 goto End;
             }
             catch
@@ -143,6 +149,7 @@ namespace HAL_9000
             {
                 DirectoryInfo path = new DirectoryInfo(@"C:\Users\" + userName + "\\Desktop");
                 Process.Start(path + toFind + ".lnk");
+                Console.WriteLine(toFind + "launched.");
                 goto End;
             }
             catch
@@ -154,6 +161,7 @@ namespace HAL_9000
             {
                 DirectoryInfo path = new DirectoryInfo(@"D:\Users\" + userName + "\\Desktop");
                 Process.Start(path + toFind + ".lnk");
+                Console.WriteLine(toFind + "launched.");
                 goto End;
             }
             catch
@@ -165,6 +173,7 @@ namespace HAL_9000
             {
                 DirectoryInfo path = new DirectoryInfo(@"C:\Program Files");
                 Process.Start(path + "\\" + toFind + "\\" + toFind + ".exe");
+                Console.WriteLine(toFind + "launched.");
                 goto End;
             }
             catch
