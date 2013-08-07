@@ -14,14 +14,14 @@ namespace HAL_9000
             Console.WriteLine("What do you wish to search?");
             string search = Console.ReadLine();
 
-            Process.Start(@"C:\Program Files\Google\Chrome\Application\chrome.exe", search);
+            Process.Start(@"C:\Program Files\Google\Chrome\Application\chrome.exe", "https://www.google.com.au/search?q=" + search);
         }
         public static void firefox()
         {
             Console.WriteLine("What do you wish to search?");
             string search = Console.ReadLine();
 
-            Process.Start(@"C:\Program Files\Mozilla Firefox\firefox.exe", search);
+            Process.Start(@"C:\Program Files\Mozilla Firefox\firefox.exe", "https://www.google.com.au/search?q=" + search);
         }
     }
     class searchYoutube
