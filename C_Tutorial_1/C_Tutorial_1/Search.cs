@@ -21,7 +21,7 @@ namespace HAL_9000
             Console.WriteLine("What do you wish to search?");
             string search = Console.ReadLine();
 
-            Process.Start(@"C:\Program Files\Mozilla Firefox\firefox.exe", "www.google.com/search?q=" + search);
+            Process.Start(@"C:\Program Files\Mozilla Firefox\firefox.exe", search);
         }
     }
     class searchYoutube
