@@ -112,6 +112,10 @@ namespace HAL_9000
         {
             Console.WriteLine("Searching Computer.......");
         }
+        public static void Searching()
+        {
+            Console.WriteLine("Searching...");
+        }
         public static void runWhat()
         {
             Console.WriteLine("What program do you wish to open?");

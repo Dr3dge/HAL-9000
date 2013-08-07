@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
@@ -71,7 +72,7 @@ namespace HAL_9000
             Writting.runWhat();
             string userName = Environment.UserName;
             string toFind = Console.ReadLine();
-            
+
             try
             {
                 DirectoryInfo path = new DirectoryInfo(@"C:\Users\" + userName + "\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs");
@@ -80,10 +81,9 @@ namespace HAL_9000
             }
             catch
             {
-                goto next;
+                Writting.Searching();
             }
 
-            next:
             try
             {
                 DirectoryInfo path = new DirectoryInfo(@"D:\Users\" + userName + "\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs");
@@ -92,10 +92,31 @@ namespace HAL_9000
             }
             catch
             {
-                goto next1;
+                Writting.Searching();
             }
-            
-            next1:
+
+            try
+            {
+                DirectoryInfo path = new DirectoryInfo(@"C:\Users\" + userName + "\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs");
+                Process.Start(path + toFind + ".lnk");
+                goto End;
+            }
+            catch
+            {
+                Writting.Searching();
+            }
+
+            try
+            {
+                DirectoryInfo path = new DirectoryInfo(@"D:\Users\" + userName + "\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs");
+                Process.Start(path + toFind + ".lnk");
+                goto End;
+            }
+            catch
+            {
+                Writting.Searching();
+            }
+
             try
             {
                 DirectoryInfo path = new DirectoryInfo(@"C:\ProgramData\Microsoft\Windows\Start Menu\Programs");
@@ -104,34 +125,42 @@ namespace HAL_9000
             }
             catch
             {
-                goto next2;
+                Writting.Searching();
             }
 
-            next2:
+            try
+            {
+                DirectoryInfo path = new DirectoryInfo(@"C:\ProgramData\Microsoft\Windows\Start Menu\Programs");
+                Process.Start(path + "\\" + toFind + ".lnk");
+                goto End;
+            }
+            catch
+            {
+                Writting.Searching();
+            }
+
             try
             {
                 DirectoryInfo path = new DirectoryInfo(@"C:\Users\" + userName + "\\Desktop");
-                Process.Start("\\" + toFind + ".lnk");
+                Process.Start(path + toFind + ".lnk");
                 goto End;
             }
             catch
             {
-                goto next3;
+                Writting.Searching();
             }
 
-            next3:
             try
             {
                 DirectoryInfo path = new DirectoryInfo(@"D:\Users\" + userName + "\\Desktop");
-                Process.Start("\\" + toFind + ".lnk");
+                Process.Start(path + toFind + ".lnk");
                 goto End;
             }
             catch
             {
-                goto next4;
+                Writting.Searching();
             }
 
-            next4:
             try
             {
                 DirectoryInfo path = new DirectoryInfo(@"C:\Program Files");

@@ -43,14 +43,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="HAL-9000.exe" size="298496">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="HAL-9000.exe" size="296960">
       <assemblyIdentity name="HAL-9000" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>dmBlLBLufH0taSbj7jZUNRt1foM=</dsig:DigestValue>
+        <dsig:DigestValue>f54gK7ubIneSXZCbOUIsZNafHSM=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
