@@ -120,6 +120,10 @@ namespace HAL_9000
         {
             Console.WriteLine("What program do you wish to open?");
         }
+        public static void killWhat()
+        {
+            Console.WriteLine("What process do you wish to kill?");
+        }
         public static void websiteWhat()
         {
             Console.WriteLine("What website do you wish to open?");
@@ -158,6 +162,7 @@ namespace HAL_9000
             Console.WriteLine("CMD               -       Opens the command line");
             Console.WriteLine("Add to startup    -       Makes it so HAL-9000 starts with your computer");
             Console.WriteLine("Run               -       Run a program of your choosing (WIP)");
+            Console.WriteLine("Kill              -       Kills the specified process");
             Console.WriteLine("Stop              -       Tells HAL-9000 that you are finished");
             Console.WriteLine();
         }

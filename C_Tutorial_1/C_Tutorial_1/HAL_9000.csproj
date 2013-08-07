@@ -121,6 +121,7 @@
     <Compile Include="circleAreaCalc.cs" />
     <Compile Include="downloadHandler.cs" />
     <Compile Include="Generate.cs" />
+    <Compile Include="processKiller.cs" />
     <Compile Include="Search.cs" />
     <Compile Include="Username.cs" />
     <Compile Include="programPlaces.cs" />

@@ -226,6 +226,10 @@ namespace HAL_9000
                 {
                     searchPrograms.findPrograms();
                 }
+                else if (guessInput == "kill" || guessInput == "Kill")
+                {
+                    processKiller.Kill();
+                }
                 else if (guessInput == "random" || guessInput == "Random")
                 {
                     Generate.Random();
