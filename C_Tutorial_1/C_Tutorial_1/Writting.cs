@@ -58,7 +58,7 @@ namespace HAL_9000
         }
         public static void areYouSure()
         {
-            Console.WriteLine("Are you sure you want me to end?");
+            Console.WriteLine("Are you sure?");
         }
         public static void chromeStarted()
         {
@@ -162,7 +162,9 @@ namespace HAL_9000
             Console.WriteLine("CMD               -       Opens the command line");
             Console.WriteLine("Add to startup    -       Makes it so HAL-9000 starts with your computer");
             Console.WriteLine("Run               -       Run a program of your choosing (WIP)");
-            Console.WriteLine("Kill              -       Kills the specified process");
+            Console.WriteLine("Close             -       Closes the specified process");
+            Console.WriteLine("Kill              -       Kills Windows");
+            Console.WriteLine("Shutdown          -       Shuts down Windows");
             Console.WriteLine("Stop              -       Tells HAL-9000 that you are finished");
             Console.WriteLine();
         }

@@ -56,7 +56,7 @@ namespace HAL_9000
                 {
                     Writting.thatsGood();
                 }
-                else if (guessInput == "close" || guessInput == "stop" || guessInput == "end" || guessInput == "terminate" || guessInput == "exit" || guessInput == "Close" || guessInput == "Stop" || guessInput == "End" || guessInput == "Terminate" || guessInput == "Exit ")
+                else if (guessInput == "stop" || guessInput == "end" || guessInput == "terminate" || guessInput == "exit" || guessInput == "Stop" || guessInput == "End" || guessInput == "Terminate" || guessInput == "Exit ")
                 {
                     break;
                 }
@@ -226,7 +226,7 @@ namespace HAL_9000
                 {
                     searchPrograms.findPrograms();
                 }
-                else if (guessInput == "kill" || guessInput == "Kill")
+                else if (guessInput == "close" || guessInput == "close")
                 {
                     processKiller.Kill();
                 }
@@ -254,6 +254,14 @@ namespace HAL_9000
                 else if (guessInput == "web help" || guessInput == "Web help" || guessInput == "website help" || guessInput == "Website help" || guessInput == "Website Help")
                 {
                     Writting.websitesHelp();
+                }
+                else if (guessInput == "kill" || guessInput == "Kill")
+                {
+                    processKiller.winKill();
+                }
+                else if (guessInput == "shutdown" || guessInput == "Shutdown")
+                {
+                    processKiller.winSD();
                 }
                 else if (guess == 0)
                 {
