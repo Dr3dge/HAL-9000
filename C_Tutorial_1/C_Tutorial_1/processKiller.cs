@@ -36,7 +36,7 @@ namespace HAL_9000
             Writting.areYouSure();
             string yesNo = Console.ReadLine();
 
-            if (yesNo == "n" || yesNo == "N" || yesNo == "no" || yesNo == "No" || yesNo == "cancel" || yesNo == "Cancel")
+            if (yesNo == "y" || yesNo == "Y" || yesNo == "yes" || yesNo == "Yes")
             {
                 try
                 {
@@ -49,7 +49,7 @@ namespace HAL_9000
             }
             else
             {
-                Writting.sorryDave();
+                Console.WriteLine("Operation Canceled");
             }
         }
     }
