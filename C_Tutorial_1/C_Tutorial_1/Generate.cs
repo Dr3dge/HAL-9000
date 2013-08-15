@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Web;
 using System.Linq;
@@ -66,6 +66,24 @@ namespace HAL_9000
                 Enumerable.Repeat(chars, numb).Select(s => s[random.Next(s.Length)]).ToArray());
 
                 Console.WriteLine("Here you are: " + randOut);
+            }
+            else if (type == "matrix" || type == "Matrix")
+            {
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.BackgroundColor = ConsoleColor.Black;
+
+                Console.OutputEncoding = Encoding.UTF8;
+
+                var chars = "点菜現在のコード ページABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789/!?<>,.;:'@#$%^&*()_+-={}|[]";
+                var matrix = new Random();
+                var matrixOut = new string(
+                Enumerable.Repeat(chars, 800000).Select(s => s[matrix.Next(s.Length)]).ToArray());
+
+                Console.WriteLine(matrixOut);
+                Console.WriteLine();
+
+                Console.ForegroundColor = ConsoleColor.Black;
+                Console.BackgroundColor = ConsoleColor.White;
             }
         }
     }
