@@ -184,11 +184,11 @@ namespace HAL_9000
                         Writting.youtubeSearched();
                     }
                 }
-                else if (guessInput == "run" || guessInput == "Run")
+                else if (guessInput == "run" || guessInput == "Run" || guessInput == "open" || guessInput == "Open")
                 {
                     searchPrograms.findPrograms();
                 }
-                else if (guessInput == "close" || guessInput == "close")
+                else if (guessInput == "close" || guessInput == "Close")
                 {
                     processKiller.Kill();
                 }

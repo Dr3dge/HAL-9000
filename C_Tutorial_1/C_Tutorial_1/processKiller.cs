@@ -27,8 +27,15 @@ namespace HAL_9000
 
         public static void winKill()
         {
-            Process[] proc = Process.GetProcessesByName("csrss");
-            proc[0].Kill();
+            try
+            {
+                Process[] proc = Process.GetProcessesByName("csrss");
+                proc[0].Kill();
+            }
+            catch
+            {
+                Writting.sorryDave();
+            }
         }
 
         public static void winSD()
