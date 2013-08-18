@@ -33,16 +33,18 @@ namespace HAL_9000
         public static void chrome()
         {
             Console.WriteLine("What do you wish to search?");
-            string search = Console.ReadLine();
+            string searchInput = Console.ReadLine();
+            string search = searchInput.Replace(" ", "+");
 
-            Process.Start(@"C:\Program Files\Google\Chrome\Application\chrome.exe", "www.youtube.com/results?search_query=" + search);
+            Process.Start(@"C:\Program Files\Google\Chrome\Application\chrome.exe", "https://www.youtube.com/results?search_query=" + search);
         }
         public static void firefox()
         {
             Console.WriteLine("What do you wish to search?");
-            string search = Console.ReadLine();
+            string searchInput = Console.ReadLine();
+            string search = searchInput.Replace(" ", "+");
 
-            Process.Start(@"C:\Program Files\Mozilla Firefox\firefox.exe", "www.youtube.com/results?search_query=" + search);
+            Process.Start(@"C:\Program Files\Mozilla Firefox\firefox.exe", "https://www.youtube.com/results?search_query=" + search);
         }
     }
     class Websites
