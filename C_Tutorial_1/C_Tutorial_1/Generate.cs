@@ -72,9 +72,7 @@ namespace HAL_9000
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.BackgroundColor = ConsoleColor.Black;
 
-                Console.OutputEncoding = Encoding.UTF8;
-
-                var chars = "点菜現在のコード ページABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789/!?<>,.;:'@#$%^&*()_+-={}|[]";
+                var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
                 var matrix = new Random();
                 var matrixOut = new string(
                 Enumerable.Repeat(chars, 800000).Select(s => s[matrix.Next(s.Length)]).ToArray());

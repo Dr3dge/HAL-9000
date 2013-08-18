@@ -17,6 +17,11 @@ namespace HAL_9000
 
             Writting.startWrite();
 
+            Program();
+        }
+
+        static void Program()
+        {
             Cont:
             Writting.reboot();
             goto Main;

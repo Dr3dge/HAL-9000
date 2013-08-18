@@ -82,44 +82,6 @@ namespace HAL_9000
                     }
 
                 }
-                else if (guessInput == "word" || guessInput == "Word")
-                {
-                    programPlaces.Word();
-                    Writting.wordStarted();
-                }
-                else if (guessInput == "powerpoint" || guessInput == "Powerpoint" || guessInput == "PowerPoint")
-                {
-                    programPlaces.powerPoint();
-                    Writting.ppStarted();
-                }
-                else if (guessInput == "onenote" || guessInput == "Onenote" || guessInput == "OneNote")
-                {
-                    programPlaces.oneNote();
-                    Writting.oneNoteStarted();
-                }
-                else if (guessInput == "excel" || guessInput == "Excel")
-                {
-                    programPlaces.Excel();
-                    Writting.excelStarted();
-                }
-                else if (guessInput == "notepad" || guessInput == "Notepad")
-                {
-                    try
-                    {
-                        programPlaces.notepadPP();
-                        Writting.notepadPPStarted();
-                    }
-                    catch
-                    {
-                        programPlaces.Notepad();
-                        Writting.notepadStarted();
-                    }
-                }
-                else if (guessInput == "cmd" || guessInput == "CMD" || guessInput == "console" || guessInput == "Console")
-                {
-                    programPlaces.CMD();
-                    Writting.cmdStarted();
-                }
                 else if (guessInput == "install chrome" || guessInput == "Install Chrome")
                 {
                     downloadHandler.Handler();

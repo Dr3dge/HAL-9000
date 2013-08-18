@@ -68,34 +68,6 @@ namespace HAL_9000
         {
             Console.WriteLine("Mozilla Firefox Started");
         }
-        public static void wordStarted()
-        {
-            Console.WriteLine("Microsoft Word Started");
-        }
-        public static void ppStarted()
-        {
-            Console.WriteLine("Microsoft PowerPoint Started");
-        }
-        public static void oneNoteStarted()
-        {
-            Console.WriteLine("Microsoft OneNote Started");
-        }
-        public static void excelStarted()
-        {
-            Console.WriteLine("Microsoft Excel Started");
-        }
-        public static void notepadPPStarted()
-        {
-            Console.WriteLine("Notepad++ Started");
-        }
-        public static void notepadStarted()
-        {
-            Console.WriteLine("Notepad Started");
-        }
-        public static void cmdStarted()
-        {
-            Console.WriteLine("Running the command line");
-        }
         public static void siteLaunched()
         {
             Console.WriteLine("Website launched successfully");
@@ -155,10 +127,6 @@ namespace HAL_9000
             Console.WriteLine("Internet          -       Opens your internet browser");
             Console.WriteLine("Google            -       Search Google for something");
             Console.WriteLine("Search Youtube    -       Search Youtube for something");
-            Console.WriteLine("Word              -       Opens Microsoft Word");
-            Console.WriteLine("PowerPoint        -       Opens Microsoft PowerPoint");
-            Console.WriteLine("OneNote           -       Opens Microsoft OneNote");
-            Console.WriteLine("Notepad           -       Opens Notepad, or Notepad++ if installed");
             Console.WriteLine("CMD               -       Opens the command line");
             Console.WriteLine("Add to startup    -       Makes it so HAL-9000 starts with your computer");
             Console.WriteLine("Run               -       Run a program of your choosing (WIP)");

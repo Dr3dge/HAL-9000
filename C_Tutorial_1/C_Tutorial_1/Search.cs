@@ -73,114 +73,221 @@ namespace HAL_9000
             string userName = Environment.UserName;
             string toFind = Console.ReadLine();
 
-            try
+            if (toFind == "word" || toFind == "Word" || toFind == "microsoft word" || toFind == "Microsoft word" || toFind == "Microsoft Word")
             {
-                DirectoryInfo path = new DirectoryInfo(@"C:\Users\" + userName + "\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs");
-                Process.Start(path + "\\" + toFind + "\\" + toFind + ".lnk");
+                programPlaces.Word();
                 Console.WriteLine(toFind + " launched");
-                goto End;
             }
-            catch
+            else if (toFind == "microsoft powerpoint" || toFind == "Microsoft Powerpoint" || toFind == "Microsoft PowerPoint")
             {
-                Writting.Searching();
-            }
-
-            try
-            {
-                DirectoryInfo path = new DirectoryInfo(@"D:\Users\" + userName + "\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs");
-                Process.Start(path + "\\" + toFind + "\\" + toFind + ".lnk");
+                programPlaces.powerPoint();
                 Console.WriteLine(toFind + " launched");
-                goto End;
             }
-            catch
+            else if (toFind == "microsoft onenote" || toFind == "Microsoft Onenote" || toFind == "Microsoft OneNote")
             {
-                Writting.Searching();
-            }
-
-            try
-            {
-                DirectoryInfo path = new DirectoryInfo(@"C:\Users\" + userName + "\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs");
-                Process.Start(path + toFind + ".lnk");
+                programPlaces.oneNote();
                 Console.WriteLine(toFind + " launched");
-                goto End;
             }
-            catch
+            else if (toFind == "microsoft excel" || toFind == "Microsoft Excel")
             {
-                Writting.Searching();
-            }
-
-            try
-            {
-                DirectoryInfo path = new DirectoryInfo(@"D:\Users\" + userName + "\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs");
-                Process.Start(path + toFind + ".lnk");
+                programPlaces.Excel();
                 Console.WriteLine(toFind + " launched");
-                goto End;
             }
-            catch
+            else if (toFind == "notepad" || toFind == "Notepad")
             {
-                Writting.Searching();
+                try
+                {
+                    programPlaces.notepadPP();
+                    Console.WriteLine(toFind + " launched");
+                }
+                catch
+                {
+                    programPlaces.Notepad();
+                    Console.WriteLine(toFind + " launched");
+                }
             }
-
-            try
+            else if (toFind == "cmd" || toFind == "CMD" || toFind == "console" || toFind == "Console")
             {
-                DirectoryInfo path = new DirectoryInfo(@"C:\ProgramData\Microsoft\Windows\Start Menu\Programs");
-                Process.Start(path + "\\" + toFind + "\\" + toFind + ".lnk");
+                programPlaces.CMD();
                 Console.WriteLine(toFind + " launched");
-                goto End;
             }
-            catch
+            else
             {
-                Writting.Searching();
-            }
+                try
+                {
+                    DirectoryInfo path = new DirectoryInfo(@"C:\Users\" + userName + "\\Desktop");
+                    try
+                    {
+                        Process.Start(path + "\\" + toFind + ".lnk");
+                    }
+                    catch
+                    {
+                        Process.Start(path + "\\" + toFind + ".appref-ms");
+                    }
+                    Console.WriteLine(toFind + "launched");
+                    goto End;
+                }
+                catch
+                {
+                    Writting.Searching();
+                }
 
-            try
-            {
-                DirectoryInfo path = new DirectoryInfo(@"C:\ProgramData\Microsoft\Windows\Start Menu\Programs");
-                Process.Start(path + "\\" + toFind + ".lnk");
-                Console.WriteLine(toFind + " launched");
-                goto End;
-            }
-            catch
-            {
-                Writting.Searching();
-            }
+                try
+                {
+                    DirectoryInfo path = new DirectoryInfo(@"D:\Users\" + userName + "\\Desktop");
+                    try
+                    {
+                        Process.Start(path + "\\" + toFind + ".lnk");
+                    }
+                    catch
+                    {
+                        Process.Start(path + "\\" + toFind + ".appref-ms");
+                    }
+                    Console.WriteLine(toFind + " launched");
+                    goto End;
+                }
+                catch
+                {
+                    Writting.Searching();
+                }
 
-            try
-            {
-                DirectoryInfo path = new DirectoryInfo(@"C:\Users\" + userName + "\\Desktop");
-                Process.Start(path + toFind + ".lnk");
-                Console.WriteLine(toFind + "launched");
-                goto End;
-            }
-            catch
-            {
-                Writting.Searching();
-            }
+                try
+                {
+                    DirectoryInfo path = new DirectoryInfo(@"C:\Users\" + userName + "\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs");
+                    try
+                    {
+                        Process.Start(path + "\\" + toFind + "\\" + toFind + ".lnk");
+                    }
+                    catch
+                    {
+                        Process.Start(path + "\\" + toFind + "\\" + toFind + ".appref-ms");
+                    }
+                    Console.WriteLine(toFind + " launched");
+                    goto End;
+                }
+                catch
+                {
+                    Writting.Searching();
+                }
 
-            try
-            {
-                DirectoryInfo path = new DirectoryInfo(@"D:\Users\" + userName + "\\Desktop");
-                Process.Start(path + toFind + ".lnk");
-                Console.WriteLine(toFind + " launched");
-                goto End;
-            }
-            catch
-            {
-                Writting.Searching();
-            }
+                try
+                {
+                    DirectoryInfo path = new DirectoryInfo(@"D:\Users\" + userName + "\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs");
+                    try
+                    {
+                        Process.Start(path + "\\" + toFind + "\\" + toFind + ".lnk");
+                    }
+                    catch
+                    {
+                        Process.Start(path + "\\" + toFind + "\\" + toFind + ".appref-ms");
+                    }
+                    Console.WriteLine(toFind + " launched");
+                    goto End;
+                }
+                catch
+                {
+                    Writting.Searching();
+                }
 
-            try
-            {
-                DirectoryInfo path = new DirectoryInfo(@"C:\Program Files");
-                Process.Start(path + "\\" + toFind + "\\" + toFind + ".exe");
-                Console.WriteLine(toFind + " launched");
-                goto End;
+                try
+                {
+                    DirectoryInfo path = new DirectoryInfo(@"C:\Users\" + userName + "\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs");
+                    try
+                    {
+                        Process.Start(path + "\\" + toFind + ".lnk");
+                    }
+                    catch
+                    {
+                        Process.Start(path + "\\" + toFind + ".appref-ms");
+                    }
+                    Console.WriteLine(toFind + " launched");
+                    goto End;
+                }
+                catch
+                {
+                    Writting.Searching();
+                }
+
+                try
+                {
+                    DirectoryInfo path = new DirectoryInfo(@"D:\Users\" + userName + "\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs");
+                    try
+                    {
+                        Process.Start(path + "\\" + toFind + ".lnk");
+                    }
+                    catch
+                    {
+                        Process.Start(path + "\\" + toFind + ".appref-ms");
+                    }
+                    Console.WriteLine(toFind + " launched");
+                    goto End;
+                }
+                catch
+                {
+                    Writting.Searching();
+                }
+
+                try
+                {
+                    DirectoryInfo path = new DirectoryInfo(@"C:\ProgramData\Microsoft\Windows\Start Menu\Programs");
+                    try
+                    {
+                        Process.Start(path + "\\" + toFind + "\\" + toFind + ".lnk");
+                    }
+                    catch
+                    {
+                        Process.Start(path + "\\" + toFind + "\\" + toFind + ".appref-ms");
+                    }
+                    Console.WriteLine(toFind + " launched");
+                    goto End;
+                }
+                catch
+                {
+                    Writting.Searching();
+                }
+
+                try
+                {
+                    DirectoryInfo path = new DirectoryInfo(@"C:\ProgramData\Microsoft\Windows\Start Menu\Programs");
+                    try
+                    {
+                        Process.Start(path + "\\" + toFind + ".lnk");
+                    }
+                    catch
+                    {
+                        Process.Start(path + "\\" + toFind + ".appref-ms");
+                    }
+                    Console.WriteLine(toFind + " launched");
+                    goto End;
+                }
+                catch
+                {
+                    Writting.Searching();
+                }
+
+                try
+                {
+                    string path = @"C:\Program Files\";
+                    string searchPattern = toFind + ".exe*";
+
+                    DirectoryInfo di = new DirectoryInfo(path);
+
+                    FileInfo[] files =
+                        di.GetFiles(searchPattern, SearchOption.AllDirectories);
+
+                    foreach (FileInfo file in files)
+                    {
+                        string progRun = (file.FullName.ToString());
+                        Process.Start(progRun);
+                        Console.WriteLine(toFind + " launched");
+                    }
+                }
+                catch
+                {
+                    Writting.sorryDave();
+                }
+            End: ;
             }
-            catch
-            {
-                Writting.sorryDave();
-            }
-        End: ;
         }
     }
 }
