@@ -115,33 +115,34 @@ namespace HAL_9000
             {
                 try
                 {
-                    DirectoryInfo path = new DirectoryInfo(@"C:\Users\" + userName + "\\Desktop");
+                    string path = @"C:\Users\" + userName + "\\Desktop";
                     try
                     {
-                        Process.Start(path + "\\" + toFind + ".lnk");
-                    }
-                    catch
-                    {
-                        Process.Start(path + "\\" + toFind + ".appref-ms");
-                    }
-                    Console.WriteLine(toFind + "launched");
-                    goto End;
-                }
-                catch
-                {
-                    Writting.Searching();
-                }
+                        string searchPattern = toFind + ".lnk*";
+                        DirectoryInfo di = new DirectoryInfo(path);
 
-                try
-                {
-                    DirectoryInfo path = new DirectoryInfo(@"D:\Users\" + userName + "\\Desktop");
-                    try
-                    {
-                        Process.Start(path + "\\" + toFind + ".lnk");
+                        FileInfo[] files =
+                            di.GetFiles(searchPattern, SearchOption.AllDirectories);
+
+                        foreach (FileInfo file in files)
+                        {
+                            string progRun = (file.FullName.ToString());
+                            Process.Start(progRun);
+                        }
                     }
                     catch
                     {
-                        Process.Start(path + "\\" + toFind + ".appref-ms");
+                        string searchPattern = toFind + ".appref-ms*";
+                        DirectoryInfo di = new DirectoryInfo(path);
+
+                        FileInfo[] files =
+                            di.GetFiles(searchPattern, SearchOption.AllDirectories);
+
+                        foreach (FileInfo file in files)
+                        {
+                            string progRun = (file.FullName.ToString());
+                            Process.Start(progRun);
+                        }
                     }
                     Console.WriteLine(toFind + " launched");
                     goto End;
@@ -153,14 +154,34 @@ namespace HAL_9000
 
                 try
                 {
-                    DirectoryInfo path = new DirectoryInfo(@"C:\Users\" + userName + "\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs");
+                    string path = @"D:\Users\" + userName + "\\Desktop";
                     try
                     {
-                        Process.Start(path + "\\" + toFind + "\\" + toFind + ".lnk");
+                        string searchPattern = toFind + ".lnk*";
+                        DirectoryInfo di = new DirectoryInfo(path);
+
+                        FileInfo[] files =
+                            di.GetFiles(searchPattern, SearchOption.AllDirectories);
+
+                        foreach (FileInfo file in files)
+                        {
+                            string progRun = (file.FullName.ToString());
+                            Process.Start(progRun);
+                        }
                     }
                     catch
                     {
-                        Process.Start(path + "\\" + toFind + "\\" + toFind + ".appref-ms");
+                        string searchPattern = toFind + ".appref-ms*";
+                        DirectoryInfo di = new DirectoryInfo(path);
+
+                        FileInfo[] files =
+                            di.GetFiles(searchPattern, SearchOption.AllDirectories);
+
+                        foreach (FileInfo file in files)
+                        {
+                            string progRun = (file.FullName.ToString());
+                            Process.Start(progRun);
+                        }
                     }
                     Console.WriteLine(toFind + " launched");
                     goto End;
@@ -172,14 +193,34 @@ namespace HAL_9000
 
                 try
                 {
-                    DirectoryInfo path = new DirectoryInfo(@"D:\Users\" + userName + "\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs");
+                    string path = @"C:\Users\" + userName + "\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs";
                     try
                     {
-                        Process.Start(path + "\\" + toFind + "\\" + toFind + ".lnk");
+                        string searchPattern = toFind + ".lnk*";
+                        DirectoryInfo di = new DirectoryInfo(path);
+
+                        FileInfo[] files =
+                            di.GetFiles(searchPattern, SearchOption.AllDirectories);
+
+                        foreach (FileInfo file in files)
+                        {
+                            string progRun = (file.FullName.ToString());
+                            Process.Start(progRun);
+                        }
                     }
                     catch
                     {
-                        Process.Start(path + "\\" + toFind + "\\" + toFind + ".appref-ms");
+                        string searchPattern = toFind + ".appref-ms*";
+                        DirectoryInfo di = new DirectoryInfo(path);
+
+                        FileInfo[] files =
+                            di.GetFiles(searchPattern, SearchOption.AllDirectories);
+
+                        foreach (FileInfo file in files)
+                        {
+                            string progRun = (file.FullName.ToString());
+                            Process.Start(progRun);
+                        }
                     }
                     Console.WriteLine(toFind + " launched");
                     goto End;
@@ -191,14 +232,34 @@ namespace HAL_9000
 
                 try
                 {
-                    DirectoryInfo path = new DirectoryInfo(@"C:\Users\" + userName + "\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs");
+                    string path = @"D:\Users\" + userName + "\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs";
                     try
                     {
-                        Process.Start(path + "\\" + toFind + ".lnk");
+                        string searchPattern = toFind + ".lnk*";
+                        DirectoryInfo di = new DirectoryInfo(path);
+
+                        FileInfo[] files =
+                            di.GetFiles(searchPattern, SearchOption.AllDirectories);
+
+                        foreach (FileInfo file in files)
+                        {
+                            string progRun = (file.FullName.ToString());
+                            Process.Start(progRun);
+                        }
                     }
                     catch
                     {
-                        Process.Start(path + "\\" + toFind + ".appref-ms");
+                        string searchPattern = toFind + ".appref-ms*";
+                        DirectoryInfo di = new DirectoryInfo(path);
+
+                        FileInfo[] files =
+                            di.GetFiles(searchPattern, SearchOption.AllDirectories);
+
+                        foreach (FileInfo file in files)
+                        {
+                            string progRun = (file.FullName.ToString());
+                            Process.Start(progRun);
+                        }
                     }
                     Console.WriteLine(toFind + " launched");
                     goto End;
@@ -210,14 +271,34 @@ namespace HAL_9000
 
                 try
                 {
-                    DirectoryInfo path = new DirectoryInfo(@"D:\Users\" + userName + "\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs");
+                    string path = @"C:\Users\" + userName + "\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs";
                     try
                     {
-                        Process.Start(path + "\\" + toFind + ".lnk");
+                        string searchPattern = toFind + ".lnk*";
+                        DirectoryInfo di = new DirectoryInfo(path);
+
+                        FileInfo[] files =
+                            di.GetFiles(searchPattern, SearchOption.AllDirectories);
+
+                        foreach (FileInfo file in files)
+                        {
+                            string progRun = (file.FullName.ToString());
+                            Process.Start(progRun);
+                        }
                     }
                     catch
                     {
-                        Process.Start(path + "\\" + toFind + ".appref-ms");
+                        string searchPattern = toFind + ".appref-ms*";
+                        DirectoryInfo di = new DirectoryInfo(path);
+
+                        FileInfo[] files =
+                            di.GetFiles(searchPattern, SearchOption.AllDirectories);
+
+                        foreach (FileInfo file in files)
+                        {
+                            string progRun = (file.FullName.ToString());
+                            Process.Start(progRun);
+                        }
                     }
                     Console.WriteLine(toFind + " launched");
                     goto End;
@@ -229,14 +310,34 @@ namespace HAL_9000
 
                 try
                 {
-                    DirectoryInfo path = new DirectoryInfo(@"C:\ProgramData\Microsoft\Windows\Start Menu\Programs");
+                    string path = @"D:\Users\" + userName + "\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs";
                     try
                     {
-                        Process.Start(path + "\\" + toFind + "\\" + toFind + ".lnk");
+                        string searchPattern = toFind + ".lnk*";
+                        DirectoryInfo di = new DirectoryInfo(path);
+
+                        FileInfo[] files =
+                            di.GetFiles(searchPattern, SearchOption.AllDirectories);
+
+                        foreach (FileInfo file in files)
+                        {
+                            string progRun = (file.FullName.ToString());
+                            Process.Start(progRun);
+                        }
                     }
                     catch
                     {
-                        Process.Start(path + "\\" + toFind + "\\" + toFind + ".appref-ms");
+                        string searchPattern = toFind + ".appref-ms*";
+                        DirectoryInfo di = new DirectoryInfo(path);
+
+                        FileInfo[] files =
+                            di.GetFiles(searchPattern, SearchOption.AllDirectories);
+
+                        foreach (FileInfo file in files)
+                        {
+                            string progRun = (file.FullName.ToString());
+                            Process.Start(progRun);
+                        }
                     }
                     Console.WriteLine(toFind + " launched");
                     goto End;
@@ -248,14 +349,74 @@ namespace HAL_9000
 
                 try
                 {
-                    DirectoryInfo path = new DirectoryInfo(@"C:\ProgramData\Microsoft\Windows\Start Menu\Programs");
+                    string path = @"C:\ProgramData\Microsoft\Windows\Start Menu\Programs";
                     try
                     {
-                        Process.Start(path + "\\" + toFind + ".lnk");
+                        string searchPattern = toFind + ".lnk*";
+                        DirectoryInfo di = new DirectoryInfo(path);
+
+                        FileInfo[] files =
+                            di.GetFiles(searchPattern, SearchOption.AllDirectories);
+
+                        foreach (FileInfo file in files)
+                        {
+                            string progRun = (file.FullName.ToString());
+                            Process.Start(progRun);
+                        }
                     }
                     catch
                     {
-                        Process.Start(path + "\\" + toFind + ".appref-ms");
+                        string searchPattern = toFind + ".appref-ms*";
+                        DirectoryInfo di = new DirectoryInfo(path);
+
+                        FileInfo[] files =
+                            di.GetFiles(searchPattern, SearchOption.AllDirectories);
+
+                        foreach (FileInfo file in files)
+                        {
+                            string progRun = (file.FullName.ToString());
+                            Process.Start(progRun);
+                        }
+                    }
+                    Console.WriteLine(toFind + " launched");
+                    goto End;
+                }
+                catch
+                {
+                    Writting.Searching();
+                }
+
+                try
+                {
+                    string path = @"C:\ProgramData\Microsoft\Windows\Start Menu\Programs"; 
+
+                    try
+                    {
+                        string searchPattern = toFind + ".lnk*";
+                        DirectoryInfo di = new DirectoryInfo(path);
+
+                        FileInfo[] files =
+                            di.GetFiles(searchPattern, SearchOption.AllDirectories);
+
+                        foreach (FileInfo file in files)
+                        {
+                            string progRun = (file.FullName.ToString());
+                            Process.Start(progRun);
+                        }
+                    }
+                    catch
+                    {
+                        string searchPattern = toFind + ".appref-ms*";
+                        DirectoryInfo di = new DirectoryInfo(path);
+
+                        FileInfo[] files =
+                            di.GetFiles(searchPattern, SearchOption.AllDirectories);
+
+                        foreach (FileInfo file in files)
+                        {
+                            string progRun = (file.FullName.ToString());
+                            Process.Start(progRun);
+                        }
                     }
                     Console.WriteLine(toFind + " launched");
                     goto End;
