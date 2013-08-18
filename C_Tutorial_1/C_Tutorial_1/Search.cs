@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace HAL_9000
 {
@@ -13,14 +14,16 @@ namespace HAL_9000
         public static void chrome()
         {
             Console.WriteLine("What do you wish to search?");
-            string search = Console.ReadLine();
+            string searchInput = Console.ReadLine();
+            string search = searchInput.Replace(" ", "+");
 
             Process.Start(@"C:\Program Files\Google\Chrome\Application\chrome.exe", "https://www.google.com.au/search?q=" + search);
         }
         public static void firefox()
         {
             Console.WriteLine("What do you wish to search?");
-            string search = Console.ReadLine();
+            string searchInput = Console.ReadLine();
+            string search = searchInput.Replace(" ", "+");
 
             Process.Start(@"C:\Program Files\Mozilla Firefox\firefox.exe", "https://www.google.com.au/search?q=" + search);
         }
@@ -113,9 +116,10 @@ namespace HAL_9000
             }
             else
             {
+                string path;
                 try
                 {
-                    string path = @"C:\Users\" + userName + "\\Desktop";
+                    path = @"C:\Users\" + userName + "\\Desktop";
                     try
                     {
                         string searchPattern = toFind + ".lnk*";
@@ -154,7 +158,7 @@ namespace HAL_9000
 
                 try
                 {
-                    string path = @"D:\Users\" + userName + "\\Desktop";
+                    path = @"D:\Users\" + userName + "\\Desktop";
                     try
                     {
                         string searchPattern = toFind + ".lnk*";
@@ -193,7 +197,7 @@ namespace HAL_9000
 
                 try
                 {
-                    string path = @"C:\Users\" + userName + "\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs";
+                    path = @"C:\Users\" + userName + "\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs";
                     try
                     {
                         string searchPattern = toFind + ".lnk*";
@@ -232,7 +236,7 @@ namespace HAL_9000
 
                 try
                 {
-                    string path = @"D:\Users\" + userName + "\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs";
+                    path = @"D:\Users\" + userName + "\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs";
                     try
                     {
                         string searchPattern = toFind + ".lnk*";
@@ -271,7 +275,7 @@ namespace HAL_9000
 
                 try
                 {
-                    string path = @"C:\Users\" + userName + "\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs";
+                    path = @"C:\Users\" + userName + "\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs";
                     try
                     {
                         string searchPattern = toFind + ".lnk*";
@@ -310,7 +314,7 @@ namespace HAL_9000
 
                 try
                 {
-                    string path = @"D:\Users\" + userName + "\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs";
+                    path = @"D:\Users\" + userName + "\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs";
                     try
                     {
                         string searchPattern = toFind + ".lnk*";
@@ -349,7 +353,7 @@ namespace HAL_9000
 
                 try
                 {
-                    string path = @"C:\ProgramData\Microsoft\Windows\Start Menu\Programs";
+                    path = @"C:\ProgramData\Microsoft\Windows\Start Menu\Programs";
                     try
                     {
                         string searchPattern = toFind + ".lnk*";
@@ -388,7 +392,7 @@ namespace HAL_9000
 
                 try
                 {
-                    string path = @"C:\ProgramData\Microsoft\Windows\Start Menu\Programs"; 
+                    path = @"C:\ProgramData\Microsoft\Windows\Start Menu\Programs"; 
 
                     try
                     {
@@ -428,7 +432,7 @@ namespace HAL_9000
 
                 try
                 {
-                    string path = @"C:\Program Files\";
+                    path = @"C:\Program Files\";
                     string searchPattern = toFind + ".exe*";
 
                     DirectoryInfo di = new DirectoryInfo(path);

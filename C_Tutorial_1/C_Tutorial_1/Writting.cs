@@ -129,7 +129,7 @@ namespace HAL_9000
             Console.WriteLine("Search Youtube    -       Search Youtube for something");
             Console.WriteLine("CMD               -       Opens the command line");
             Console.WriteLine("Add to startup    -       Makes it so HAL-9000 starts with your computer");
-            Console.WriteLine("Run               -       Run a program of your choosing (WIP)");
+            Console.WriteLine("Run               -       Run a program of your choosing");
             Console.WriteLine("Close             -       Closes the specified process");
             Console.WriteLine("Kill              -       Kills Windows");
             Console.WriteLine("Shutdown          -       Shuts down Windows");
