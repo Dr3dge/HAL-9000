@@ -118,6 +118,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="addToStartup.cs" />
+    <Compile Include="Arduino.cs" />
     <Compile Include="circleAreaCalc.cs" />
     <Compile Include="downloadHandler.cs" />
     <Compile Include="Generate.cs" />
@@ -169,6 +170,9 @@
       <Isolated>False</Isolated>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

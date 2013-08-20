@@ -7,13 +7,27 @@ namespace HAL_9000
 {
     public class Writting
     {
+
+        public static void Initialization()
+        {
+            Console.WriteLine("Loading...");
+            System.Threading.Thread.Sleep(250);
+            Console.WriteLine("Loading...");
+            System.Threading.Thread.Sleep(250);
+            Console.WriteLine("Loading...");
+            System.Threading.Thread.Sleep(250);
+            Console.WriteLine("Loading...");
+            System.Threading.Thread.Sleep(250);
+            Console.WriteLine("Loading...");
+            System.Threading.Thread.Sleep(250);
+            Console.WriteLine("Initialized Sucessfully");
+            Console.WriteLine("Press any key to continue");
+            
+            Console.ReadKey();
+            Console.Clear();
+        }
         public static void startWrite()
         {
-            Console.WriteLine("Program Execute");
-            Console.WriteLine("................");
-            Console.WriteLine("................");
-            Console.WriteLine("................");
-            Console.WriteLine("................");
             Console.WriteLine("Hello");
             Console.WriteLine("I am HAL 9000");
             Console.WriteLine("Type 'help' in for assistance");
@@ -100,6 +114,11 @@ namespace HAL_9000
         {
             Console.WriteLine("What website do you wish to open?");
         }
+        public static void Arduino()
+        {
+            Console.WriteLine("Check the aurduino help for options");
+            Console.WriteLine("What do you wish to run?");
+        }
         public static void reboot()
         {
             Console.WriteLine("Reboot Compleated: Continue");
@@ -118,6 +137,7 @@ namespace HAL_9000
             Console.WriteLine("Help              -       Displays this help message");
             Console.WriteLine("Install help      -       Displays what programs can be installed");
             Console.WriteLine("Websites help     -       Displays what websites can be opened");
+            Console.WriteLine("Arduino help      -       Displays what aurduino programs can be run");
             Console.WriteLine("# Between 1 & 10  -       Pick a number and hope that it's the winning one");
             Console.WriteLine("Hello             -       Say hello to your friendly HAL-9000");
             Console.WriteLine("How are you       -       Ask HAL-9000 how he is doing");
@@ -153,6 +173,12 @@ namespace HAL_9000
         {
             Console.WriteLine();
             Console.WriteLine("Website           -       Launches the desired website");
+            Console.WriteLine();
+        }
+        public static void arduinoHelp()
+        {
+            Console.WriteLine();
+            Console.WriteLine("Arduino           -       Launches the arduino program");
             Console.WriteLine();
         }
     }

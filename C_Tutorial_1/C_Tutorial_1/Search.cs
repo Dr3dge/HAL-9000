@@ -75,50 +75,43 @@ namespace HAL_9000
         public static void findPrograms()
         {
             Writting.runWhat();
+            string path;
             string userName = Environment.UserName;
             string toFind = Console.ReadLine();
 
             if (toFind == "word" || toFind == "Word" || toFind == "microsoft word" || toFind == "Microsoft word" || toFind == "Microsoft Word")
             {
                 programPlaces.Word();
-                Console.WriteLine(toFind + " launched");
             }
             else if (toFind == "microsoft powerpoint" || toFind == "Microsoft Powerpoint" || toFind == "Microsoft PowerPoint")
             {
                 programPlaces.powerPoint();
-                Console.WriteLine(toFind + " launched");
             }
             else if (toFind == "microsoft onenote" || toFind == "Microsoft Onenote" || toFind == "Microsoft OneNote")
             {
                 programPlaces.oneNote();
-                Console.WriteLine(toFind + " launched");
             }
             else if (toFind == "microsoft excel" || toFind == "Microsoft Excel")
             {
                 programPlaces.Excel();
-                Console.WriteLine(toFind + " launched");
             }
             else if (toFind == "notepad" || toFind == "Notepad")
             {
                 try
                 {
                     programPlaces.notepadPP();
-                    Console.WriteLine(toFind + " launched");
                 }
                 catch
                 {
                     programPlaces.Notepad();
-                    Console.WriteLine(toFind + " launched");
                 }
             }
             else if (toFind == "cmd" || toFind == "CMD" || toFind == "console" || toFind == "Console")
             {
                 programPlaces.CMD();
-                Console.WriteLine(toFind + " launched");
             }
             else
             {
-                string path;
                 try
                 {
                     path = @"C:\Users\" + userName + "\\Desktop";

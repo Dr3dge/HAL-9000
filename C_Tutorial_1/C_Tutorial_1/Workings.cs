@@ -44,6 +44,10 @@ namespace HAL_9000
                 {
                     Writting.wrongRepl();
                 }
+                else if (guessInput == "arduino" || guessInput == "Arduino")
+                {
+                    Arduino.Start();
+                }
                 else if (guessInput == "hello" || guessInput == "hi" || guessInput == "hey" || guessInput == "Hello" || guessInput == "Hi" || guessInput == "Hey")
                 {
                     Writting.sayHello();
@@ -58,6 +62,7 @@ namespace HAL_9000
                 }
                 else if (guessInput == "stop" || guessInput == "end" || guessInput == "terminate" || guessInput == "exit" || guessInput == "Stop" || guessInput == "End" || guessInput == "Terminate" || guessInput == "Exit ")
                 {
+                    Console.Clear();
                     break;
                 }
                 else if (guessInput == "circle" || guessInput == "Circle")
@@ -216,6 +221,10 @@ namespace HAL_9000
                 else if (guessInput == "web help" || guessInput == "Web help" || guessInput == "website help" || guessInput == "Website help" || guessInput == "Website Help")
                 {
                     Writting.websitesHelp();
+                }
+                else if (guessInput == "arduino help" || guessInput == "Arduino help" || guessInput == "Arduino Help")
+                {
+                    Writting.arduinoHelp();
                 }
                 else if (guessInput == "kill" || guessInput == "Kill")
                 {

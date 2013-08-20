@@ -13,6 +13,7 @@ namespace HAL_9000
             try
             {
                 Process.Start(@"C:\Program Files\Google\Chrome\Application\chrome.exe");
+                Console.WriteLine("Chrome launched");
             }
             catch
             {
@@ -24,6 +25,7 @@ namespace HAL_9000
             try
             {
                 Process.Start(@"C:\Program Files\Mozilla Firefox\firefox.exe");
+                Console.WriteLine("Firefox launched");
             }
             catch
             {
@@ -35,6 +37,7 @@ namespace HAL_9000
             try
             {
                 Process.Start(@"C:\Program Files\Microsoft Office\Office14\WINWORD.exe");
+                Console.WriteLine("Word launched");
             }
             catch
             {
@@ -46,6 +49,7 @@ namespace HAL_9000
             try
             {
                 Process.Start(@"C:\Program Files\Microsoft Office\Office14\POWERPNT.exe");
+                Console.WriteLine("PowerPoint launched");
             }
             catch
             {
@@ -57,6 +61,7 @@ namespace HAL_9000
             try
             {
                 Process.Start(@"C:\Program Files\Microsoft Office\Office14\ONENOTE.exe");
+                Console.WriteLine("OneNote launched");
             }
             catch
             {
@@ -68,6 +73,7 @@ namespace HAL_9000
             try
             {
                 Process.Start(@"C:\Program Files\Microsoft Office\Office14\EXCEL.exe");
+                Console.WriteLine("Excel launched");
             }
             catch
             {
@@ -79,6 +85,7 @@ namespace HAL_9000
             try
             {
                 Process.Start(@"C:\Program Files\Notepad++\notepad++.exe");
+                Console.WriteLine("Notepad++ launched");
             }
             catch
             {
@@ -90,6 +97,7 @@ namespace HAL_9000
             try
             {
                 Process.Start(@"C:\Windows\System32\notepad.exe");
+                Console.WriteLine("Notepad launched");
             }
             catch
             {
@@ -100,7 +108,8 @@ namespace HAL_9000
         {
             try
             {
-                Process.Start( @"C:\\Windows\\System32\\cmd.exe");
+                Process.Start(@"C:\\Windows\\System32\\cmd.exe");
+                Console.WriteLine("CMD launched");
             }
             catch
             {

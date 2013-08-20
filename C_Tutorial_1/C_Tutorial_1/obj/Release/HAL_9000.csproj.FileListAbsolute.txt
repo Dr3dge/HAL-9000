@@ -20,3 +20,14 @@ D:\Users\OZO0001\Documents\GitHub\HAL-9000\C_Tutorial_1\C_Tutorial_1\bin\Release
 D:\Users\OZO0001\Documents\GitHub\HAL-9000\C_Tutorial_1\C_Tutorial_1\obj\Release\HAL_9000.csprojResolveAssemblyReference.cache
 D:\Users\OZO0001\Documents\GitHub\HAL-9000\C_Tutorial_1\C_Tutorial_1\obj\Release\HAL-9000.exe.manifest
 D:\Users\OZO0001\Documents\GitHub\HAL-9000\C_Tutorial_1\C_Tutorial_1\obj\Release\HAL-9000.application
+C:\Users\david\Documents\GitHub\HAL-9000\C_Tutorial_1\C_Tutorial_1\obj\Release\Interop.IWshRuntimeLibrary.dll
+C:\Users\david\Documents\GitHub\HAL-9000\C_Tutorial_1\C_Tutorial_1\obj\Release\HAL_9000.csproj.ResolveComReference.cache
+C:\Users\david\Documents\GitHub\HAL-9000\C_Tutorial_1\C_Tutorial_1\obj\Release\HAL-9000.exe
+C:\Users\david\Documents\GitHub\HAL-9000\C_Tutorial_1\C_Tutorial_1\obj\Release\HAL-9000.pdb
+C:\Users\david\Documents\GitHub\HAL-9000\C_Tutorial_1\C_Tutorial_1\bin\Release\HAL-9000.exe.manifest
+C:\Users\david\Documents\GitHub\HAL-9000\C_Tutorial_1\C_Tutorial_1\bin\Release\HAL-9000.application
+C:\Users\david\Documents\GitHub\HAL-9000\C_Tutorial_1\C_Tutorial_1\bin\Release\HAL-9000.exe
+C:\Users\david\Documents\GitHub\HAL-9000\C_Tutorial_1\C_Tutorial_1\bin\Release\HAL-9000.pdb
+C:\Users\david\Documents\GitHub\HAL-9000\C_Tutorial_1\C_Tutorial_1\obj\Release\HAL_9000.csprojResolveAssemblyReference.cache
+C:\Users\david\Documents\GitHub\HAL-9000\C_Tutorial_1\C_Tutorial_1\obj\Release\HAL-9000.exe.manifest
+C:\Users\david\Documents\GitHub\HAL-9000\C_Tutorial_1\C_Tutorial_1\obj\Release\HAL-9000.application

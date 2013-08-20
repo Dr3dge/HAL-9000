@@ -12,6 +12,8 @@ namespace HAL_9000
         {
             Console.Title = "HAL-9000";
 
+            Writting.Initialization();
+
             Console.ForegroundColor = ConsoleColor.Black;
             Console.BackgroundColor = ConsoleColor.White;
 
@@ -22,23 +24,23 @@ namespace HAL_9000
 
         static void Program()
         {
-            Cont:
-            Writting.reboot();
-            goto Main;
-
             Main:
             Workings.Program();
 
             string yesNo = Console.ReadLine();
 
-            if (yesNo == "y" || yesNo == "Y" || yesNo == "yes" || yesNo == "Yes")
-            {
-                goto End;
-            }
-            else if (yesNo == "n" || yesNo == "N" || yesNo == "no" || yesNo == "No")
+            if (yesNo == "n" || yesNo == "N" || yesNo == "no" || yesNo == "No")
             {
                 goto Cont;
             }
+            else
+            {
+                goto End;
+            }
+        
+            Cont:
+            Writting.reboot();
+            goto Main;
 
             End:
             Writting.terminated();
