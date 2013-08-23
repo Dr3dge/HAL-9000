@@ -89,75 +89,131 @@ namespace HAL_9000
                 }
                 else if (guessInput == "install chrome" || guessInput == "Install Chrome")
                 {
+                    try
+                    {
                     downloadHandler.Handler();
                     WebClient Client = new WebClient();
                     Client.DownloadFile("https://dl.google.com/tag/s/appguid%3D%7B8A69D345-D564-463C-AFF1-A69D9E530F96%7D%26iid%3D%7BB3008FA8-ACE4-549A-37A5-DE431BE99A20%7D%26lang%3Den%26browser%3D4%26usagestats%3D0%26appname%3DGoogle%2520Chrome%26needsadmin%3Dprefers%26brand%3DCHMA%26installdataindex%3Ddefaultbrowser/update2/installers/ChromeSetup.exe",
                             @"HAL's Downloads\ChromeSetup.exe");
 
                     Process.Start(@"HAL's Downloads\\ChromeSetup.exe");
+                    }
+                    catch
+                    {
+                        Writting.sorryDave();
+                    }
                 }
                 else if (guessInput == "install winRAR" || guessInput == "install winrar" || guessInput == "Install winRAR")
                 {
+                    try
+                    {
                     downloadHandler.Handler();
                     WebClient Client = new WebClient();
                     Client.DownloadFile("http://www.rarlab.com/rar/wrar50b7.exe",
                             @"HAL's Downloads\wrar50b7.exe");
 
                     Process.Start(@"HAL's Downloads\\wrar50b7.exe");
+                    }
+                    catch
+                    {
+                        Writting.sorryDave();
+                    }
                 }
                 else if (guessInput == "install notepad++" || guessInput == "Install Notepad++")
                 {
+                    try
+                    {
                     downloadHandler.Handler();
                     WebClient Client = new WebClient();
                     Client.DownloadFile("http://download.tuxfamily.org/notepadplus/6.4.3/npp.6.4.3.Installer.exe",
                             @"HAL's Downloads\npp.6.4.3.Installer.exe");
 
                     Process.Start(@"HAL's Downloads\\npp.6.4.3.Installer.exe");
+                    }
+                    catch
+                    {
+                        Writting.sorryDave();
+                    }
                 }
                 else if (guessInput == "install vlc" || guessInput == "Install VLC")
                 {
+                    try
+                    {
                     downloadHandler.Handler();
                     WebClient Client = new WebClient();
                     Client.DownloadFile("http://vlc.mirror.uber.com.au/vlc/2.0.8/win32/vlc-2.0.8-win32.exe",
                             @"HAL's Downloads\vlc-2.0.8-win32.exe");
 
                     Process.Start(@"HAL's Downloads\\vlc-2.0.8-win32.exe");
+                    }
+                    catch
+                    {
+                        Writting.sorryDave();
+                    }
                 }
                 else if (guessInput == "install gimp" || guessInput == "Install GIMP")
                 {
+                    try
+                    {
                     downloadHandler.Handler();
                     WebClient Client = new WebClient();
                     Client.DownloadFile("http://aarnet.dl.sourceforge.net/project/gimp-win/GIMP%20%2B%20GTK%2B%20%28stable%20release%29/GIMP%202.8.6/gimp-2.8.6-setup.exe",
                             @"HAL's Downloads\gimp-2.8.6-setup.exe");
 
                     Process.Start(@"HAL's Downloads\\gimp-2.8.6-setup.exe");
+                    }
+                    catch
+                    {
+                        Writting.sorryDave();
+                    }
                 }
                 else if (guessInput == "install asc" || guessInput == "Install ASC")
                 {
+                    try
+                    {
                     downloadHandler.Handler();
                     WebClient Client = new WebClient();
                     Client.DownloadFile("http://download.iobit.com/advanced_systemcare_installer.exe",
                             @"HAL's Downloads\advanced_systemcare_installer.exe");
 
                     Process.Start(@"HAL's Downloads\\advanced_systemcare_installer.exe");
+                    }
+                    catch
+                    {
+                        Writting.sorryDave();
+                    }
                 }
                 else if (guessInput == "install java" || guessInput == "Install Java")
                 {
+                    try
+                    {
                     downloadHandler.Handler();
                     WebClient Client = new WebClient();
                     Client.DownloadFile("http://javadl.sun.com/webapps/download/AutoDL?BundleId=79071",
                             @"HAL's Downloads\java.exe");
 
                     Process.Start(@"HAL's Downloads\\java.exe");
+                    }
+                    catch
+                    {
+                        Writting.sorryDave();
+                    }
                 }
                 else if (guessInput == "install avg" || guessInput == "Install AVG")
                 {
+                    try
+                    {
                     downloadHandler.Handler();
                     WebClient Client = new WebClient();
                     Client.DownloadFile("http://af-download.avg.com/filedir/inst/avg_free_stb_all_2013_3345_free.exe",
                             @"HAL's Downloads\avg_free.exe");
 
                     Process.Start(@"HAL's Downloads\\avg_free.exe");
+                    }
+                    catch
+                    {
+                        Writting.sorryDave();
+                    }
                 }
                 else if (guessInput == "goto" || guessInput == "Goto" || guessInput == "website" || guessInput == "Website")
                 {
