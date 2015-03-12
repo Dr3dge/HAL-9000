@@ -1,2 +1,0 @@
-J:\C_Tutorial_1\C_Tutorial_1\C_Tutorial_1\obj\x86\Release\C_Tutorial_1.exe
-J:\C_Tutorial_1\C_Tutorial_1\C_Tutorial_1\obj\x86\Release\C_Tutorial_1.pdb
