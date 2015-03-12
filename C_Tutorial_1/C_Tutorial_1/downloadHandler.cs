@@ -12,8 +12,7 @@ namespace HAL_9000
         {
             string downloads = @"HAL's Downloads";
             bool IsExists = Directory.Exists(downloads);
-            if (!IsExists)
-                Directory.CreateDirectory(downloads);
+            if (!IsExists) Directory.CreateDirectory(downloads);
         }
     }
 }

@@ -6,6 +6,8 @@ using HAL_9000;
 using System.Diagnostics;
 using System.Net;
 using System.Globalization;
+using System.IO;
+using IWshRuntimeLibrary;
 
 namespace HAL_9000
 {
@@ -142,16 +144,82 @@ namespace HAL_9000
                         Writting.firefoxStarted();
                     }
                 }
+                else if (userInput == "install hal" || userInput == "install hal9000")
+                {
+                    try
+                    {
+                        if (System.IO.File.Exists(@"C:\Program Files\HAL-9000\HAL-9000.exe"))
+                        {
+                            Writting.alreadyInstalled();
+                        }
+                        else
+                        {
+                            Directory.CreateDirectory(@"C:\Program Files\HAL-9000");
+                            System.IO.File.Copy(@"HAL-9000.exe", @"C:\Program Files\HAL-9000\HAL-9000.exe");
+                            object shDesktop = (object)"Desktop";
+                            WshShell shell = new WshShell();
+                            string shortcutAddress = (string)shell.SpecialFolders.Item(ref shDesktop) + @"\HAL-9000.lnk";
+                            IWshShortcut shortcut = (IWshShortcut)shell.CreateShortcut(shortcutAddress);
+                            shortcut.Description = "New shortcut for a HAL-9000";
+                            shortcut.Hotkey = "Ctrl+Shift+H";
+                            shortcut.TargetPath = @"C:\Program Files\HAL-9000\HAL-9000.exe";
+                            shortcut.Save();
+                            Writting.halInstalled();
+                        }
+                    }
+                    catch
+                    {
+                        Writting.sorryDave();
+                    }
+                }
+                else if (userInput.Contains("update") == true)
+                {
+                    try
+                    {
+                        if (System.IO.File.Exists(@"C:\Program Files\HAL-9000\HAL-9000.exe"))
+                        {
+                            System.IO.File.Delete(@"C:\Program Files\HAL-9000\HAL-9000.exe");
+                            System.IO.File.Copy(@"HAL-9000.exe", @"C:\Program Files\HAL-9000\HAL-9000.exe");
+                            Writting.halUpdated();
+                        }
+                        else
+                        {
+                            Writting.halIsMissing();
+                        }
+                    }
+                    catch
+                    {
+                        Writting.sorryDave();
+                    }
+                }
                 else if (userInput == "install chrome")
                 {
                     try
                     {
-                    downloadHandler.Handler();
-                    WebClient Client = new WebClient();
-                    Client.DownloadFile("https://dl.google.com/tag/s/appguid%3D%7B8A69D345-D564-463C-AFF1-A69D9E530F96%7D%26iid%3D%7BB3008FA8-ACE4-549A-37A5-DE431BE99A20%7D%26lang%3Den%26browser%3D4%26usagestats%3D0%26appname%3DGoogle%2520Chrome%26needsadmin%3Dprefers%26brand%3DCHMA%26installdataindex%3Ddefaultbrowser/update2/installers/ChromeSetup.exe",
-                            @"HAL's Downloads\ChromeSetup.exe");
-
-                    Process.Start(@"HAL's Downloads\\ChromeSetup.exe");
+                        if (System.IO.File.Exists(@"HAL's Downloads\\ChromeSetup.msi"))
+                        {
+                            ProcessStartInfo Installer = new ProcessStartInfo();
+                            Installer.Arguments = "/qn /quiet /norestart";
+                            Installer.CreateNoWindow = true;
+                            Installer.WindowStyle = ProcessWindowStyle.Hidden;
+                            Installer.FileName = @"HAL's Downloads\\ChromeSetup.msi";
+                            Process.Start(Installer);
+                            Writting.successfullyInstalled();
+                        }
+                        else
+                        {
+                            downloadHandler.Handler();
+                            WebClient Client = new WebClient();
+                            Client.DownloadFile("https://dl.google.com/tag/s/appguid%3D%7B8A69D345-D564-463C-AFF1-A69D9E530F96%7D%26iid%3D%7BA8BD4B13-A296-F51B-E054-9F866D4BA41D%7D%26lang%3Den%26browser%3D4%26usagestats%3D0%26appname%3DGoogle%2520Chrome%26needsadmin%3Dprefers%26ap%3Dx64-stable%26installdataindex%3Ddefaultbrowser/dl/chrome/install/googlechromestandaloneenterprise64.msi",
+                                @"HAL's Downloads\ChromeSetup.msi");
+                            ProcessStartInfo Installer = new ProcessStartInfo();
+                            Installer.Arguments = "/qn /quiet /norestart";
+                            Installer.CreateNoWindow = true;
+                            Installer.WindowStyle = ProcessWindowStyle.Hidden;
+                            Installer.FileName = @"HAL's Downloads\\ChromeSetup.msi";
+                            Process.Start(Installer);
+                            Writting.successfullyInstalled();
+                        }
                     }
                     catch
                     {
@@ -162,12 +230,29 @@ namespace HAL_9000
                 {
                     try
                     {
-                    downloadHandler.Handler();
-                    WebClient Client = new WebClient();
-                    Client.DownloadFile("http://www.rarlab.com/rar/wrar521.exe",
-                            @"HAL's Downloads\wrar50b7.exe");
-
-                    Process.Start(@"HAL's Downloads\\wrar521.exe");
+                        if (System.IO.File.Exists(@"HAL's Downloads\\wrar521.exe"))
+                        {
+                            ProcessStartInfo Installer = new ProcessStartInfo();
+                            Installer.Arguments = "/s /v /qn /min";
+                            Installer.CreateNoWindow = true;
+                            Installer.WindowStyle = ProcessWindowStyle.Hidden;
+                            Installer.FileName = @"HAL's Downloads\\wrar521.exe";
+                            Process.Start(Installer);
+                            Writting.successfullyInstalled();
+                        }
+                        else
+                        {
+                            downloadHandler.Handler();
+                            WebClient Client = new WebClient();
+                            Client.DownloadFile("http://www.rarlab.com/rar/winrar-x64-521.exe", @"HAL's Downloads\wrar521.exe");
+                            ProcessStartInfo Installer = new ProcessStartInfo();
+                            Installer.Arguments = "/s /v /qn /min";
+                            Installer.CreateNoWindow = true;
+                            Installer.WindowStyle = ProcessWindowStyle.Hidden;
+                            Installer.FileName = @"HAL's Downloads\\wrar521.exe";
+                            Process.Start(Installer);
+                            Writting.successfullyInstalled();
+                        }
                     }
                     catch
                     {
@@ -178,12 +263,30 @@ namespace HAL_9000
                 {
                     try
                     {
-                    downloadHandler.Handler();
-                    WebClient Client = new WebClient();
-                    Client.DownloadFile("http://dl.notepad-plus-plus.org/downloads/6.x/6.7.5/npp.6.7.5.Installer.exe",
-                            @"HAL's Downloads\npp.Installer.exe");
-
-                    Process.Start(@"HAL's Downloads\\npp.Installer.exe");
+                        if (System.IO.File.Exists(@"HAL's Downloads\\npp.6.7.5.exe"))
+                        {
+                            ProcessStartInfo Installer = new ProcessStartInfo();
+                            Installer.Arguments = "/S";
+                            Installer.CreateNoWindow = true;
+                            Installer.WindowStyle = ProcessWindowStyle.Hidden;
+                            Installer.FileName = @"HAL's Downloads\\npp.6.7.5.exe";
+                            Process.Start(Installer);
+                            Writting.successfullyInstalled();
+                        }
+                        else
+                        {
+                            downloadHandler.Handler();
+                            WebClient Client = new WebClient();
+                            Client.DownloadFile("http://dl.notepad-plus-plus.org/downloads/6.x/6.7.5/npp.6.7.5.Installer.exe",
+                                @"HAL's Downloads\npp.6.7.5.exe");
+                            ProcessStartInfo Installer = new ProcessStartInfo();
+                            Installer.Arguments = "/s /v /qn /min";
+                            Installer.CreateNoWindow = true;
+                            Installer.WindowStyle = ProcessWindowStyle.Hidden;
+                            Installer.FileName = @"HAL's Downloads\\npp.6.7.5.exe";
+                            Process.Start(Installer);
+                            Writting.successfullyInstalled();
+                        }
                     }
                     catch
                     {
@@ -194,12 +297,29 @@ namespace HAL_9000
                 {
                     try
                     {
-                    downloadHandler.Handler();
-                    WebClient Client = new WebClient();
-                    Client.DownloadFile("https://get.videolan.org/vlc/2.2.0/win32/vlc-2.2.0-win32.exe",
-                            @"HAL's Downloads\vlc.exe");
-
-                    Process.Start(@"HAL's Downloads\\vlc.exe");
+                        if (System.IO.File.Exists(@"HAL's Downloads\\vlc-2.2.0-win32.exe"))
+                        {
+                            ProcessStartInfo Installer = new ProcessStartInfo();
+                            Installer.Arguments = "/L=1033 /S";
+                            Installer.CreateNoWindow = true;
+                            Installer.WindowStyle = ProcessWindowStyle.Hidden;
+                            Installer.FileName = @"HAL's Downloads\\vlc-2.2.0-win32.exe";
+                            Process.Start(Installer);
+                            Writting.successfullyInstalled();
+                        }
+                        else
+                        {
+                            downloadHandler.Handler();
+                            WebClient Client = new WebClient();
+                            Client.DownloadFile("https://get.videolan.org/vlc/2.2.0/win32/vlc-2.2.0-win32.exe", @"HAL's Downloads\vlc-2.2.0-win32.exe");
+                            ProcessStartInfo Installer = new ProcessStartInfo();
+                            Installer.Arguments = "/L=1033 /S";
+                            Installer.CreateNoWindow = true;
+                            Installer.WindowStyle = ProcessWindowStyle.Hidden;
+                            Installer.FileName = @"HAL's Downloads\\vlc-2.2.0-win32.exe";
+                            Process.Start(Installer);
+                            Writting.successfullyInstalled();
+                        }
                     }
                     catch
                     {
@@ -210,12 +330,29 @@ namespace HAL_9000
                 {
                     try
                     {
-                    downloadHandler.Handler();
-                    WebClient Client = new WebClient();
-                    Client.DownloadFile("http://download.gimp.org/pub/gimp/v2.8/windows/gimp-2.8.14-setup-1.exe",
-                            @"HAL's Downloads\gimp.exe");
-
-                    Process.Start(@"HAL's Downloads\\gimp.exe");
+                        if (System.IO.File.Exists(@"HAL's Downloads\\gimp-2.8.14.exe"))
+                        {
+                            ProcessStartInfo Installer = new ProcessStartInfo();
+                            Installer.Arguments = "/VERYSILENT /NORESTART";
+                            Installer.CreateNoWindow = true;
+                            Installer.WindowStyle = ProcessWindowStyle.Hidden;
+                            Installer.FileName = @"HAL's Downloads\\gimp-2.8.14.exe";
+                            Process.Start(Installer);
+                            Writting.successfullyInstalled();
+                        }
+                        else
+                        {
+                            downloadHandler.Handler();
+                            WebClient Client = new WebClient();
+                            Client.DownloadFile("http://download.gimp.org/pub/gimp/v2.8/windows/gimp-2.8.14-setup-1.exe", @"HAL's Downloads\gimp-2.8.14.exe");
+                            ProcessStartInfo Installer = new ProcessStartInfo();
+                            Installer.Arguments = "/VERYSILENT /NORESTART";
+                            Installer.CreateNoWindow = true;
+                            Installer.WindowStyle = ProcessWindowStyle.Hidden;
+                            Installer.FileName = @"HAL's Downloads\\gimp-2.8.14.exe";
+                            Process.Start(Installer);
+                            Writting.successfullyInstalled();
+                        }
                     }
                     catch
                     {
@@ -226,12 +363,30 @@ namespace HAL_9000
                 {
                     try
                     {
-                    downloadHandler.Handler();
-                    WebClient Client = new WebClient();
-                    Client.DownloadFile("http://download.iobit.com/advanced_systemcare_installer.exe",
-                            @"HAL's Downloads\advanced_systemcare_installer.exe");
-
-                    Process.Start(@"HAL's Downloads\\advanced_systemcare_installer.exe");
+                        if (System.IO.File.Exists(@"HAL's Downloads\\advanced_systemcare_installer.exe"))
+                        {
+                            ProcessStartInfo Installer = new ProcessStartInfo();
+                            Installer.Arguments = "/S /EN";
+                            Installer.CreateNoWindow = true;
+                            Installer.WindowStyle = ProcessWindowStyle.Hidden;
+                            Installer.FileName = @"HAL's Downloads\\advanced_systemcare_installer.exe";
+                            Process.Start(Installer);
+                            Writting.successfullyInstalled();
+                        }
+                        else
+                        {
+                            downloadHandler.Handler();
+                            WebClient Client = new WebClient();
+                            Client.DownloadFile("http://download.iobit.com/advanced_systemcare_installer.exe",
+                                @"HAL's Downloads\advanced_systemcare_installer.exe");
+                            ProcessStartInfo Installer = new ProcessStartInfo();
+                            Installer.Arguments = "/S /EN";
+                            Installer.CreateNoWindow = true;
+                            Installer.WindowStyle = ProcessWindowStyle.Hidden;
+                            Installer.FileName = @"HAL's Downloads\\advanced_systemcare_installer.exe";
+                            Process.Start(Installer);
+                            Writting.successfullyInstalled();
+                        }
                     }
                     catch
                     {
@@ -242,12 +397,29 @@ namespace HAL_9000
                 {
                     try
                     {
-                    downloadHandler.Handler();
-                    WebClient Client = new WebClient();
-                    Client.DownloadFile("http://javadl.sun.com/webapps/download/AutoDL?BundleId=79071",
-                            @"HAL's Downloads\java.exe");
-
-                    Process.Start(@"HAL's Downloads\\java.exe");
+                        if (System.IO.File.Exists(@"HAL's Downloads\\java.exe"))
+                        {
+                            ProcessStartInfo Installer = new ProcessStartInfo();
+                            Installer.Arguments = "/s";
+                            Installer.CreateNoWindow = true;
+                            Installer.WindowStyle = ProcessWindowStyle.Hidden;
+                            Installer.FileName = @"HAL's Downloads\\java.exe";
+                            Process.Start(Installer);
+                            Writting.successfullyInstalled();
+                        }
+                        else
+                        {
+                            downloadHandler.Handler();
+                            WebClient Client = new WebClient();
+                            Client.DownloadFile("http://javadl.sun.com/webapps/download/AutoDL?BundleId=79071", @"HAL's Downloads\java.exe");
+                            ProcessStartInfo Installer = new ProcessStartInfo();
+                            Installer.Arguments = "/s";
+                            Installer.CreateNoWindow = true;
+                            Installer.WindowStyle = ProcessWindowStyle.Hidden;
+                            Installer.FileName = @"HAL's Downloads\\java.exe";
+                            Process.Start(Installer);
+                            Writting.successfullyInstalled();
+                        }
                     }
                     catch
                     {
@@ -258,12 +430,30 @@ namespace HAL_9000
                 {
                     try
                     {
-                    downloadHandler.Handler();
-                    WebClient Client = new WebClient();
-                    Client.DownloadFile("http://software-files-a.cnet.com/s/software/14/10/54/26/avg_free_stb_all_5751p1_177.exe",
-                            @"HAL's Downloads\avg_free.exe");
-
-                    Process.Start(@"HAL's Downloads\\avg_free.exe");
+                        if (System.IO.File.Exists(@"HAL's Downloads\\avg_free.exe"))
+                        {
+                            ProcessStartInfo Installer = new ProcessStartInfo();
+                            Installer.Arguments = "/UILevel=silent /InstallToolbar=0 /ChangeBrowserSearchProvider=0 /SelectedLanguage=1033 /InstallSidebar=0 /ParticipateProductImprovement=0 /DontRestart /KillProcessesIfNeeded";
+                            Installer.CreateNoWindow = true;
+                            Installer.WindowStyle = ProcessWindowStyle.Hidden;
+                            Installer.FileName = @"HAL's Downloads\\avg_free.exe";
+                            Process.Start(Installer);
+                            Writting.successfullyInstalled();
+                        }
+                        else
+                        {
+                            downloadHandler.Handler();
+                            WebClient Client = new WebClient();
+                            Client.DownloadFile("http://software-files-a.cnet.com/s/software/14/10/54/26/avg_free_stb_all_5751p1_177.exe",
+                                @"HAL's Downloads\avg_free.exe");
+                            ProcessStartInfo Installer = new ProcessStartInfo();
+                            Installer.Arguments = "/UILevel=silent /InstallToolbar=0 /ChangeBrowserSearchProvider=0 /SelectedLanguage=1033 /InstallSidebar=0 /ParticipateProductImprovement=0 /DontRestart /KillProcessesIfNeeded";
+                            Installer.CreateNoWindow = true;
+                            Installer.WindowStyle = ProcessWindowStyle.Hidden;
+                            Installer.FileName = @"HAL's Downloads\\avg_free.exe";
+                            Process.Start(Installer);
+                            Writting.successfullyInstalled();
+                        }
                     }
                     catch
                     {
@@ -274,12 +464,30 @@ namespace HAL_9000
                 {
                     try
                     {
-                        downloadHandler.Handler();
-                        WebClient Client = new WebClient();
-                        Client.DownloadFile("http://download.microsoft.com/download/9/6/4/96442E58-C65C-4122-A956-CCA83EECCD03/wdexpress_full.exe",
+                        if (System.IO.File.Exists(@"HAL's Downloads\\wdexpress_full.exe"))
+                        {
+                            ProcessStartInfo Installer = new ProcessStartInfo();
+                            Installer.Arguments = "/s";
+                            Installer.CreateNoWindow = true;
+                            Installer.WindowStyle = ProcessWindowStyle.Hidden;
+                            Installer.FileName = @"HAL's Downloads\\wdexpress_full.exe";
+                            Process.Start(Installer);
+                            Writting.successfullyInstalled();
+                        }
+                        else
+                        {
+                            downloadHandler.Handler();
+                            WebClient Client = new WebClient();
+                            Client.DownloadFile("http://download.microsoft.com/download/9/6/4/96442E58-C65C-4122-A956-CCA83EECCD03/wdexpress_full.exe",
                                 @"HAL's Downloads\wdexpress_full.exe");
-
-                        Process.Start(@"HAL's Downloads\\wdexpress_full.exe");
+                            ProcessStartInfo Installer = new ProcessStartInfo();
+                            Installer.Arguments = "/s";
+                            Installer.CreateNoWindow = true;
+                            Installer.WindowStyle = ProcessWindowStyle.Hidden;
+                            Installer.FileName = @"HAL's Downloads\\wdexpress_full.exe";
+                            Process.Start(Installer);
+                            Writting.successfullyInstalled();
+                        }
                     }
                     catch
                     {
@@ -290,12 +498,29 @@ namespace HAL_9000
                 {
                     try
                     {
-                        downloadHandler.Handler();
-                        WebClient Client = new WebClient();
-                        Client.DownloadFile("http://media.steampowered.com/client/installer/SteamSetup.exe",
-                                @"HAL's Downloads\SteamSetup.exe");
-
-                        Process.Start(@"HAL's Downloads\\SteamSetup.exe");
+                        if (System.IO.File.Exists(@"HAL's Downloads\\SteamSetup.exe"))
+                        {
+                            ProcessStartInfo Installer = new ProcessStartInfo();
+                            Installer.Arguments = "/s";
+                            Installer.CreateNoWindow = true;
+                            Installer.WindowStyle = ProcessWindowStyle.Hidden;
+                            Installer.FileName = @"HAL's Downloads\\SteamSetup.exe";
+                            Process.Start(Installer);
+                            Writting.successfullyInstalled();
+                        }
+                        else
+                        {
+                            downloadHandler.Handler();
+                            WebClient Client = new WebClient();
+                            Client.DownloadFile("http://media.steampowered.com/client/installer/SteamSetup.exe", @"HAL's Downloads\SteamSetup.exe");
+                            ProcessStartInfo Installer = new ProcessStartInfo();
+                            //Installer.Arguments = "/s";
+                            Installer.CreateNoWindow = true;
+                            Installer.WindowStyle = ProcessWindowStyle.Hidden;
+                            Installer.FileName = @"HAL's Downloads\\SteamSetup.exe";
+                            Process.Start(Installer);
+                            Writting.successfullyInstalled();
+                        }
                     }
                     catch
                     {
@@ -306,12 +531,29 @@ namespace HAL_9000
                 {
                     try
                     {
-                        downloadHandler.Handler();
-                        WebClient Client = new WebClient();
-                        Client.DownloadFile("https://github-windows.s3.amazonaws.com/GitHubSetup.exe",
-                                @"HAL's Downloads\GitHubSetup.exe");
-
-                        Process.Start(@"HAL's Downloads\\GitHubSetup.exe");
+                        if (System.IO.File.Exists(@"HAL's Downloads\\GitHubSetup.exe"))
+                        {
+                            ProcessStartInfo Installer = new ProcessStartInfo();
+                            Installer.Arguments = "/s";
+                            Installer.CreateNoWindow = true;
+                            Installer.WindowStyle = ProcessWindowStyle.Hidden;
+                            Installer.FileName = @"HAL's Downloads\\GitHubSetup.exe";
+                            Process.Start(Installer);
+                            Writting.successfullyInstalled();
+                        }
+                        else
+                        {
+                            downloadHandler.Handler();
+                            WebClient Client = new WebClient();
+                            Client.DownloadFile("https://github-windows.s3.amazonaws.com/GitHubSetup.exe", @"HAL's Downloads\GitHubSetup.exe");
+                            ProcessStartInfo Installer = new ProcessStartInfo();
+                            Installer.Arguments = "/s";
+                            Installer.CreateNoWindow = true;
+                            Installer.WindowStyle = ProcessWindowStyle.Hidden;
+                            Installer.FileName = @"HAL's Downloads\\GitHubSetup.exe";
+                            Process.Start(Installer);
+                            Writting.successfullyInstalled();
+                        }
                     }
                     catch
                     {
@@ -322,12 +564,29 @@ namespace HAL_9000
                 {
                     try
                     {
-                        downloadHandler.Handler();
-                        WebClient Client = new WebClient();
-                        Client.DownloadFile("http://download-new.utorrent.com/endpoint/bittorrent/os/win/track/stable",
-                                @"HAL's Downloads\BitTorrent.exe");
-
-                        Process.Start(@"HAL's Downloads\\BitTorrent.exe");
+                        if (System.IO.File.Exists(@"HAL's Downloads\\BitTorrent.exe"))
+                        {
+                            ProcessStartInfo Installer = new ProcessStartInfo();
+                            Installer.Arguments = "/S";
+                            Installer.CreateNoWindow = true;
+                            Installer.WindowStyle = ProcessWindowStyle.Hidden;
+                            Installer.FileName = @"HAL's Downloads\\BitTorrent.exe";
+                            Process.Start(Installer);
+                            Writting.successfullyInstalled();
+                        }
+                        else
+                        {
+                            downloadHandler.Handler();
+                            WebClient Client = new WebClient();
+                            Client.DownloadFile("http://download-new.utorrent.com/endpoint/bittorrent/os/win/track/stable", @"HAL's Downloads\BitTorrent.exe");
+                            ProcessStartInfo Installer = new ProcessStartInfo();
+                            Installer.Arguments = "/S";
+                            Installer.CreateNoWindow = true;
+                            Installer.WindowStyle = ProcessWindowStyle.Hidden;
+                            Installer.FileName = @"HAL's Downloads\\BitTorrent.exe";
+                            Process.Start(Installer);
+                            Writting.successfullyInstalled();
+                        }
                     }
                     catch
                     {
@@ -338,12 +597,30 @@ namespace HAL_9000
                 {
                     try
                     {
-                        downloadHandler.Handler();
-                        WebClient Client = new WebClient();
-                        Client.DownloadFile("http://download.virtualbox.org/virtualbox/4.3.24/VirtualBox-4.3.24-98716-Win.exe",
+                        if (System.IO.File.Exists(@"HAL's Downloads\\VirtualBox.exe"))
+                        {
+                            ProcessStartInfo Installer = new ProcessStartInfo();
+                            Installer.Arguments = "/silent";
+                            Installer.CreateNoWindow = true;
+                            Installer.WindowStyle = ProcessWindowStyle.Hidden;
+                            Installer.FileName = @"HAL's Downloads\\VirtualBox.exe";
+                            Process.Start(Installer);
+                            Writting.successfullyInstalled();
+                        }
+                        else
+                        {
+                            downloadHandler.Handler();
+                            WebClient Client = new WebClient();
+                            Client.DownloadFile("http://download.virtualbox.org/virtualbox/4.3.24/VirtualBox-4.3.24-98716-Win.exe",
                                 @"HAL's Downloads\VirtualBox.exe");
-
-                        Process.Start(@"HAL's Downloads\\VirtualBox.exe");
+                            ProcessStartInfo Installer = new ProcessStartInfo();
+                            Installer.Arguments = "/silent";
+                            Installer.CreateNoWindow = true;
+                            Installer.WindowStyle = ProcessWindowStyle.Hidden;
+                            Installer.FileName = @"HAL's Downloads\\VirtualBox.exe";
+                            Process.Start(Installer);
+                            Writting.successfullyInstalled();
+                        }
                     }
                     catch
                     {

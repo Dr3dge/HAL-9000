@@ -195,5 +195,37 @@ namespace HAL_9000
             Console.WriteLine("Arduino           -       Launches the arduino program");
             Console.WriteLine();
         }
+
+        public static void alreadyInstalled()
+        {
+            Console.WriteLine();
+            Console.WriteLine("This program is already installed");
+            Console.WriteLine();
+        }
+        public static void successfullyInstalled()
+        {
+            Console.WriteLine();
+            Console.WriteLine("This program was successfully installed");
+            Console.WriteLine();
+        }
+        public static void halIsMissing()
+        {
+            Console.WriteLine();
+            Console.WriteLine("HAL-9000 is not installed, try installing HAL");
+            Console.WriteLine();
+        }
+
+        public static void halInstalled()
+        {
+            Console.WriteLine();
+            Console.WriteLine("HAL-9000 has been successfully installed");
+            Console.WriteLine();
+        }
+        public static void halUpdated()
+        {
+            Console.WriteLine();
+            Console.WriteLine("HAL-9000 has been successfully updated");
+            Console.WriteLine();
+        }
     }
 }
