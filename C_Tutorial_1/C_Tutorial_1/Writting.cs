@@ -12,17 +12,9 @@ namespace HAL_9000
         {
             Console.WriteLine("Loading...");
             System.Threading.Thread.Sleep(250);
-            Console.WriteLine("Loading...");
-            System.Threading.Thread.Sleep(250);
-            Console.WriteLine("Loading...");
-            System.Threading.Thread.Sleep(250);
-            Console.WriteLine("Loading...");
-            System.Threading.Thread.Sleep(250);
-            Console.WriteLine("Loading...");
-            System.Threading.Thread.Sleep(250);
             Console.WriteLine("Initialized Sucessfully");
             Console.WriteLine("Press any key to continue");
-            
+
             Console.ReadKey();
             Console.Clear();
         }
@@ -66,6 +58,14 @@ namespace HAL_9000
         {
             Console.WriteLine("That is good, I hope that the rest of your day goes well.");
         }
+        public static void notSoGood()
+        {
+            Console.WriteLine("Aww, that's no good, I hope you have a better day tomorrow.");
+        }
+        public static void justAlright()
+        {
+            Console.WriteLine("Just alright? Well I guess that's better than bad.");
+        }
         public static void terminated()
         {
             Console.WriteLine("Program Terminated");
@@ -81,6 +81,10 @@ namespace HAL_9000
         public static void firefoxStarted()
         {
             Console.WriteLine("Mozilla Firefox Started");
+        }
+        public static void ieStarted()
+        {
+            Console.WriteLine("Internet Explorer Started");
         }
         public static void siteLaunched()
         {
@@ -129,7 +133,17 @@ namespace HAL_9000
         }
         public static void sorryDave()
         {
-            Console.WriteLine("I'm sorry Dave, I'm afraid I can't do that.");
+            Console.WriteLine("I'm sorry " + Workings.name + ", I'm afraid I can't do that.");
+        }
+        public static void whatIsYourName()
+        {
+            Console.WriteLine();
+            Console.WriteLine("Than what is your name?");
+            Console.WriteLine();
+        }
+        public static void nameSet()
+        {
+            Console.WriteLine("Name set to " + Workings.name);
         }
         public static void help()
         {

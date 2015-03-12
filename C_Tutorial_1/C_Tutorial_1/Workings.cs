@@ -5,75 +5,131 @@ using System.Text;
 using HAL_9000;
 using System.Diagnostics;
 using System.Net;
+using System.Globalization;
 
 namespace HAL_9000
 {
     class Workings
     {
+        public static string name = "Dave"; // Sets the default name to refer to the person as
+        public static string userInput = null;
         public static void Program()
         {
 
             int guess;
 
             Main:
-            string guessInput = Console.ReadLine();
+            userInput = Console.ReadLine().ToLower(); // If the user input is then it will change any capitals to lowercase
             try
             {
-                guess = Convert.ToInt32(guessInput);
+                guess = Convert.ToInt32(userInput); // Tries to convert the user input to a number
             }
             catch (FormatException)
             {
-                guess = 9502;
+                guess = 9502; // If the user's input cannot be changed into a number, it reports nothing to the guessing game
             }
             catch (Exception)
             {
-                guess = 0;
+                guess = 0; // If the number cannot be processed, an error message is returned
             }
 
             while (true)
             {
-                Random numberRand = new Random();
+                Random numberRand = new Random(); // Creates a random number in case of need
 
-                int number = numberRand.Next(0, 11);
+                int number = numberRand.Next(0, 11); // Randomises the number betweeb 1 and 10
 
-                if (guess == number)
+                if (userInput.Contains("set name to") == true)
+                {
+                    name = userInput.Replace("set name to ","");
+                    name = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(name.ToLower());
+                    Writting.nameSet();
+                } 
+                else if (userInput.Contains("set name") == true)
+                {
+                    name = userInput.Replace("set name ", ""); // Removes "set name" from the string, leaving the desired name
+                    name = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(name.ToLower()); // Changes the name to all lowercase, then changing the first letter to uppercase
+                    Writting.nameSet();
+                }
+                else if (userInput.Contains("my name is") == true)
+                {
+                    name = userInput.Replace("my name is ", ""); // Removes "my name is" from the string, leaving the desired name
+                    name = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(name.ToLower()); // Changes the name to all lowercase, then changing the first letter to uppercase
+                    Writting.nameSet();
+                }
+                else if (userInput == "my name is not dave" || userInput == "im not dave")
+                {
+                    Writting.whatIsYourName();
+                    name = Console.ReadLine(); // Sets the user's name to what the user writes
+                    Writting.nameSet();
+                }
+                else if (userInput == "error test") // Function to test error message
+                {
+                    Writting.sorryDave();
+                }
+                else if (guess == number) // Guessing game functions
                 {
                     Writting.winRepl();
                 }
-                else if (guess < number)
+                else if (guess < number) // Guessing game functions
                 {
                     Writting.wrongRepl();
                 }
-                else if (guessInput == "arduino" || guessInput == "Arduino")
-                {
-                    Arduino.Start();
-                }
-                else if (guessInput == "hello" || guessInput == "hi" || guessInput == "hey" || guessInput == "Hello" || guessInput == "Hi" || guessInput == "Hey")
+                // else if (userInput == "arduino")
+                // {
+                //     Arduino.Start(); // Will be used for handling interactions with an Arduino
+                // }
+                else if (userInput == "hello" || userInput == "hi" || userInput == "hey")
                 {
                     Writting.sayHello();
                 }
-                else if (guessInput == "how are you" || guessInput == "How are you")
+                else if (userInput == "how are you")
                 {
                     Writting.iAmGood();
+                    userInput = Console.ReadLine().ToLower();
+                    if (userInput.Contains("good") == true)
+                    {
+                        Writting.thatsGood();
+                    }
+                    else if (userInput.Contains("great") == true)
+                    {
+                        Writting.thatsGood();
+                    }
+                    else if (userInput.Contains("bad") == true)
+                    {
+                        Writting.notSoGood();
+                    }
+                    else if (userInput.Contains("not good") == true)
+                    {
+                        Writting.notSoGood();
+                    }
+                    else if (userInput.Contains("terrible") == true)
+                    {
+                        Writting.notSoGood();
+                    }
+                    else if (userInput.Contains("eh") == true)
+                    {
+                        Writting.justAlright();
+                    }
+                    else if (userInput.Contains("alright") == true)
+                    {
+                        Writting.justAlright();
+                    }
                 }
-                else if (guessInput == "good" || guessInput == "Good" || guessInput == "im good" || guessInput == "Im Good" || guessInput == "i'm good" || guessInput == "I'm Good" || guessInput == "i am good" || guessInput == "I am good")
-                {
-                    Writting.thatsGood();
-                }
-                else if (guessInput == "stop" || guessInput == "end" || guessInput == "terminate" || guessInput == "exit" || guessInput == "Stop" || guessInput == "End" || guessInput == "Terminate" || guessInput == "Exit ")
+                else if (userInput == "stop" || userInput == "end" || userInput == "terminate" || userInput == "exit")
                 {
                     Console.Clear();
                     break;
                 }
-                else if (guessInput == "circle" || guessInput == "Circle")
+                else if (userInput == "circle")
                 {
                     circleAreaCalc.Calculate();
                 }
-                else if (guessInput == "cylinder" || guessInput == "Cylinder")
+                else if (userInput == "cylinder")
                 {
                     cylinderCalc.Calculate();
                 }
-                else if (guessInput == "internet" || guessInput == "Internet")
+                else if (userInput == "internet")
                 {
                     try
                     {
@@ -85,9 +141,8 @@ namespace HAL_9000
                         programPlaces.Firefox();
                         Writting.firefoxStarted();
                     }
-
                 }
-                else if (guessInput == "install chrome" || guessInput == "Install Chrome")
+                else if (userInput == "install chrome")
                 {
                     try
                     {
@@ -103,7 +158,7 @@ namespace HAL_9000
                         Writting.sorryDave();
                     }
                 }
-                else if (guessInput == "install winRAR" || guessInput == "install winrar" || guessInput == "Install winRAR")
+                else if (userInput == "install winrar")
                 {
                     try
                     {
@@ -119,7 +174,7 @@ namespace HAL_9000
                         Writting.sorryDave();
                     }
                 }
-                else if (guessInput == "install notepad++" || guessInput == "Install Notepad++")
+                else if (userInput == "install notepad++")
                 {
                     try
                     {
@@ -135,7 +190,7 @@ namespace HAL_9000
                         Writting.sorryDave();
                     }
                 }
-                else if (guessInput == "install vlc" || guessInput == "Install VLC")
+                else if (userInput == "install vlc")
                 {
                     try
                     {
@@ -151,7 +206,7 @@ namespace HAL_9000
                         Writting.sorryDave();
                     }
                 }
-                else if (guessInput == "install gimp" || guessInput == "Install GIMP")
+                else if (userInput == "install gimp")
                 {
                     try
                     {
@@ -167,7 +222,7 @@ namespace HAL_9000
                         Writting.sorryDave();
                     }
                 }
-                else if (guessInput == "install asc" || guessInput == "Install ASC")
+                else if (userInput == "install asc")
                 {
                     try
                     {
@@ -183,7 +238,7 @@ namespace HAL_9000
                         Writting.sorryDave();
                     }
                 }
-                else if (guessInput == "install java" || guessInput == "Install Java")
+                else if (userInput == "install java")
                 {
                     try
                     {
@@ -199,7 +254,7 @@ namespace HAL_9000
                         Writting.sorryDave();
                     }
                 }
-                else if (guessInput == "install avg" || guessInput == "Install AVG")
+                else if (userInput == "install avg")
                 {
                     try
                     {
@@ -215,11 +270,11 @@ namespace HAL_9000
                         Writting.sorryDave();
                     }
                 }
-                else if (guessInput == "goto" || guessInput == "Goto" || guessInput == "website" || guessInput == "Website")
+                else if (userInput == "goto" || userInput == "website")
                 {
                     Websites.gotoWebsite();
                 }
-                else if (guessInput == "google" || guessInput == "Google")
+                else if (userInput.Contains("google") == true)
                 {
                     try
                     {
@@ -232,7 +287,7 @@ namespace HAL_9000
                         Writting.googleSearched();
                     }
                 }
-                else if (guessInput == "search youtube" || guessInput == "Search youtube" || guessInput == "Search Youtube")
+                else if (userInput.Contains("youtube") == true)
                 {
                     try
                     {
@@ -245,48 +300,48 @@ namespace HAL_9000
                         Writting.youtubeSearched();
                     }
                 }
-                else if (guessInput == "run" || guessInput == "Run" || guessInput == "open" || guessInput == "Open")
+                else if (userInput == "run" || userInput == "open")
                 {
                     searchPrograms.findPrograms();
                 }
-                else if (guessInput == "close" || guessInput == "Close")
+                else if (userInput == "close")
                 {
                     processKiller.Kill();
                 }
-                else if (guessInput == "random" || guessInput == "Random")
+                else if (userInput == "random")
                 {
                     Generate.Random();
                 }
-                else if (guessInput == "add to startup" || guessInput == "Add to startup" || guessInput == "autorun" || guessInput == "Autorun")
+                else if (userInput == "add to startup" || userInput == "autorun")
                 {
                     addToStartup.registerInStartup();
                     Writting.startupAdd();
                 }
-                else if (guessInput == "username" || guessInput == "Username" || guessInput == "current username" || guessInput == "Current username" || guessInput == "Current Username")
+                else if (userInput.Contains("username") == true)
                 {
                     Username.getUsername();
                 }
-                else if (guessInput == "help" || guessInput == "Help")
+                else if (userInput == "help")
                 {
                     Writting.help();
                 }
-                else if (guessInput == "install help" || guessInput == "Install help" || guessInput == "Install Help")
+                else if (userInput == "install help")
                 {
                     Writting.installHelp();
                 }
-                else if (guessInput == "web help" || guessInput == "Web help" || guessInput == "website help" || guessInput == "Website help" || guessInput == "Website Help")
+                else if (userInput == "web help" || userInput == "website help")
                 {
                     Writting.websitesHelp();
                 }
-                else if (guessInput == "arduino help" || guessInput == "Arduino help" || guessInput == "Arduino Help")
+                else if (userInput == "arduino help")
                 {
                     Writting.arduinoHelp();
                 }
-                else if (guessInput == "kill" || guessInput == "Kill")
+                else if (userInput == "kill")
                 {
                     processKiller.winKill();
                 }
-                else if (guessInput == "shutdown" || guessInput == "Shutdown")
+                else if (userInput == "shutdown")
                 {
                     processKiller.winSD();
                 }

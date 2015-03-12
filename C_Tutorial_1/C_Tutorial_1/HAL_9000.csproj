@@ -120,6 +120,7 @@
     <Compile Include="addToStartup.cs" />
     <Compile Include="Arduino.cs" />
     <Compile Include="circleAreaCalc.cs" />
+    <Compile Include="facebookHandler.cs" />
     <Compile Include="downloadHandler.cs" />
     <Compile Include="Generate.cs" />
     <Compile Include="processKiller.cs" />

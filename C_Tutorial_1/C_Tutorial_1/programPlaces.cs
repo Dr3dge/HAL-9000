@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
 
@@ -13,11 +14,17 @@ namespace HAL_9000
             try
             {
                 Process.Start(@"C:\Program Files\Google\Chrome\Application\chrome.exe");
-                Console.WriteLine("Chrome launched");
             }
             catch
             {
-                Writting.sorryDave();
+                try
+                {
+                    Process.Start(@"C:\Program Files (x86)\Google\Chrome\Application\chrome.exe");
+                }
+                catch
+                {
+                    Writting.sorryDave();
+                }
             }
         }
         public static void Firefox()
@@ -25,11 +32,17 @@ namespace HAL_9000
             try
             {
                 Process.Start(@"C:\Program Files\Mozilla Firefox\firefox.exe");
-                Console.WriteLine("Firefox launched");
             }
             catch
             {
-                Writting.sorryDave();
+                try
+                {
+                    Process.Start(@"C:\Program Files (x86)\Mozilla Firefox\firefox.exe");
+                }
+                catch
+                {
+                    Writting.sorryDave();
+                }
             }
         }
         public static void Word()

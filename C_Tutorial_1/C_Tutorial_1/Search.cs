@@ -13,38 +13,90 @@ namespace HAL_9000
     {
         public static void chrome()
         {
-            Console.WriteLine("What do you wish to search?");
-            string searchInput = Console.ReadLine();
-            string search = searchInput.Replace(" ", "+");
+            string preSearch = Workings.userInput.Replace("google ", "");
+            string search = preSearch.Replace(" ", "+");
 
-            Process.Start(@"C:\Program Files\Google\Chrome\Application\chrome.exe", "https://www.google.com.au/search?q=" + search);
+            try
+            {
+                Process.Start(@"C:\Program Files\Google\Chrome\Application\chrome.exe", "https://www.google.com.au/search?q=" + search);
+            }
+            catch
+            {
+                try
+                {
+                    Process.Start(@"C:\Program Files (x86)\Google\Chrome\Application\chrome.exe", "https://www.google.com.au/search?q=" + search);
+                }
+                catch
+                {
+                    Writting.sorryDave();
+                }
+            }
         }
         public static void firefox()
         {
-            Console.WriteLine("What do you wish to search?");
-            string searchInput = Console.ReadLine();
-            string search = searchInput.Replace(" ", "+");
+            string preSearch = Workings.userInput.Replace("google ", "");
+            string search = preSearch.Replace(" ", "+");
 
-            Process.Start(@"C:\Program Files\Mozilla Firefox\firefox.exe", "https://www.google.com.au/search?q=" + search);
+            try
+            {
+                Process.Start(@"C:\Program Files\Mozilla Firefox\firefox.exe", "https://www.google.com.au/search?q=" + search);
+            }
+            catch
+            {
+                try
+                {
+                    Process.Start(@"C:\Program Files (x86)\Mozilla Firefox\firefox.exe", "https://www.google.com.au/search?q=" + search);
+                }
+                catch
+                {
+                    Writting.sorryDave();
+                }
+            }
         }
     }
     class searchYoutube
     {
         public static void chrome()
         {
-            Console.WriteLine("What do you wish to search?");
-            string searchInput = Console.ReadLine();
-            string search = searchInput.Replace(" ", "+");
+            string preSearch = Workings.userInput.Replace("youtube ", "");
+            string search = preSearch.Replace(" ", "+");
 
-            Process.Start(@"C:\Program Files\Google\Chrome\Application\chrome.exe", "https://www.youtube.com/results?search_query=" + search);
+            try
+            {
+                Process.Start(@"C:\Program Files\Google\Chrome\Application\chrome.exe", "https://www.youtube.com/results?search_query=" + search);
+            }
+            catch
+            {
+                try
+                {
+                    Process.Start(@"C:\Program Files (x86)\Google\Chrome\Application\chrome.exe", "https://www.youtube.com/results?search_query=" + search);
+                }
+                catch
+                {
+                    Writting.sorryDave();
+                }
+            }
         }
         public static void firefox()
         {
-            Console.WriteLine("What do you wish to search?");
-            string searchInput = Console.ReadLine();
-            string search = searchInput.Replace(" ", "+");
+            string preSearch = Workings.userInput.Replace("youtube ", "");
+            string search = preSearch.Replace(" ", "+");
 
-            Process.Start(@"C:\Program Files\Mozilla Firefox\firefox.exe", "https://www.youtube.com/results?search_query=" + search);
+            try
+            {
+                Process.Start(@"C:\Program Files\Mozilla Firefox\firefox.exe", "https://www.youtube.com/results?search_query=" + search);
+            }
+            catch
+            {
+                try
+                {
+                    Process.Start(@"C:\Program Files (x86)\Mozilla Firefox\firefox.exe", "https://www.youtube.com/results?search_query=" + search);
+                }
+                catch
+                {
+                    Writting.sorryDave();
+                }
+            }
         }
     }
     class Websites
@@ -77,25 +129,25 @@ namespace HAL_9000
             Writting.runWhat();
             string path;
             string userName = Environment.UserName;
-            string toFind = Console.ReadLine();
+            string toFind = Console.ReadLine().ToLower();
 
-            if (toFind == "word" || toFind == "Word" || toFind == "microsoft word" || toFind == "Microsoft word" || toFind == "Microsoft Word")
+            if (toFind.Contains("word") == true)
             {
                 programPlaces.Word();
             }
-            else if (toFind == "microsoft powerpoint" || toFind == "Microsoft Powerpoint" || toFind == "Microsoft PowerPoint")
+            else if (toFind.Contains("powerpoint") == true)
             {
                 programPlaces.powerPoint();
             }
-            else if (toFind == "microsoft onenote" || toFind == "Microsoft Onenote" || toFind == "Microsoft OneNote")
+            else if (toFind.Contains("onenote") == true)
             {
                 programPlaces.oneNote();
             }
-            else if (toFind == "microsoft excel" || toFind == "Microsoft Excel")
+            else if (toFind.Contains("excel") == true)
             {
                 programPlaces.Excel();
             }
-            else if (toFind == "notepad" || toFind == "Notepad")
+            else if (toFind.Contains("notepad") == true)
             {
                 try
                 {
@@ -106,7 +158,7 @@ namespace HAL_9000
                     programPlaces.Notepad();
                 }
             }
-            else if (toFind == "cmd" || toFind == "CMD" || toFind == "console" || toFind == "Console")
+            else if (toFind == "cmd" || toFind == "console")
             {
                 programPlaces.CMD();
             }

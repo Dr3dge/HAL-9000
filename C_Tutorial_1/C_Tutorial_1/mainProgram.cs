@@ -27,9 +27,9 @@ namespace HAL_9000
             Main:
             Workings.Program();
 
-            string yesNo = Console.ReadLine();
+            string yesNo = Console.ReadLine().ToLower();
 
-            if (yesNo == "n" || yesNo == "N" || yesNo == "no" || yesNo == "No")
+            if (yesNo.Contains("n") == true)
             {
                 goto Cont;
             }
