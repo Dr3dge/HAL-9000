@@ -129,5 +129,17 @@ namespace HAL_9000
                 Writting.sorryDave();
             }
         }
+        public static void Steam()
+        {
+            try
+            {
+                Process.Start(@"C:\\Program Files (x86)\\Steam\\Steam.exe");
+                Console.WriteLine("Steam launched");
+            }
+            catch
+            {
+                Writting.sorryDave();
+            }
+        }
     }
 }

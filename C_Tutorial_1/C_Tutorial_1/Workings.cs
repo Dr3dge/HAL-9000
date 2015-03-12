@@ -302,7 +302,7 @@ namespace HAL_9000
                         Writting.sorryDave();
                     }
                 }
-                else if (userInput == "install git" || userInput == "github")
+                else if (userInput == "install git" || userInput == "install github")
                 {
                     try
                     {
@@ -377,10 +377,10 @@ namespace HAL_9000
                     catch
                     {
                         searchYoutube.firefox();
-                        Writting.youtubeSearched()
+                        Writting.youtubeSearched();
                     }
                 }
-                else if (userInput == "run" || userInput == "open")
+                else if (userInput.Contains("run") == true)
                 {
                     searchPrograms.findPrograms();
                 }

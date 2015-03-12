@@ -126,10 +126,9 @@ namespace HAL_9000
     {
         public static void findPrograms()
         {
-            Writting.runWhat();
+            string toFind = Workings.userInput.Replace("run ", "");
             string path;
             string userName = Environment.UserName;
-            string toFind = Console.ReadLine().ToLower();
 
             if (toFind.Contains("word") == true)
             {
@@ -162,18 +161,22 @@ namespace HAL_9000
             {
                 programPlaces.CMD();
             }
+            else if (toFind == "steam")
+            {
+                programPlaces.Steam();
+            }
             else
             {
                 try
                 {
-                    path = @"C:\Users\" + userName + "\\Desktop\\";
+                    path = @"C:\\Users\\" + userName + "\\Desktop\\";
                     try
                     {
-                        Process.Start(toFind + ".lnk*");
+                        Process.Start(path + toFind + ".lnk");
                     }
                     catch
                     {
-                        Process.Start(toFind + ".appref-ms*");
+                        Process.Start(path + toFind + ".appref-ms");
                     }
                     Console.WriteLine(toFind + " launched");
                     goto End;
@@ -185,14 +188,14 @@ namespace HAL_9000
 
                 try
                 {
-                    path = @"D:\Users\" + userName + "\\Desktop\\";
+                    path = @"D:\\Users\\" + userName + "\\Desktop\\";
                     try
                     {
-                        Process.Start(toFind + ".lnk*");
+                        Process.Start(path + toFind + ".lnk");
                     }
                     catch
                     {
-                        Process.Start(toFind + ".appref-ms*");
+                        Process.Start(path + toFind + ".appref-ms");
                     }
                     Console.WriteLine(toFind + " launched");
                     goto End;
@@ -204,10 +207,10 @@ namespace HAL_9000
 
                 try
                 {
-                    path = @"C:\Users\" + userName + "\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\";
+                    path = @"C:\\Users\\" + userName + "\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\";
                     try
                     {
-                        string searchPattern = toFind + ".lnk*";
+                        string searchPattern = toFind + ".lnk";
                         DirectoryInfo di = new DirectoryInfo(path);
 
                         FileInfo[] files =
@@ -221,46 +224,7 @@ namespace HAL_9000
                     }
                     catch
                     {
-                        string searchPattern = toFind + ".appref-ms*";
-                        DirectoryInfo di = new DirectoryInfo(path);
-
-                        FileInfo[] files =
-                            di.GetFiles(searchPattern, SearchOption.AllDirectories);
-
-                        foreach (FileInfo file in files)
-                        {
-                            string progRun = (file.FullName.ToString());
-                            Process.Start(progRun);
-                        }
-                    }
-                    Console.WriteLine(toFind + " launched");
-                    goto End;
-                }
-                catch
-                {
-                    Writting.Searching();
-                }
-
-                try
-                {
-                    path = @"D:\Users\" + userName + "\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\";
-                    try
-                    {
-                        string searchPattern = toFind + ".lnk*";
-                        DirectoryInfo di = new DirectoryInfo(path);
-
-                        FileInfo[] files =
-                            di.GetFiles(searchPattern, SearchOption.AllDirectories);
-
-                        foreach (FileInfo file in files)
-                        {
-                            string progRun = (file.FullName.ToString());
-                            Process.Start(progRun);
-                        }
-                    }
-                    catch
-                    {
-                        string searchPattern = toFind + ".appref-ms*";
+                        string searchPattern = toFind + ".appref-ms";
                         DirectoryInfo di = new DirectoryInfo(path);
 
                         FileInfo[] files =
@@ -282,10 +246,10 @@ namespace HAL_9000
 
                 try
                 {
-                    path = @"C:\Users\" + userName + "\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\";
+                    path = @"D:\\Users\\" + userName + "\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\";
                     try
                     {
-                        string searchPattern = toFind + ".lnk*";
+                        string searchPattern = toFind + ".lnk";
                         DirectoryInfo di = new DirectoryInfo(path);
 
                         FileInfo[] files =
@@ -299,7 +263,7 @@ namespace HAL_9000
                     }
                     catch
                     {
-                        string searchPattern = toFind + ".appref-ms*";
+                        string searchPattern = toFind + ".appref-ms";
                         DirectoryInfo di = new DirectoryInfo(path);
 
                         FileInfo[] files =
@@ -321,10 +285,10 @@ namespace HAL_9000
 
                 try
                 {
-                    path = @"D:\Users\" + userName + "\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\";
+                    path = @"C:\\Users\\" + userName + "\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\";
                     try
                     {
-                        string searchPattern = toFind + ".lnk*";
+                        string searchPattern = toFind + ".lnk";
                         DirectoryInfo di = new DirectoryInfo(path);
 
                         FileInfo[] files =
@@ -338,7 +302,7 @@ namespace HAL_9000
                     }
                     catch
                     {
-                        string searchPattern = toFind + ".appref-ms*";
+                        string searchPattern = toFind + ".appref-ms";
                         DirectoryInfo di = new DirectoryInfo(path);
 
                         FileInfo[] files =
@@ -360,10 +324,10 @@ namespace HAL_9000
 
                 try
                 {
-                    path = @"C:\ProgramData\Microsoft\Windows\Start Menu\Programs";
+                    path = @"D:\\Users\\" + userName + "\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\";
                     try
                     {
-                        string searchPattern = toFind + ".lnk*";
+                        string searchPattern = toFind + ".lnk";
                         DirectoryInfo di = new DirectoryInfo(path);
 
                         FileInfo[] files =
@@ -377,7 +341,7 @@ namespace HAL_9000
                     }
                     catch
                     {
-                        string searchPattern = toFind + ".appref-ms*";
+                        string searchPattern = toFind + ".appref-ms";
                         DirectoryInfo di = new DirectoryInfo(path);
 
                         FileInfo[] files =
@@ -399,11 +363,10 @@ namespace HAL_9000
 
                 try
                 {
-                    path = @"C:\ProgramData\Microsoft\Windows\Start Menu\Programs"; 
-
+                    path = @"C:\\ProgramData\\Microsoft\\Windows\\Start Menu\\Programs";
                     try
                     {
-                        string searchPattern = toFind + ".lnk*";
+                        string searchPattern = toFind + ".lnk";
                         DirectoryInfo di = new DirectoryInfo(path);
 
                         FileInfo[] files =
@@ -417,7 +380,7 @@ namespace HAL_9000
                     }
                     catch
                     {
-                        string searchPattern = toFind + ".appref-ms*";
+                        string searchPattern = toFind + ".appref-ms";
                         DirectoryInfo di = new DirectoryInfo(path);
 
                         FileInfo[] files =
@@ -439,8 +402,48 @@ namespace HAL_9000
 
                 try
                 {
-                    path = @"C:\Program Files\";
-                    string searchPattern = toFind + ".exe*";
+                    path = @"C:\\ProgramData\\Microsoft\\Windows\\Start Menu\\Programs"; 
+
+                    try
+                    {
+                        string searchPattern = toFind + ".lnk";
+                        DirectoryInfo di = new DirectoryInfo(path);
+
+                        FileInfo[] files =
+                            di.GetFiles(searchPattern, SearchOption.AllDirectories);
+
+                        foreach (FileInfo file in files)
+                        {
+                            string progRun = (file.FullName.ToString());
+                            Process.Start(progRun);
+                        }
+                    }
+                    catch
+                    {
+                        string searchPattern = toFind + ".appref-ms";
+                        DirectoryInfo di = new DirectoryInfo(path);
+
+                        FileInfo[] files =
+                            di.GetFiles(searchPattern, SearchOption.AllDirectories);
+
+                        foreach (FileInfo file in files)
+                        {
+                            string progRun = (file.FullName.ToString());
+                            Process.Start(progRun);
+                        }
+                    }
+                    Console.WriteLine(toFind + " launched");
+                    goto End;
+                }
+                catch
+                {
+                    Writting.Searching();
+                }
+
+                try
+                {
+                    path = @"C:\\Program Files\\";
+                    string searchPattern = toFind + ".exe";
 
                     DirectoryInfo di = new DirectoryInfo(path);
 
