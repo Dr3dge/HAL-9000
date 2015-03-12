@@ -34,5 +34,5 @@ Thumbs.db
 
 # Other Folders #
 #################
-/bin/
-/obj/
+bin/
+obj/
