@@ -164,10 +164,10 @@ namespace HAL_9000
                     {
                     downloadHandler.Handler();
                     WebClient Client = new WebClient();
-                    Client.DownloadFile("http://www.rarlab.com/rar/wrar50b7.exe",
+                    Client.DownloadFile("http://www.rarlab.com/rar/wrar521.exe",
                             @"HAL's Downloads\wrar50b7.exe");
 
-                    Process.Start(@"HAL's Downloads\\wrar50b7.exe");
+                    Process.Start(@"HAL's Downloads\\wrar521.exe");
                     }
                     catch
                     {
@@ -180,10 +180,10 @@ namespace HAL_9000
                     {
                     downloadHandler.Handler();
                     WebClient Client = new WebClient();
-                    Client.DownloadFile("http://download.tuxfamily.org/notepadplus/6.4.3/npp.6.4.3.Installer.exe",
-                            @"HAL's Downloads\npp.6.4.3.Installer.exe");
+                    Client.DownloadFile("http://dl.notepad-plus-plus.org/downloads/6.x/6.7.5/npp.6.7.5.Installer.exe",
+                            @"HAL's Downloads\npp.Installer.exe");
 
-                    Process.Start(@"HAL's Downloads\\npp.6.4.3.Installer.exe");
+                    Process.Start(@"HAL's Downloads\\npp.Installer.exe");
                     }
                     catch
                     {
@@ -196,10 +196,10 @@ namespace HAL_9000
                     {
                     downloadHandler.Handler();
                     WebClient Client = new WebClient();
-                    Client.DownloadFile("http://vlc.mirror.uber.com.au/vlc/2.0.8/win32/vlc-2.0.8-win32.exe",
-                            @"HAL's Downloads\vlc-2.0.8-win32.exe");
+                    Client.DownloadFile("https://get.videolan.org/vlc/2.2.0/win32/vlc-2.2.0-win32.exe",
+                            @"HAL's Downloads\vlc.exe");
 
-                    Process.Start(@"HAL's Downloads\\vlc-2.0.8-win32.exe");
+                    Process.Start(@"HAL's Downloads\\vlc.exe");
                     }
                     catch
                     {
@@ -212,10 +212,10 @@ namespace HAL_9000
                     {
                     downloadHandler.Handler();
                     WebClient Client = new WebClient();
-                    Client.DownloadFile("http://aarnet.dl.sourceforge.net/project/gimp-win/GIMP%20%2B%20GTK%2B%20%28stable%20release%29/GIMP%202.8.6/gimp-2.8.6-setup.exe",
-                            @"HAL's Downloads\gimp-2.8.6-setup.exe");
+                    Client.DownloadFile("http://download.gimp.org/pub/gimp/v2.8/windows/gimp-2.8.14-setup-1.exe",
+                            @"HAL's Downloads\gimp.exe");
 
-                    Process.Start(@"HAL's Downloads\\gimp-2.8.6-setup.exe");
+                    Process.Start(@"HAL's Downloads\\gimp.exe");
                     }
                     catch
                     {
@@ -260,10 +260,90 @@ namespace HAL_9000
                     {
                     downloadHandler.Handler();
                     WebClient Client = new WebClient();
-                    Client.DownloadFile("http://af-download.avg.com/filedir/inst/avg_free_stb_all_2013_3345_free.exe",
+                    Client.DownloadFile("http://software-files-a.cnet.com/s/software/14/10/54/26/avg_free_stb_all_5751p1_177.exe",
                             @"HAL's Downloads\avg_free.exe");
 
                     Process.Start(@"HAL's Downloads\\avg_free.exe");
+                    }
+                    catch
+                    {
+                        Writting.sorryDave();
+                    }
+                }
+                else if (userInput == "install visual studio")
+                {
+                    try
+                    {
+                        downloadHandler.Handler();
+                        WebClient Client = new WebClient();
+                        Client.DownloadFile("http://download.microsoft.com/download/9/6/4/96442E58-C65C-4122-A956-CCA83EECCD03/wdexpress_full.exe",
+                                @"HAL's Downloads\wdexpress_full.exe");
+
+                        Process.Start(@"HAL's Downloads\\wdexpress_full.exe");
+                    }
+                    catch
+                    {
+                        Writting.sorryDave();
+                    }
+                }
+                else if (userInput == "install steam")
+                {
+                    try
+                    {
+                        downloadHandler.Handler();
+                        WebClient Client = new WebClient();
+                        Client.DownloadFile("http://media.steampowered.com/client/installer/SteamSetup.exe",
+                                @"HAL's Downloads\SteamSetup.exe");
+
+                        Process.Start(@"HAL's Downloads\\SteamSetup.exe");
+                    }
+                    catch
+                    {
+                        Writting.sorryDave();
+                    }
+                }
+                else if (userInput == "install git" || userInput == "github")
+                {
+                    try
+                    {
+                        downloadHandler.Handler();
+                        WebClient Client = new WebClient();
+                        Client.DownloadFile("https://github-windows.s3.amazonaws.com/GitHubSetup.exe",
+                                @"HAL's Downloads\GitHubSetup.exe");
+
+                        Process.Start(@"HAL's Downloads\\GitHubSetup.exe");
+                    }
+                    catch
+                    {
+                        Writting.sorryDave();
+                    }
+                }
+                else if (userInput == "install bittorrent")
+                {
+                    try
+                    {
+                        downloadHandler.Handler();
+                        WebClient Client = new WebClient();
+                        Client.DownloadFile("http://download-new.utorrent.com/endpoint/bittorrent/os/win/track/stable",
+                                @"HAL's Downloads\BitTorrent.exe");
+
+                        Process.Start(@"HAL's Downloads\\BitTorrent.exe");
+                    }
+                    catch
+                    {
+                        Writting.sorryDave();
+                    }
+                }
+                else if (userInput == "install vm" || userInput == "install virtual machine" || userInput == "install virtual box")
+                {
+                    try
+                    {
+                        downloadHandler.Handler();
+                        WebClient Client = new WebClient();
+                        Client.DownloadFile("http://download.virtualbox.org/virtualbox/4.3.24/VirtualBox-4.3.24-98716-Win.exe",
+                                @"HAL's Downloads\VirtualBox.exe");
+
+                        Process.Start(@"HAL's Downloads\\VirtualBox.exe");
                     }
                     catch
                     {
@@ -297,7 +377,7 @@ namespace HAL_9000
                     catch
                     {
                         searchYoutube.firefox();
-                        Writting.youtubeSearched();
+                        Writting.youtubeSearched()
                     }
                 }
                 else if (userInput == "run" || userInput == "open")
