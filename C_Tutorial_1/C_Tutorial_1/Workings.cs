@@ -196,6 +196,28 @@ namespace HAL_9000
                         Writting.sorryDave();
                     }
                 }
+                else if (userInput == "uninstall hal" || userInput == "uninstall hal9000" || userInput == "uninstall hal-9000")
+                {
+                    try
+                    {
+                        if (!System.IO.File.Exists(@"C:\Program Files\HAL-9000\HAL-9000.exe"))
+                        {
+                            Writting.halIsMissing();
+                        }
+                        else
+                        {
+                            System.IO.File.Delete(@"C:\Program Files\HAL-9000\HAL-9000.exe");
+                            Directory.Delete(@"C:\Program Files\HAL-9000");
+                            string desktop = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+                            System.IO.File.Delete(desktop +@"\HAL-9000.lnk");
+                            Writting.halUninstalled();
+                        }
+                    }
+                    catch
+                    {
+                        Writting.sorryDave();
+                    }
+                }
                 else if (userInput == "install chrome")
                 {
                     try

@@ -235,5 +235,12 @@ namespace HAL_9000
             Console.WriteLine("HAL-9000 has been successfully updated");
             Console.WriteLine();
         }
+
+        public static void halUninstalled()
+        {
+            Console.WriteLine();
+            Console.WriteLine("HAL-9000 has been successfully uninstalled");
+            Console.WriteLine();
+        }
     }
 }
