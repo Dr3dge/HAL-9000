@@ -79,7 +79,7 @@ namespace HAL_9000
                 }
                 // else if (userInput == "arduino")
                 // {
-                //     Arduino.Start(); // Will be used for handling interactions with an Arduino
+                //     Arduino.Start();     // Will be used for handling interactions with an Arduino
                 // }
                 else if (userInput == "hello" || userInput == "hi" || userInput == "hey")
                 {
@@ -179,7 +179,11 @@ namespace HAL_9000
                         if (System.IO.File.Exists(@"C:\Program Files\HAL-9000\HAL-9000.exe"))
                         {
                             System.IO.File.Delete(@"C:\Program Files\HAL-9000\HAL-9000.exe");
-                            System.IO.File.Copy(@"HAL-9000.exe", @"C:\Program Files\HAL-9000\HAL-9000.exe");
+                            using (WebClient Client = new WebClient())
+                            {
+                                Client.DownloadFile("https://dl.dropboxusercontent.com/s/t9yj5z980siq2du/HAL-9000.exe?dl=0", 
+                                    @"C:\Program Files\HAL-9000\HAL-9000.exe");
+                            }
                             Writting.halUpdated();
                         }
                         else

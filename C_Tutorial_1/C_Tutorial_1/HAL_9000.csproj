@@ -119,15 +119,15 @@
   <ItemGroup>
     <Compile Include="addToStartup.cs" />
     <Compile Include="Arduino.cs" />
-    <Compile Include="circleAreaCalc.cs" />
-    <Compile Include="facebookHandler.cs" />
-    <Compile Include="downloadHandler.cs" />
-    <Compile Include="Generate.cs" />
+    <Compile Include="Handlers\circleAreaCalc.cs" />
+    <Compile Include="Handlers\facebookHandler.cs" />
+    <Compile Include="Handlers\downloadHandler.cs" />
+    <Compile Include="Handlers\Generate.cs" />
     <Compile Include="processKiller.cs" />
     <Compile Include="Search.cs" />
-    <Compile Include="Username.cs" />
+    <Compile Include="Handlers\Username.cs" />
     <Compile Include="programPlaces.cs" />
-    <Compile Include="cylinderCalc.cs" />
+    <Compile Include="Handlers\cylinderCalc.cs" />
     <Compile Include="Workings.cs" />
     <Compile Include="Writting.cs" />
     <Compile Include="mainProgram.cs" />
