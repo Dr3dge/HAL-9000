@@ -1,13 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.IO;
+using System.Net;
 using System.Linq;
 using System.Text;
-using HAL_9000;
+using System.Reflection;
 using System.Diagnostics;
-using System.Net;
 using System.Globalization;
-using System.IO;
+using System.Collections.Generic;
 using IWshRuntimeLibrary;
+using HAL_9000;
 
 namespace HAL_9000
 {
@@ -21,6 +22,7 @@ namespace HAL_9000
             int guess;
 
             Main:
+            
             userInput = Console.ReadLine().ToLower(); // If the user input is then it will change any capitals to lowercase
             try
             {
