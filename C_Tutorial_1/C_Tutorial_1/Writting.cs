@@ -152,6 +152,8 @@ namespace HAL_9000
             Console.WriteLine("Install help      -       Displays what programs can be installed");
             Console.WriteLine("Websites help     -       Displays what websites can be opened");
             Console.WriteLine("Arduino help      -       Displays what aurduino programs can be run");
+            Console.WriteLine("Update HAL-9000   -       Updates HAL if there is an existing installation");
+            Console.WriteLine("My name is        -       Tell HAL your name");
             Console.WriteLine("# Between 1 & 10  -       Pick a number and hope that it's the winning one");
             Console.WriteLine("Hello             -       Say hello to your friendly HAL-9000");
             Console.WriteLine("How are you       -       Ask HAL-9000 how he is doing");
@@ -160,7 +162,7 @@ namespace HAL_9000
             Console.WriteLine("Cylinder          -       Want a cylinder calculated for you? Can do it too!");
             Console.WriteLine("Internet          -       Opens your internet browser");
             Console.WriteLine("Google            -       Search Google for something");
-            Console.WriteLine("Search Youtube    -       Search Youtube for something");
+            Console.WriteLine("Youtube           -       Search Youtube for something");
             Console.WriteLine("CMD               -       Opens the command line");
             Console.WriteLine("Add to startup    -       Makes it so HAL-9000 starts with your computer");
             Console.WriteLine("Run               -       Run a program of your choosing");
@@ -173,14 +175,20 @@ namespace HAL_9000
         public static void installHelp()
         {
             Console.WriteLine();
-            Console.WriteLine("Install VLC       -       Downloads and installs VLC Media Player for you");
-            Console.WriteLine("Install Chrome    -       Downloads and installs Googel Chrome for you");
-            Console.WriteLine("Install winRAR    -       Downloads and installs winRAR for you");
-            Console.WriteLine("Install Notepad++ -       Downloads and installs Notepad++ for you");
-            Console.WriteLine("Install GIMP      -       Downloads and installs GIMP 2 for you");
-            Console.WriteLine("Install ASC       -       Downloads and installs Iobit Advanced SystemCare");
-            Console.WriteLine("Install AVG       -       Downloads and installs AVG Antivirus Free for you");
-            Console.WriteLine("Install Java      -       Downloads and installs Java for you");
+            Console.WriteLine("Install HAL-9000      -       Downloads and installs HAL-9000 for you");
+            Console.WriteLine("Install VLC           -       Downloads and installs VLC Media Player for you");
+            Console.WriteLine("Install Chrome        -       Downloads and installs Googel Chrome for you");
+            Console.WriteLine("Install winRAR        -       Downloads and installs winRAR for you");
+            Console.WriteLine("Install Notepad++     -       Downloads and installs Notepad++ for you");
+            Console.WriteLine("Install GIMP          -       Downloads and installs GIMP 2 for you");
+            Console.WriteLine("Install ASC           -       Downloads and installs Iobit Advanced SystemCare");
+            Console.WriteLine("Install AVG           -       Downloads and installs AVG Antivirus Free for you");
+            Console.WriteLine("Install Java          -       Downloads and installs Java for you");
+            Console.WriteLine("Install Steam         -       Downloads and installs Steam for you");
+            Console.WriteLine("Install Visual Studio -       Downloads and installs Visual Studio for you");
+            Console.WriteLine("Install GitHub        -       Downloads and installs GitHub for you");
+            Console.WriteLine("Install BitTorrent    -       Downloads and installs BitTorrent for you");
+            Console.WriteLine("Install Virtual Box   -       Downloads and installs Virtual Box for you");
             Console.WriteLine();
         }
         public static void websitesHelp()

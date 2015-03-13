@@ -117,7 +117,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="addToStartup.cs" />
+    <Compile Include="Handlers\addToStartup.cs" />
     <Compile Include="Arduino.cs" />
     <Compile Include="Handlers\circleAreaCalc.cs" />
     <Compile Include="Handlers\facebookHandler.cs" />

@@ -144,7 +144,7 @@ namespace HAL_9000
                         Writting.firefoxStarted();
                     }
                 }
-                else if (userInput == "install hal" || userInput == "install hal9000")
+                else if (userInput == "install hal" || userInput == "install hal9000" || userInput == "install hal-9000")
                 {
                     try
                     {
@@ -631,9 +631,13 @@ namespace HAL_9000
                         Writting.sorryDave();
                     }
                 }
-                else if (userInput == "goto" || userInput == "website")
+                else if (userInput.Contains("goto") == true)
                 {
-                    Websites.gotoWebsite();
+                    Websites.goTo();
+                }
+                else if (userInput.Contains("website") == true)
+                {
+                    Websites.website();
                 }
                 else if (userInput.Contains("google") == true)
                 {

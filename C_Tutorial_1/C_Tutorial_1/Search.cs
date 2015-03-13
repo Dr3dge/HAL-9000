@@ -101,20 +101,42 @@ namespace HAL_9000
     }
     class Websites
     {
-        public static void gotoWebsite()
+        public static void website()
         {
-            Writting.websiteWhat();
-            string website = Console.ReadLine();
-
             try
             {
-                Process.Start(@"C:\Program Files\Google\Chrome\Application\chrome.exe", website);
-                Writting.siteLaunched();
+                string website = Workings.userInput.Replace("website ", "");
+                try
+                {
+                    Process.Start(@"C:\Program Files\Google\Chrome\Application\chrome.exe", website);
+                    Writting.siteLaunched();
+                }
+                catch
+                {
+                    Process.Start(@"C:\Program Files (x86)\Google\Chrome\Application\chrome.exe", website);
+                    Writting.siteLaunched();
+                }
             }
-            catch (FileNotFoundException)
+            catch
             {
-                Process.Start(@"C:\Program Files\Google\Chrome\Application\chrome.exe", website);
-                Writting.siteLaunched();
+                Writting.sorryDave();
+            }
+        }
+        public static void goTo()
+        {
+            try
+            {
+                string website = Workings.userInput.Replace("goto ", "");
+                try
+                {
+                    Process.Start(@"C:\Program Files\Google\Chrome\Application\chrome.exe", website);
+                    Writting.siteLaunched();
+                }
+                catch
+                {
+                    Process.Start(@"C:\Program Files (x86)\Google\Chrome\Application\chrome.exe", website);
+                    Writting.siteLaunched();
+                }
             }
             catch
             {
