@@ -22,7 +22,6 @@ namespace HAL_9000
             int guess;
 
             Main:
-            
             userInput = Console.ReadLine().ToLower(); // If the user input is then it will change any capitals to lowercase
             try
             {
@@ -157,7 +156,16 @@ namespace HAL_9000
                         else
                         {
                             Directory.CreateDirectory(@"C:\Program Files\HAL-9000");
-                            System.IO.File.Copy(@"HAL-9000.exe", @"C:\Program Files\HAL-9000\HAL-9000.exe");
+                            using (WebClient Client = new WebClient())
+                            {
+                                Client.DownloadFile("https://dl.dropboxusercontent.com/s/t9yj5z980siq2du/HAL-9000.exe?dl=0",
+                                    @"C:\Program Files\HAL-9000\HAL-9000.exe");
+                            }
+                            using (WebClient Client = new WebClient())
+                            {
+                                Client.DownloadFile("https://dl.dropboxusercontent.com/s/iquqw73byxcmbsv/Updater.exe?dl=0",
+                                    @"C:\Program Files\HAL-9000\Updater.exe");
+                            }
                             object shDesktop = (object)"Desktop";
                             WshShell shell = new WshShell();
                             string shortcutAddress = (string)shell.SpecialFolders.Item(ref shDesktop) + @"\HAL-9000.lnk";
@@ -174,23 +182,18 @@ namespace HAL_9000
                         Writting.sorryDave();
                     }
                 }
-                else if (userInput.Contains("update") == true)
+                else if (userInput == "update" || userInput == "update hal" || userInput == "update hal9000" || userInput == "update hal-9000")
                 {
                     try
                     {
-                        if (System.IO.File.Exists(@"C:\Program Files\HAL-9000\HAL-9000.exe"))
+                        if (System.IO.File.Exists(@"C:\Program Files\HAL-9000\Updater.exe"))
                         {
-                            System.IO.File.Delete(@"C:\Program Files\HAL-9000\HAL-9000.exe");
-                            using (WebClient Client = new WebClient())
-                            {
-                                Client.DownloadFile("https://dl.dropboxusercontent.com/s/t9yj5z980siq2du/HAL-9000.exe?dl=0", 
-                                    @"C:\Program Files\HAL-9000\HAL-9000.exe");
-                            }
-                            Writting.halUpdated();
+
+                            Process.Start(@"C:\Program Files\HAL-9000\Updater.exe");
                         }
                         else
                         {
-                            Writting.halIsMissing();
+                            Writting.updaterIsMissing();
                         }
                     }
                     catch
@@ -209,6 +212,7 @@ namespace HAL_9000
                         else
                         {
                             System.IO.File.Delete(@"C:\Program Files\HAL-9000\HAL-9000.exe");
+                            System.IO.File.Delete(@"C:\Program Files\HAL-9000\Updater.exe");
                             Directory.Delete(@"C:\Program Files\HAL-9000");
                             string desktop = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
                             System.IO.File.Delete(desktop +@"\HAL-9000.lnk");

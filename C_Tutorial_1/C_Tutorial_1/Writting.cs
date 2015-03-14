@@ -242,5 +242,11 @@ namespace HAL_9000
             Console.WriteLine("HAL-9000 has been successfully uninstalled");
             Console.WriteLine();
         }
+        public static void updaterIsMissing()
+        {
+            Console.WriteLine();
+            Console.WriteLine("HAL-9000 Updater is not installed, try installing HAL");
+            Console.WriteLine();
+        }
     }
 }

@@ -5,6 +5,8 @@ VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HAL_9000", "C_Tutorial_1\HAL_9000.csproj", "{C1CCD463-8055-4F12-A868-55F04E68E61F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Updater", "Updater\Updater.csproj", "{5881E77F-76D6-463E-A0BE-A8CDC9955AE9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -44,6 +46,24 @@ Global
 		{C1CCD463-8055-4F12-A868-55F04E68E61F}.To Build|x64.ActiveCfg = To Build|Any CPU
 		{C1CCD463-8055-4F12-A868-55F04E68E61F}.To Build|x86.ActiveCfg = To Build|x86
 		{C1CCD463-8055-4F12-A868-55F04E68E61F}.To Build|x86.Build.0 = To Build|x86
+		{5881E77F-76D6-463E-A0BE-A8CDC9955AE9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5881E77F-76D6-463E-A0BE-A8CDC9955AE9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5881E77F-76D6-463E-A0BE-A8CDC9955AE9}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{5881E77F-76D6-463E-A0BE-A8CDC9955AE9}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{5881E77F-76D6-463E-A0BE-A8CDC9955AE9}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{5881E77F-76D6-463E-A0BE-A8CDC9955AE9}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{5881E77F-76D6-463E-A0BE-A8CDC9955AE9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5881E77F-76D6-463E-A0BE-A8CDC9955AE9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5881E77F-76D6-463E-A0BE-A8CDC9955AE9}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{5881E77F-76D6-463E-A0BE-A8CDC9955AE9}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{5881E77F-76D6-463E-A0BE-A8CDC9955AE9}.Release|x64.ActiveCfg = Release|Any CPU
+		{5881E77F-76D6-463E-A0BE-A8CDC9955AE9}.Release|x86.ActiveCfg = Release|Any CPU
+		{5881E77F-76D6-463E-A0BE-A8CDC9955AE9}.To Build|Any CPU.ActiveCfg = Release|Any CPU
+		{5881E77F-76D6-463E-A0BE-A8CDC9955AE9}.To Build|Any CPU.Build.0 = Release|Any CPU
+		{5881E77F-76D6-463E-A0BE-A8CDC9955AE9}.To Build|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{5881E77F-76D6-463E-A0BE-A8CDC9955AE9}.To Build|Mixed Platforms.Build.0 = Release|Any CPU
+		{5881E77F-76D6-463E-A0BE-A8CDC9955AE9}.To Build|x64.ActiveCfg = Release|Any CPU
+		{5881E77F-76D6-463E-A0BE-A8CDC9955AE9}.To Build|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
