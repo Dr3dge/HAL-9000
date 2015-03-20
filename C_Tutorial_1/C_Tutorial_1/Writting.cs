@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 
 namespace HAL_9000
 {
@@ -11,7 +12,7 @@ namespace HAL_9000
         public static void Initialization()
         {
             Console.WriteLine("Loading...");
-            System.Threading.Thread.Sleep(250);
+            Thread.Sleep(250);
             Console.WriteLine("Initialized Sucessfully");
             Console.WriteLine("Press any key to continue");
 
@@ -148,28 +149,28 @@ namespace HAL_9000
         public static void help()
         {
             Console.WriteLine();
-            Console.WriteLine("Help              -       Displays this help message");
-            Console.WriteLine("Install help      -       Displays what programs can be installed");
-            Console.WriteLine("Websites help     -       Displays what websites can be opened");
-            Console.WriteLine("Arduino help      -       Displays what aurduino programs can be run");
-            Console.WriteLine("Update HAL-9000   -       Updates HAL if there is an existing installation");
-            Console.WriteLine("My name is        -       Tell HAL your name");
-            Console.WriteLine("# Between 1 & 10  -       Pick a number and hope that it's the winning one");
-            Console.WriteLine("Hello             -       Say hello to your friendly HAL-9000");
-            Console.WriteLine("How are you       -       Ask HAL-9000 how he is doing");
-            Console.WriteLine("Random            -       HAL-9000 can generate a random number or password");
-            Console.WriteLine("Circle            -       Want a circle calculated for you? HAL-9000 can do it");
-            Console.WriteLine("Cylinder          -       Want a cylinder calculated for you? Can do it too!");
-            Console.WriteLine("Internet          -       Opens your internet browser");
-            Console.WriteLine("Google            -       Search Google for something");
-            Console.WriteLine("Youtube           -       Search Youtube for something");
-            Console.WriteLine("CMD               -       Opens the command line");
-            Console.WriteLine("Add to startup    -       Makes it so HAL-9000 starts with your computer");
-            Console.WriteLine("Run               -       Run a program of your choosing");
-            Console.WriteLine("Close             -       Closes the specified process");
-            Console.WriteLine("Kill              -       Kills Windows");
-            Console.WriteLine("Shutdown          -       Shuts down Windows");
-            Console.WriteLine("Stop              -       Tells HAL-9000 that you are finished");
+            Console.WriteLine("Help               -       Displays this help message");
+            Console.WriteLine("Install help       -       Displays what programs can be installed");
+            Console.WriteLine("Websites help      -       Displays what websites can be opened");
+            Console.WriteLine("Arduino help       -       Displays what aurduino programs can be run");
+            Console.WriteLine("Update HAL-9000    -       Updates HAL if there is an existing installation");
+            Console.WriteLine("My name is         -       Tell HAL your name");
+            Console.WriteLine("# Between 1 & 10   -       Pick a number and hope that it's the winning one");
+            Console.WriteLine("Hello              -       Say hello to your friendly HAL-9000");
+            Console.WriteLine("How are you        -       Ask HAL-9000 how he is doing");
+            Console.WriteLine("Random             -       HAL-9000 can generate a random number or password");
+            Console.WriteLine("Circle             -       Want a circle calculated for you? HAL-9000 can do it");
+            Console.WriteLine("Cylinder           -       Want a cylinder calculated for you? Can do it too!");
+            Console.WriteLine("Internet           -       Opens your internet browser");
+            Console.WriteLine("Google             -       Search Google for something");
+            Console.WriteLine("Youtube            -       Search Youtube for something");
+            Console.WriteLine("CMD                -       Opens the command line");
+            Console.WriteLine("Add to startup     -       Makes it so HAL-9000 starts with your computer");
+            Console.WriteLine("Run                -       Run a program of your choosing");
+            Console.WriteLine("Close              -       Closes the specified process");
+            Console.WriteLine("Kill               -       Kills Windows");
+            Console.WriteLine("Shutdown           -       Shuts down Windows");
+            Console.WriteLine("Stop               -       Tells HAL-9000 that you are finished");
             Console.WriteLine();
         }
         public static void installHelp()

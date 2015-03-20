@@ -132,6 +132,28 @@ namespace HAL_9000
                 {
                     cylinderCalc.Calculate();
                 }
+                else if (userInput == "will you be my girlfriend hal?" || userInput == "will you be my girlfriend hal")
+                {
+                    if (name == "Noah")
+                    {
+                        Console.WriteLine("Yes Noah, I will be your girlfriend.");
+                    }
+                    else
+                    {
+                        Console.WriteLine("No " + Workings.name + ", I will not be your girlfriend.");
+                    }
+                }
+                else if (userInput == "will you marry me hal?" || userInput == "will you marry me hal")
+                {
+                    if(name == "Noah")
+                    {
+                        Console.WriteLine("Yes Noah, I will marry you.");
+                    }
+                    else
+                    {
+                        Console.WriteLine("No " + Workings.name + ", I will not marry you.");
+                    }
+                }
                 else if (userInput == "internet")
                 {
                     try
@@ -170,7 +192,7 @@ namespace HAL_9000
                             WshShell shell = new WshShell();
                             string shortcutAddress = (string)shell.SpecialFolders.Item(ref shDesktop) + @"\HAL-9000.lnk";
                             IWshShortcut shortcut = (IWshShortcut)shell.CreateShortcut(shortcutAddress);
-                            shortcut.Description = "New shortcut for a HAL-9000";
+                            shortcut.Description = "Shortcut for HAL-9000";
                             shortcut.Hotkey = "Ctrl+Shift+H";
                             shortcut.TargetPath = @"C:\Program Files\HAL-9000\HAL-9000.exe";
                             shortcut.Save();
@@ -643,7 +665,7 @@ namespace HAL_9000
                         {
                             downloadHandler.Handler();
                             WebClient Client = new WebClient();
-                            Client.DownloadFile("http://download.virtualbox.org/virtualbox/4.3.24/VirtualBox-4.3.24-98716-Win.exe",
+                            Client.DownloadFile("http://dlc-cdn.sun.com/virtualbox/4.3.26/VirtualBox-4.3.26-98988-Win.exe",
                                 @"HAL's Downloads\VirtualBox.exe");
                             ProcessStartInfo Installer = new ProcessStartInfo();
                             Installer.Arguments = "/silent";
