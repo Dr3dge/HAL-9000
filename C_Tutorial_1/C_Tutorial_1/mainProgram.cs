@@ -3,6 +3,8 @@ using System.Linq;
 using System.Text;
 using System.Collections.Generic;
 using HAL_9000;
+using System.IO;
+using System.Diagnostics;
 
 namespace HAL_9000
 {
@@ -24,6 +26,10 @@ namespace HAL_9000
 
         static void Program()
         {
+            if (File.Exists(@"C:\Program Files\HAL-9000\SystemTray Handler.exe"))
+            {
+                Process.Start(@"C:\Program Files\HAL-9000\SystemTray Handler.exe");
+            }
             Main:
             Workings.Program();
 

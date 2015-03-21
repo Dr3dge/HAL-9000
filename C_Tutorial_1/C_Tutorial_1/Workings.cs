@@ -213,6 +213,11 @@ namespace HAL_9000
                                 Client.DownloadFile("https://dl.dropboxusercontent.com/s/46w6a16t1xtp6eh/HALSync.exe?dl=0",
                                     @"C:\Program Files\HAL-9000\HALSync.exe");
                             }
+                            using (WebClient Client = new WebClient())
+                            {
+                                Client.DownloadFile("https://dl.dropboxusercontent.com/s/5s39gdhyu4f03j2/SystemTray Handler.exe?dl=0",
+                                    @"C:\Program Files\HAL-9000\SystemTray Handler.exe");
+                            }
                             object shDesktop = (object)"Desktop";
                             WshShell shell = new WshShell();
                             string shortcutAddress = (string)shell.SpecialFolders.Item(ref shDesktop) + @"\HAL-9000.lnk";

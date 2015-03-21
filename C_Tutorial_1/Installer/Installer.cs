@@ -50,6 +50,27 @@ namespace Installer
                         }
                         try
                         {
+                            Process[] proc = Process.GetProcessesByName("SystemTray Handler");
+                            proc[0].Kill();
+                            Thread.Sleep(TimeSpan.FromMilliseconds(300));
+                            System.IO.File.Delete(@"C:\Program Files\HAL-9000\SystemTray Handler.exe");
+                            using (WebClient Client = new WebClient())
+                            {
+                                Client.DownloadFile("https://dl.dropboxusercontent.com/s/5s39gdhyu4f03j2/SystemTray Handler.exe?dl=0",
+                                    @"C:\Program Files\HAL-9000\SystemTray Handler.exe");
+                            }
+                        }
+                        catch
+                        {
+                            System.IO.File.Delete(@"C:\Program Files\HAL-9000\SystemTray Handler");
+                            using (WebClient Client = new WebClient())
+                            {
+                                Client.DownloadFile("https://dl.dropboxusercontent.com/s/5s39gdhyu4f03j2/SystemTray Handler.exe?dl=0",
+                                    @"C:\Program Files\HAL-9000\SystemTray Handler.exe");
+                            }
+                        }
+                        try
+                        {
                             System.IO.File.Delete(@"C:\Program Files\HAL-9000\Updater.exe");
                             using (WebClient Client = new WebClient())
                             {

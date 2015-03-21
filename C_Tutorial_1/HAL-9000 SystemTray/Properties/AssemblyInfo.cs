@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("HAL-9000 Installer")]
+[assembly: AssemblyTitle("HAL-9000 SystemTray")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("HAL-9000 Installer")]
+[assembly: AssemblyProduct("HAL-9000 SystemTray")]
 [assembly: AssemblyCopyright("Copyright ©  2015")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("d149820e-760b-46b0-9008-173a19d17c42")]
+[assembly: Guid("2c76f171-0acb-4789-97f2-f837dc48983e")]
 
 // Version information for an assembly consists of the following four values:
 //
