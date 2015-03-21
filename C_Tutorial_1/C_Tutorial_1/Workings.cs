@@ -188,6 +188,11 @@ namespace HAL_9000
                                 Client.DownloadFile("https://dl.dropboxusercontent.com/s/iquqw73byxcmbsv/Updater.exe?dl=0",
                                     @"C:\Program Files\HAL-9000\Updater.exe");
                             }
+                            using (WebClient Client = new WebClient())
+                            {
+                                Client.DownloadFile("https://dl.dropboxusercontent.com/s/46w6a16t1xtp6eh/HALSync.exe?dl=0",
+                                    @"C:\Program Files\HAL-9000\HALSync.exe");
+                            }
                             object shDesktop = (object)"Desktop";
                             WshShell shell = new WshShell();
                             string shortcutAddress = (string)shell.SpecialFolders.Item(ref shDesktop) + @"\HAL-9000.lnk";
@@ -196,6 +201,11 @@ namespace HAL_9000
                             shortcut.Hotkey = "Ctrl+Shift+H";
                             shortcut.TargetPath = @"C:\Program Files\HAL-9000\HAL-9000.exe";
                             shortcut.Save();
+                            string shortcutAddress2 = (string)shell.SpecialFolders.Item(ref shDesktop) + @"\HALSync.lnk";
+                            IWshShortcut shortcut2 = (IWshShortcut)shell.CreateShortcut(shortcutAddress2);
+                            shortcut2.Description = "Shortcut for HALSync";
+                            shortcut2.TargetPath = @"C:\Program Files\HAL-9000\HALSync.exe";
+                            shortcut2.Save();
                             Writting.halInstalled();
                         }
                     }
@@ -208,14 +218,31 @@ namespace HAL_9000
                 {
                     try
                     {
-                        if (System.IO.File.Exists(@"C:\Program Files\HAL-9000\Updater.exe"))
-                        {
-
-                            Process.Start(@"C:\Program Files\HAL-9000\Updater.exe");
+                        if (Directory.Exists(@"C:\Program Files\HAL-9000"))
+                            {
+                            if (System.IO.File.Exists(@"C:\Program Files\HAL-9000\Updater.exe"))
+                            {
+                                System.IO.File.Delete(@"C:\Program Files\HAL-9000\Updater.exe");
+                                using (WebClient Client = new WebClient())
+                                {
+                                    Client.DownloadFile("https://dl.dropboxusercontent.com/s/iquqw73byxcmbsv/Updater.exe?dl=0",
+                                        @"C:\Program Files\HAL-9000\Updater.exe");
+                                }
+                                Process.Start(@"C:\Program Files\HAL-9000\Updater.exe");
+                            }
+                            else
+                            {
+                                using (WebClient Client = new WebClient())
+                                {
+                                    Client.DownloadFile("https://dl.dropboxusercontent.com/s/iquqw73byxcmbsv/Updater.exe?dl=0",
+                                        @"C:\Program Files\HAL-9000\Updater.exe");
+                                }
+                                Process.Start(@"C:\Program Files\HAL-9000\Updater.exe");
+                            }
                         }
                         else
                         {
-                            Writting.updaterIsMissing();
+                            Writting.halIsMissing();
                         }
                     }
                     catch
@@ -234,10 +261,12 @@ namespace HAL_9000
                         else
                         {
                             System.IO.File.Delete(@"C:\Program Files\HAL-9000\HAL-9000.exe");
+                            System.IO.File.Delete(@"C:\Program Files\HAL-9000\HALSync.exe");
                             System.IO.File.Delete(@"C:\Program Files\HAL-9000\Updater.exe");
                             Directory.Delete(@"C:\Program Files\HAL-9000");
                             string desktop = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
                             System.IO.File.Delete(desktop +@"\HAL-9000.lnk");
+                            System.IO.File.Delete(desktop + @"\HALSync.lnk");
                             Writting.halUninstalled();
                         }
                     }
@@ -674,6 +703,31 @@ namespace HAL_9000
                             Installer.FileName = @"HAL's Downloads\\VirtualBox.exe";
                             Process.Start(Installer);
                             Writting.successfullyInstalled();
+                        }
+                    }
+                    catch
+                    {
+                        Writting.sorryDave();
+                    }
+                }
+                else if (userInput.Contains("halsync"))
+                {
+                    try
+                    {
+                        if (System.IO.Directory.Exists(@"C:\Program Files\HAL-9000"))
+                        {
+                            if (System.IO.File.Exists(@"C:\Program Files\HAL-9000\HALSync.exe"))
+                            {
+                                Process.Start(@"C:\Program Files\HAL-9000\HALSync.exe");
+                            }
+                            else
+                            {
+                                Writting.halsyncIsMissingUDReq();
+                            }
+                        }
+                        else
+                        {
+                            Writting.halsyncIsMissingInstallReq();
                         }
                     }
                     catch

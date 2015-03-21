@@ -1,6 +1,8 @@
-﻿using System;
+﻿using IWshRuntimeLibrary;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
@@ -39,6 +41,48 @@ namespace Updater
                                 @"C:\Program Files\HAL-9000\HAL-9000.exe");
                         }
                         Process.Start(@"C:\Program Files\HAL-9000\HAL-9000.exe");
+                    }
+                }
+                if (Directory.Exists(@"C:\Program Files\HAL-9000"))
+                {
+                    try
+                    {
+                        Process[] proc = Process.GetProcessesByName("HALSync");
+                        proc[0].Kill();
+                        Thread.Sleep(TimeSpan.FromMilliseconds(300));
+                        System.IO.File.Delete(@"C:\Program Files\HAL-9000\HALSync.exe");
+                        using (WebClient Client = new WebClient())
+                        {
+                            Client.DownloadFile("https://dl.dropboxusercontent.com/s/46w6a16t1xtp6eh/HALSync.exe?dl=0",
+                                @"C:\Program Files\HAL-9000\HALSync.exe");
+                        }
+                    }
+                    catch
+                    {
+                        if (System.IO.File.Exists(@"C:\Program Files\HAL-9000\HALSync.exe"))
+                        {
+                            System.IO.File.Delete(@"C:\Program Files\HAL-9000\HALSync.exe");
+                            using (WebClient Client = new WebClient())
+                            {
+                                Client.DownloadFile("https://dl.dropboxusercontent.com/s/46w6a16t1xtp6eh/HALSync.exe?dl=0",
+                                    @"C:\Program Files\HAL-9000\HALSync.exe");
+                            }
+                        }
+                        else
+                        {
+                            using (WebClient Client = new WebClient())
+                            {
+                                Client.DownloadFile("https://dl.dropboxusercontent.com/s/46w6a16t1xtp6eh/HALSync.exe?dl=0",
+                                    @"C:\Program Files\HAL-9000\HALSync.exe");
+                            }
+                            object shDesktop = (object)"Desktop";
+                            WshShell shell = new WshShell();
+                            string shortcutAddress = (string)shell.SpecialFolders.Item(ref shDesktop) + @"\HALSync.lnk";
+                            IWshShortcut shortcut = (IWshShortcut)shell.CreateShortcut(shortcutAddress);
+                            shortcut.Description = "Shortcut for HALSync";
+                            shortcut.TargetPath = @"C:\Program Files\HAL-9000\HALSync.exe";
+                            shortcut.Save();
+                        }
                     }
                 }
             }

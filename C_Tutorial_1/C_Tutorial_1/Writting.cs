@@ -243,10 +243,16 @@ namespace HAL_9000
             Console.WriteLine("HAL-9000 has been successfully uninstalled");
             Console.WriteLine();
         }
-        public static void updaterIsMissing()
+        public static void halsyncIsMissingUDReq()
         {
             Console.WriteLine();
-            Console.WriteLine("HAL-9000 Updater is not installed, try installing HAL");
+            Console.WriteLine("HALSync could not be found, try updating HAL-9000");
+            Console.WriteLine();
+        }
+        public static void halsyncIsMissingInstallReq()
+        {
+            Console.WriteLine();
+            Console.WriteLine("HALSync could not be found, try installing HAL-9000");
             Console.WriteLine();
         }
     }
