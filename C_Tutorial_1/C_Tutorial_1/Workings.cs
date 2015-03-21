@@ -171,12 +171,32 @@ namespace HAL_9000
                 {
                     try
                     {
-                        if (System.IO.File.Exists(@"C:\Program Files\HAL-9000\HAL-9000.exe"))
+                        if (Directory.Exists(@"C:\Program Files\HAL-9000"))
                         {
-                            Writting.alreadyInstalled();
+                            Console.WriteLine("Downloading installer...");
+                            if (System.IO.File.Exists(@"C:\Program Files\HAL-9000\HAL-9000 Installer.exe"))
+                            {
+                                System.IO.File.Delete(@"C:\Program Files\HAL-9000\HAL-9000 Installer.exe");
+                                using (WebClient Client = new WebClient())
+                                {
+                                    Client.DownloadFile("https://dl.dropboxusercontent.com/s/nd8m9zpsalvycbr/HAL-9000%20Installer.exe?dl=0",
+                                        @"C:\Program Files\HAL-9000\HAL-9000 Installer.exe");
+                                }
+                                Process.Start(@"C:\Program Files\HAL-9000\HAL-9000 Installer.exe");
+                            }
+                            else
+                            {
+                                using (WebClient Client = new WebClient())
+                                {
+                                    Client.DownloadFile("https://dl.dropboxusercontent.com/s/nd8m9zpsalvycbr/HAL-9000%20Installer.exe?dl=0",
+                                        @"C:\Program Files\HAL-9000\HAL-9000 Installer.exe");
+                                }
+                                Process.Start(@"C:\Program Files\HAL-9000\HAL-9000 Installer.exe");
+                            }
                         }
                         else
                         {
+                            Writting.halInstalling();
                             Directory.CreateDirectory(@"C:\Program Files\HAL-9000");
                             using (WebClient Client = new WebClient())
                             {

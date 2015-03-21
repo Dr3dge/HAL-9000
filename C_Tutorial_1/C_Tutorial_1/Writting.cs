@@ -255,5 +255,10 @@ namespace HAL_9000
             Console.WriteLine("HALSync could not be found, try installing HAL-9000");
             Console.WriteLine();
         }
+
+        public static void halInstalling()
+        {
+            Console.WriteLine("Downloading and Installing...");
+        }
     }
 }
