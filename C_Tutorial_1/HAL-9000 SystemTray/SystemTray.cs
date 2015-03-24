@@ -28,19 +28,30 @@ namespace SystemTray
             ContextMenu contextMenu = new ContextMenu();
             MenuItem runHAL = new MenuItem("Open HAL-9000");
             MenuItem closeHAL = new MenuItem("Close HAL-9000");
+            MenuItem closeHALSync = new MenuItem("Close HALSync");
             MenuItem closeHalFull = new MenuItem("Close HAL-9000 Completely");
             MenuItem closeHalTray = new MenuItem("Close HAL-9000 Tray App");
 
             contextMenu.MenuItems.Add(runHAL);
             contextMenu.MenuItems.Add(closeHAL);
+            contextMenu.MenuItems.Add(closeHALSync);
             contextMenu.MenuItems.Add(closeHalFull);
             contextMenu.MenuItems.Add(closeHalTray);
             halTrayIcon.ContextMenu = contextMenu;
 
             runHAL.Click += runHAL_click;
             closeHAL.Click += closeHAL_click;
+            closeHALSync.Click += closeHALSync_Click;
             closeHalTray.Click += closeHalTray_click;
             closeHalFull.Click += closeHalFull_click;
+        }
+        private void closeHALSync_Click(object sender, EventArgs e)
+        {
+            Process[] proc = Process.GetProcessesByName("HALSync");
+            if (proc.Length != 0)
+            {
+                proc[0].Kill();
+            }
         }
         void closeHalTray_click(object sender, EventArgs e)
         {
@@ -56,7 +67,15 @@ namespace SystemTray
             try
             {
                 Process[] proc = Process.GetProcessesByName("HAL-9000");
-                proc[0].Kill();
+                Process[] proc2 = Process.GetProcessesByName("HALSync");
+                if (proc.Length != 0)
+                {
+                    proc[0].Kill();
+                }
+                if (proc2.Length != 0)
+                {
+                    proc2[0].Kill();
+                }
             }
             catch
             {

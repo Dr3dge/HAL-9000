@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
 
-namespace HAL_9000
+namespace HAL_9000_Writting
 {
     public class Writting
     {
@@ -43,9 +44,6 @@ namespace HAL_9000
         {
             Console.WriteLine("There was a problem with your answer.");
         }
-        public static void nothing()
-        {
-        }
         public static void sayHello()
         {
             Console.WriteLine("Hello, I hope you are having a good day.");
@@ -70,10 +68,6 @@ namespace HAL_9000
         public static void terminated()
         {
             Console.WriteLine("Program Terminated");
-        }
-        public static void areYouSure()
-        {
-            Console.WriteLine("Are you sure?");
         }
         public static void chromeStarted()
         {
@@ -134,7 +128,8 @@ namespace HAL_9000
         }
         public static void sorryDave()
         {
-            Console.WriteLine("I'm sorry " + Workings.name + ", I'm afraid I can't do that.");
+            string name = File.ReadLines(@"C:\Program Files\HAL-9000\config.txt").Take(1).First();
+            Console.WriteLine("I'm sorry " + name.Replace("name = ", "") + ", I'm afraid I can't do that.");
         }
         public static void whatIsYourName()
         {
@@ -144,7 +139,8 @@ namespace HAL_9000
         }
         public static void nameSet()
         {
-            Console.WriteLine("Name set to " + Workings.name);
+            string name = File.ReadLines(@"C:\Program Files\HAL-9000\config.txt").Take(1).First();
+            Console.WriteLine("Name set to " + name.Replace("name = ", ""));
         }
         public static void help()
         {
@@ -255,7 +251,6 @@ namespace HAL_9000
             Console.WriteLine("HALSync could not be found, try installing HAL-9000");
             Console.WriteLine();
         }
-
         public static void halInstalling()
         {
             Console.WriteLine("Downloading and Installing...");

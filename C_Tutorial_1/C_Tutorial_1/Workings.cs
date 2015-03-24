@@ -9,16 +9,47 @@ using System.Globalization;
 using System.Collections.Generic;
 using IWshRuntimeLibrary;
 using HAL_9000;
+using HAL_9000_Writting;
 
 namespace HAL_9000
 {
     class Workings
     {
-        public static string name = "Dave"; // Sets the default name to refer to the person as
+        public static string installPath = @"C:\Program Files\HAL-9000\";
+        public static string name = null;
         public static string userInput = null;
+        public static string tryInstallingHal = "Try installing HAL-9000 to use this feature.";
+        public static bool halInstalled = false;
         public static void Program()
         {
-
+            if (System.IO.File.Exists(installPath + "HAL-9000.exe"))
+            {
+                halInstalled = true;
+            }
+            if (halInstalled == true)
+            {
+                if (!System.IO.File.Exists(installPath + "config.txt"))
+                {
+                    System.IO.File.Create(installPath + "config.txt").Dispose();
+                    using (TextWriter tw = new StreamWriter(installPath + "config.txt"))
+                    {
+                        tw.WriteLine("name = Dave");
+                        tw.Close();
+                    }
+                }
+            }
+            else if (halInstalled == false)
+            {
+                Console.WriteLine("Try installing HAL-9000 for more features.");
+            }
+            if (halInstalled == true)
+            {
+                name = System.IO.File.ReadLines(@"C:\Program Files\HAL-9000\config.txt").Take(1).First().Replace("name = ", "");
+            }
+            else if (halInstalled == false)
+            {
+                name = "Dave";
+            }
             int guess;
 
             Main:
@@ -41,20 +72,8 @@ namespace HAL_9000
                 Random numberRand = new Random(); // Creates a random number in case of need
 
                 int number = numberRand.Next(0, 11); // Randomises the number betweeb 1 and 10
-
-                if (userInput.Contains("set name to") == true)
-                {
-                    name = userInput.Replace("set name to ","");
-                    name = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(name.ToLower());
-                    Writting.nameSet();
-                } 
-                else if (userInput.Contains("set name") == true)
-                {
-                    name = userInput.Replace("set name ", ""); // Removes "set name" from the string, leaving the desired name
-                    name = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(name.ToLower()); // Changes the name to all lowercase, then changing the first letter to uppercase
-                    Writting.nameSet();
-                }
-                else if (userInput.Contains("my name is") == true)
+                
+                if (userInput.Contains("my name is") == true)
                 {
                     name = userInput.Replace("my name is ", ""); // Removes "my name is" from the string, leaving the desired name
                     name = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(name.ToLower()); // Changes the name to all lowercase, then changing the first letter to uppercase
@@ -171,7 +190,7 @@ namespace HAL_9000
                 {
                     try
                     {
-                        if (Directory.Exists(@"C:\Program Files\HAL-9000"))
+                        if (halInstalled == true)
                         {
                             Console.WriteLine("Downloading installer...");
                             if (System.IO.File.Exists(@"C:\Program Files\HAL-9000\HAL-9000 Installer.exe"))
@@ -196,7 +215,14 @@ namespace HAL_9000
                         }
                         else
                         {
-                            Writting.halInstalling();
+                            try
+                            {
+                                Writting.halInstalling();
+                            }
+                            catch
+                            {
+                                Console.WriteLine("Downloading and Installing HAL-9000...");
+                            }
                             Directory.CreateDirectory(@"C:\Program Files\HAL-9000");
                             using (WebClient Client = new WebClient())
                             {
@@ -218,6 +244,11 @@ namespace HAL_9000
                                 Client.DownloadFile("https://dl.dropboxusercontent.com/s/5s39gdhyu4f03j2/SystemTray Handler.exe?dl=0",
                                     @"C:\Program Files\HAL-9000\SystemTray Handler.exe");
                             }
+                            using (WebClient Client = new WebClient())
+                            {
+                                Client.DownloadFile("https://dl.dropboxusercontent.com/s/yzc8m0gbi1la2zk/Writting.dll?dl=0",
+                                    @"C:\Program Files\HAL-9000\Writting.dll");
+                            }
                             object shDesktop = (object)"Desktop";
                             WshShell shell = new WshShell();
                             string shortcutAddress = (string)shell.SpecialFolders.Item(ref shDesktop) + @"\HAL-9000.lnk";
@@ -236,14 +267,14 @@ namespace HAL_9000
                     }
                     catch
                     {
-                        Writting.sorryDave();
+                        Console.WriteLine("I'm sorry Dave, I'm afraid I can't do that.");
                     }
                 }
                 else if (userInput == "update" || userInput == "update hal" || userInput == "update hal9000" || userInput == "update hal-9000")
                 {
                     try
                     {
-                        if (Directory.Exists(@"C:\Program Files\HAL-9000"))
+                        if (halInstalled == true)
                             {
                             if (System.IO.File.Exists(@"C:\Program Files\HAL-9000\Updater.exe"))
                             {
@@ -267,7 +298,9 @@ namespace HAL_9000
                         }
                         else
                         {
-                            Writting.halIsMissing();
+                            Console.WriteLine();
+                            Console.WriteLine("HAL-9000 is not installed, try installing HAL");
+                            Console.WriteLine();
                         }
                     }
                     catch
@@ -279,20 +312,25 @@ namespace HAL_9000
                 {
                     try
                     {
-                        if (!System.IO.File.Exists(@"C:\Program Files\HAL-9000\HAL-9000.exe"))
+                        if (halInstalled == false)
                         {
-                            Writting.halIsMissing();
+                            Console.WriteLine();
+                            Console.WriteLine("HAL-9000 is not installed, try installing HAL");
+                            Console.WriteLine();
                         }
-                        else
+                        else if (halInstalled == true)
                         {
                             System.IO.File.Delete(@"C:\Program Files\HAL-9000\HAL-9000.exe");
                             System.IO.File.Delete(@"C:\Program Files\HAL-9000\HALSync.exe");
                             System.IO.File.Delete(@"C:\Program Files\HAL-9000\Updater.exe");
+                            System.IO.File.Delete(@"C:\Program Files\HAL-9000\Writting.dll");
                             Directory.Delete(@"C:\Program Files\HAL-9000");
                             string desktop = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
                             System.IO.File.Delete(desktop +@"\HAL-9000.lnk");
                             System.IO.File.Delete(desktop + @"\HALSync.lnk");
-                            Writting.halUninstalled();
+                            Console.WriteLine();
+                            Console.WriteLine("HAL-9000 has been successfully uninstalled");
+                            Console.WriteLine();
                         }
                     }
                     catch
@@ -735,7 +773,7 @@ namespace HAL_9000
                         Writting.sorryDave();
                     }
                 }
-                else if (userInput.Contains("halsync"))
+                else if (userInput.Contains("halsync") && halInstalled == true)
                 {
                     try
                     {
@@ -760,15 +798,27 @@ namespace HAL_9000
                         Writting.sorryDave();
                     }
                 }
-                else if (userInput.Contains("goto") == true)
+                else if (userInput.Contains("halsync") && halInstalled == false)
+                {
+                    Console.WriteLine(tryInstallingHal);
+                }
+                else if (userInput.Contains("goto ") && halInstalled == true)
                 {
                     Websites.goTo();
                 }
-                else if (userInput.Contains("website") == true)
+                else if (userInput.Contains("goto ") && halInstalled == false)
+                {
+                    Console.WriteLine(tryInstallingHal);
+                }
+                else if (userInput.Contains("website ") && halInstalled == true)
                 {
                     Websites.website();
                 }
-                else if (userInput.Contains("google") == true)
+                else if (userInput.Contains("website ") && halInstalled == false)
+                {
+                    Console.WriteLine(tryInstallingHal);
+                }
+                else if (userInput.Contains("google ") && halInstalled == true)
                 {
                     try
                     {
@@ -781,7 +831,11 @@ namespace HAL_9000
                         Writting.googleSearched();
                     }
                 }
-                else if (userInput.Contains("youtube") == true)
+                else if (userInput.Contains("google ") && halInstalled == false)
+                {
+                    Console.WriteLine(tryInstallingHal);
+                }
+                else if (userInput.Contains("youtube ") && halInstalled == true)
                 {
                     try
                     {
@@ -794,7 +848,11 @@ namespace HAL_9000
                         Writting.youtubeSearched();
                     }
                 }
-                else if (userInput.Contains("run") == true)
+                else if ( userInput.Contains("youtube ") && halInstalled == false)
+                {
+                    Console.WriteLine(tryInstallingHal);
+                }
+                else if (userInput.Contains("run"))
                 {
                     searchPrograms.findPrograms();
                 }
@@ -811,25 +869,42 @@ namespace HAL_9000
                     addToStartup.registerInStartup();
                     Writting.startupAdd();
                 }
-                else if (userInput.Contains("username") == true)
+                else if (userInput.Contains("username"))
                 {
                     Username.getUsername();
                 }
-                else if (userInput == "help")
+                else if (userInput == "help" && halInstalled == true)
                 {
                     Writting.help();
                 }
-                else if (userInput == "install help")
+                else if (userInput == "help" && halInstalled == false)
+                {
+                    Console.WriteLine(tryInstallingHal);
+                }
+                else if (userInput == "install help" && halInstalled == true)
                 {
                     Writting.installHelp();
                 }
-                else if (userInput == "web help" || userInput == "website help")
+                else if (userInput == "install help" && halInstalled == false)
+                {
+                    Console.WriteLine(tryInstallingHal);
+                }
+                else if (userInput == "web help" && halInstalled == true || userInput == "website help" && halInstalled == true)
                 {
                     Writting.websitesHelp();
                 }
-                else if (userInput == "arduino help")
+                else if (userInput == "web help" && halInstalled == false || userInput == "website help" && halInstalled == false)
+                {
+                    Console.WriteLine(tryInstallingHal);
+                }
+                else if (userInput == "arduino help" && halInstalled == true)
                 {
                     Writting.arduinoHelp();
+                }
+
+                else if (userInput == "arduino help" && halInstalled == false)
+                {
+                    Console.WriteLine(tryInstallingHal);
                 }
                 else if (userInput == "kill")
                 {
@@ -845,15 +920,21 @@ namespace HAL_9000
                 }
                 else if (guess == 9502)
                 {
-                    Writting.nothing();
                 }
                 else
                 {
-                    Writting.sorryDave();
+                    if (halInstalled == true)
+                    {
+                        Writting.sorryDave();
+                    }
+                    else if (halInstalled == false)
+                    {
+                        Console.WriteLine("I'm sorry Dave, I'm afraid I can't do that.");
+                    }
                 }
                 goto Main;
             }
-            Writting.areYouSure();
+            Console.WriteLine("Are you sure?");
         }
     }
 }

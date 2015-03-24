@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HAL_9000_Writting;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -40,7 +41,7 @@ namespace HAL_9000
 
         public static void winSD()
         {
-            Writting.areYouSure();
+            Console.WriteLine("Are you sure?");
             string yesNo = Console.ReadLine();
 
             if (yesNo == "y" || yesNo == "Y" || yesNo == "yes" || yesNo == "Yes")

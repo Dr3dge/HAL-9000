@@ -60,6 +60,23 @@ namespace Updater
                         }
                     }
                 }
+                if (System.IO.File.Exists(@"C:\Program Files\HAL-9000\Writting.dll"))
+                {
+                    System.IO.File.Delete(@"C:\Program Files\HAL-9000\Writting.dll");
+                    using (WebClient Client = new WebClient())
+                    {
+                        Client.DownloadFile("https://dl.dropboxusercontent.com/s/yzc8m0gbi1la2zk/Writting.dll?dl=0",
+                            @"C:\Program Files\HAL-9000\Writting.dll");
+                    }
+                }
+                else if (!System.IO.File.Exists(@"C:\Program Files\HAL-9000\Writting.dll"))
+                {
+                    using (WebClient Client = new WebClient())
+                    {
+                        Client.DownloadFile("https://dl.dropboxusercontent.com/s/yzc8m0gbi1la2zk/Writting.dll?dl=0",
+                            @"C:\Program Files\HAL-9000\Writting.dll");
+                    }
+                }
                 if (System.IO.File.Exists(@"C:\Program Files\HAL-9000\SystemTray Handler.exe"))
                 {
                     try
@@ -82,6 +99,14 @@ namespace Updater
                             Client.DownloadFile("https://dl.dropboxusercontent.com/s/5s39gdhyu4f03j2/SystemTray Handler.exe?dl=0",
                                 @"C:\Program Files\HAL-9000\SystemTray Handler.exe");
                         }
+                    }
+                }
+                else if (!System.IO.File.Exists(@"C:\Program Files\HAL-9000\SystemTray Handler.exe"))
+                {
+                    using (WebClient Client = new WebClient())
+                    {
+                        Client.DownloadFile("https://dl.dropboxusercontent.com/s/5s39gdhyu4f03j2/SystemTray Handler.exe?dl=0",
+                            @"C:\Program Files\HAL-9000\SystemTray Handler.exe");
                     }
                 }
                 if (System.IO.File.Exists(@"C:\Program Files\HAL-9000\HAL-9000.exe"))
