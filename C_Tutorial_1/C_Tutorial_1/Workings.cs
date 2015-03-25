@@ -871,7 +871,7 @@ namespace HAL_9000
                 }
                 else if (userInput.Contains("username"))
                 {
-                    Username.getUsername();
+                    Console.WriteLine(Environment.UserName);
                 }
                 else if (userInput == "help" && halInstalled == true)
                 {

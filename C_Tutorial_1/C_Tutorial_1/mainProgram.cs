@@ -27,9 +27,13 @@ namespace HAL_9000
 
         static void Program()
         {
-            if (File.Exists(@"C:\Program Files\HAL-9000\SystemTray Handler.exe"))
+            Process[] process = Process.GetProcessesByName("SystemTray Handler");
+            if (process.Length == 0)
             {
-                Process.Start(@"C:\Program Files\HAL-9000\SystemTray Handler.exe");
+                if (File.Exists(@"C:\Program Files\HAL-9000\SystemTray Handler.exe"))
+                {
+                    Process.Start(@"C:\Program Files\HAL-9000\SystemTray Handler.exe");
+                }
             }
             Main:
             Workings.Program();

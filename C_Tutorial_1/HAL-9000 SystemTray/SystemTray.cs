@@ -29,14 +29,14 @@ namespace SystemTray
             MenuItem runHAL = new MenuItem("Open HAL-9000");
             MenuItem closeHAL = new MenuItem("Close HAL-9000");
             MenuItem closeHALSync = new MenuItem("Close HALSync");
-            MenuItem closeHalFull = new MenuItem("Close HAL-9000 Completely");
             MenuItem closeHalTray = new MenuItem("Close HAL-9000 Tray App");
+            MenuItem closeHalFull = new MenuItem("Close HAL-9000 Completely");
 
             contextMenu.MenuItems.Add(runHAL);
             contextMenu.MenuItems.Add(closeHAL);
             contextMenu.MenuItems.Add(closeHALSync);
-            contextMenu.MenuItems.Add(closeHalFull);
             contextMenu.MenuItems.Add(closeHalTray);
+            contextMenu.MenuItems.Add(closeHalFull);
             halTrayIcon.ContextMenu = contextMenu;
 
             runHAL.Click += runHAL_click;
