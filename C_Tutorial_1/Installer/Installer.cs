@@ -26,83 +26,26 @@ namespace Installer
                     userInput = Console.ReadLine().ToLower();
                     if (userInput == "y" || userInput == "yes")
                     {
-                        Console.WriteLine("Downloading and Installing...");
                         try
                         {
                             Process[] proc = Process.GetProcessesByName("HAL-9000");
                             proc[0].Kill();
                             Thread.Sleep(TimeSpan.FromMilliseconds(300));
-                            System.IO.File.Delete(@"C:\Program Files\HAL-9000\HAL-9000.exe");
-                            using (WebClient Client = new WebClient())
-                            {
-                                Client.DownloadFile("https://dl.dropboxusercontent.com/s/t9yj5z980siq2du/HAL-9000.exe?dl=0",
-                                    @"C:\Program Files\HAL-9000\HAL-9000.exe");
-                            }
                         }
                         catch
-                        {
-                            System.IO.File.Delete(@"C:\Program Files\HAL-9000\HAL-9000.exe");
-                            using (WebClient Client = new WebClient())
-                            {
-                                Client.DownloadFile("https://dl.dropboxusercontent.com/s/t9yj5z980siq2du/HAL-9000.exe?dl=0",
-                                    @"C:\Program Files\HAL-9000\HAL-9000.exe");
-                            }
-                        }
-                        try
-                        {
-                            Process[] proc = Process.GetProcessesByName("SystemTray Handler");
-                            proc[0].Kill();
-                            Thread.Sleep(TimeSpan.FromMilliseconds(300));
-                            System.IO.File.Delete(@"C:\Program Files\HAL-9000\SystemTray Handler.exe");
-                            using (WebClient Client = new WebClient())
-                            {
-                                Client.DownloadFile("https://dl.dropboxusercontent.com/s/5s39gdhyu4f03j2/SystemTray Handler.exe?dl=0",
-                                    @"C:\Program Files\HAL-9000\SystemTray Handler.exe");
-                            }
-                        }
-                        catch
-                        {
-                            System.IO.File.Delete(@"C:\Program Files\HAL-9000\SystemTray Handler");
-                            using (WebClient Client = new WebClient())
-                            {
-                                Client.DownloadFile("https://dl.dropboxusercontent.com/s/5s39gdhyu4f03j2/SystemTray Handler.exe?dl=0",
-                                    @"C:\Program Files\HAL-9000\SystemTray Handler.exe");
-                            }
-                        }
-                        try
-                        {
-                            System.IO.File.Delete(@"C:\Program Files\HAL-9000\Updater.exe");
-                            using (WebClient Client = new WebClient())
-                            {
-                                Client.DownloadFile("https://dl.dropboxusercontent.com/s/iquqw73byxcmbsv/Updater.exe?dl=0",
-                                    @"C:\Program Files\HAL-9000\Updater.exe");
-                            }
-                        }
-                        catch
-                        {
-                            using (WebClient Client = new WebClient())
-                            {
-                                Client.DownloadFile("https://dl.dropboxusercontent.com/s/iquqw73byxcmbsv/Updater.exe?dl=0",
-                                    @"C:\Program Files\HAL-9000\Updater.exe");
-                            }
-                        }
-                        try
-                        {
-                            System.IO.File.Delete(@"C:\Program Files\HAL-9000\Writting.dll");
-                            using (WebClient Client = new WebClient())
-                            {
-                                Client.DownloadFile("https://dl.dropboxusercontent.com/s/yzc8m0gbi1la2zk/Writting.dll?dl=0",
-                                    @"C:\Program Files\HAL-9000\Writting.dll");
-                            }
-                        }
-                        catch
-                        {
-                            using (WebClient Client = new WebClient())
-                            {
-                                Client.DownloadFile("https://dl.dropboxusercontent.com/s/yzc8m0gbi1la2zk/Writting.dll?dl=0",
-                                    @"C:\Program Files\HAL-9000\Writting.dll");
-                            }
-                        }
+                        { }
+
+                        Thread install1 = new Thread(installHAL9000);
+                        Thread install2 = new Thread(installWritting);
+                        Thread install3 = new Thread(installTrayHandler);
+                        Thread install4 = new Thread(installUpdater);
+                        install1.Start();
+                        install2.Start();
+                        install3.Start();
+                        install4.Start();
+
+                        Console.WriteLine("Downloading and Installing...");
+
                         if (System.IO.File.Exists(@"C:\Program Files\HAL-9000\HALSync.exe"))
                         {
                             try
@@ -175,15 +118,15 @@ namespace Installer
                                 shortcut2.TargetPath = @"C:\Program Files\HAL-9000\HALSync.exe";
                                 shortcut2.Save();
                             }
-                        Console.WriteLine();
-                        Console.WriteLine("This program was successfully installed");
-                        Console.WriteLine();
-                        Console.ReadKey();
                         }
                         catch
                         {
                             Console.WriteLine("I'm sorry Dave, I'm afraid I can't do that.");
                         }
+                        Console.WriteLine();
+                        Console.WriteLine("This program was successfully installed");
+                        Console.WriteLine();
+                        Console.ReadKey();
                     }
                     else
                     {
@@ -197,31 +140,22 @@ namespace Installer
                 {
                     Console.WriteLine("Downloading and Installing...");
                     Directory.CreateDirectory(@"C:\Program Files\HAL-9000");
-                    using (WebClient Client = new WebClient())
-                    {
-                        Client.DownloadFile("https://dl.dropboxusercontent.com/s/t9yj5z980siq2du/HAL-9000.exe?dl=0",
-                            @"C:\Program Files\HAL-9000\HAL-9000.exe");
-                    }
-                    using (WebClient Client = new WebClient())
-                    {
-                        Client.DownloadFile("https://dl.dropboxusercontent.com/s/iquqw73byxcmbsv/Updater.exe?dl=0",
-                            @"C:\Program Files\HAL-9000\Updater.exe");
-                    }
+
+                    Thread install1 = new Thread(cleanInstallHAL9000);
+                    Thread install2 = new Thread(cleanInstallWritting);
+                    Thread install3 = new Thread(cleanInstallTrayHandler);
+                    Thread install4 = new Thread(cleanInstallUpdater);
+                    install1.Start();
+                    install2.Start();
+                    install3.Start();
+                    install4.Start();
+
                     using (WebClient Client = new WebClient())
                     {
                         Client.DownloadFile("https://dl.dropboxusercontent.com/s/46w6a16t1xtp6eh/HALSync.exe?dl=0",
                             @"C:\Program Files\HAL-9000\HALSync.exe");
                     }
-                    using (WebClient Client = new WebClient())
-                    {
-                        Client.DownloadFile("https://dl.dropboxusercontent.com/s/5s39gdhyu4f03j2/SystemTray Handler.exe?dl=0",
-                            @"C:\Program Files\HAL-9000\SystemTray Handler.exe");
-                    }
-                    using (WebClient Client = new WebClient())
-                    {
-                        Client.DownloadFile("https://dl.dropboxusercontent.com/s/yzc8m0gbi1la2zk/Writting.dll?dl=0",
-                            @"C:\Program Files\HAL-9000\Writting.dll");
-                    }
+
                     object shDesktop = (object)"Desktop";
                     WshShell shell = new WshShell();
                     string shortcutAddress = (string)shell.SpecialFolders.Item(ref shDesktop) + @"\HAL-9000.lnk";
@@ -243,7 +177,116 @@ namespace Installer
             }
             catch
             {
-            Console.WriteLine("I'm sorry Dave, I'm afraid I can't do that.");
+                Console.WriteLine("I'm sorry Dave, I'm afraid I can't do that.");
+            }
+        }
+
+        private static void cleanInstallUpdater(object obj)
+        {
+            using (WebClient Client = new WebClient())
+            {
+                Client.DownloadFile("https://dl.dropboxusercontent.com/s/iquqw73byxcmbsv/Updater.exe?dl=0",
+                    @"C:\Program Files\HAL-9000\Updater.exe");
+            }
+        }
+
+        private static void cleanInstallTrayHandler(object obj)
+        {
+            using (WebClient Client = new WebClient())
+            {
+                Client.DownloadFile("https://dl.dropboxusercontent.com/s/5s39gdhyu4f03j2/SystemTray Handler.exe?dl=0",
+                    @"C:\Program Files\HAL-9000\SystemTray Handler.exe");
+            }
+        }
+
+        private static void cleanInstallWritting(object obj)
+        {
+            using (WebClient Client = new WebClient())
+            {
+                Client.DownloadFile("https://dl.dropboxusercontent.com/s/yzc8m0gbi1la2zk/Writting.dll?dl=0",
+                    @"C:\Program Files\HAL-9000\Writting.dll");
+            }
+        }
+
+        private static void cleanInstallHAL9000(object obj)
+        {
+            using (WebClient Client = new WebClient())
+            {
+                Client.DownloadFile("https://dl.dropboxusercontent.com/s/t9yj5z980siq2du/HAL-9000.exe?dl=0",
+                    @"C:\Program Files\HAL-9000\HAL-9000.exe");
+            }
+        }
+        private static void installUpdater(object obj)
+        {
+            try
+            {
+                System.IO.File.Delete(@"C:\Program Files\HAL-9000\Updater.exe");
+                using (WebClient Client = new WebClient())
+                {
+                    Client.DownloadFile("https://dl.dropboxusercontent.com/s/iquqw73byxcmbsv/Updater.exe?dl=0",
+                        @"C:\Program Files\HAL-9000\Updater.exe");
+                }
+            }
+            catch
+            {
+                using (WebClient Client = new WebClient())
+                {
+                    Client.DownloadFile("https://dl.dropboxusercontent.com/s/iquqw73byxcmbsv/Updater.exe?dl=0",
+                        @"C:\Program Files\HAL-9000\Updater.exe");
+                }
+            }
+        }
+        private static void installTrayHandler(object obj)
+        {
+            try
+            {
+                Process[] proc = Process.GetProcessesByName("SystemTray Handler");
+                proc[0].Kill();
+                Thread.Sleep(TimeSpan.FromMilliseconds(300));
+                System.IO.File.Delete(@"C:\Program Files\HAL-9000\SystemTray Handler.exe");
+                using (WebClient Client = new WebClient())
+                {
+                    Client.DownloadFile("https://dl.dropboxusercontent.com/s/5s39gdhyu4f03j2/SystemTray Handler.exe?dl=0",
+                        @"C:\Program Files\HAL-9000\SystemTray Handler.exe");
+                }
+            }
+            catch
+            {
+                System.IO.File.Delete(@"C:\Program Files\HAL-9000\SystemTray Handler.exe");
+                using (WebClient Client = new WebClient())
+                {
+                    Client.DownloadFile("https://dl.dropboxusercontent.com/s/5s39gdhyu4f03j2/SystemTray Handler.exe?dl=0",
+                        @"C:\Program Files\HAL-9000\SystemTray Handler.exe");
+                }
+            }
+        }
+        private static void installWritting(object obj)
+        {
+            try
+            {
+                System.IO.File.Delete(@"C:\Program Files\HAL-9000\Writting.dll");
+                using (WebClient Client = new WebClient())
+                {
+                    Client.DownloadFile("https://dl.dropboxusercontent.com/s/yzc8m0gbi1la2zk/Writting.dll?dl=0",
+                        @"C:\Program Files\HAL-9000\Writting.dll");
+                }
+            }
+            catch
+            {
+                using (WebClient Client = new WebClient())
+                {
+                    Client.DownloadFile("https://dl.dropboxusercontent.com/s/yzc8m0gbi1la2zk/Writting.dll?dl=0",
+                        @"C:\Program Files\HAL-9000\Writting.dll");
+                }
+            }
+        }
+        private static void installHAL9000(object obj)
+        {
+            System.IO.File.Delete(@"C:\Program Files\HAL-9000\HAL-9000.exe");
+            using (WebClient Client = new WebClient())
+            {
+                Client.DownloadFile("https://dl.dropboxusercontent.com/s/t9yj5z980siq2du/HAL-9000.exe?dl=0",
+                    @"C:\Program Files\HAL-9000\HAL-9000.exe");
             }
         }
     }

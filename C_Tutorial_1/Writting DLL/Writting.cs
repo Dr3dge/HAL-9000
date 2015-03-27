@@ -185,7 +185,7 @@ namespace HAL_9000_Writting
             Console.WriteLine("Install Visual Studio -       Downloads and installs Visual Studio for you");
             Console.WriteLine("Install GitHub        -       Downloads and installs GitHub for you");
             Console.WriteLine("Install BitTorrent    -       Downloads and installs BitTorrent for you");
-            Console.WriteLine("Install Virtual Box   -       Downloads and installs Virtual Box for you");
+            Console.WriteLine("Install VirtualBox    -       Downloads and installs Virtual Box for you");
             Console.WriteLine();
         }
         public static void websitesHelp()

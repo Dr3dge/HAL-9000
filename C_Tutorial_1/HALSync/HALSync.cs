@@ -6,7 +6,6 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace HALSync
@@ -27,26 +26,26 @@ namespace HALSync
             }
             else if (Directory.Exists(directoryToWatch))
             {
-                CreateFileWatcher();
+                createFileWatcher();
             }
         }
-        public void CreateFileWatcher()
+        public void createFileWatcher()
         {
             FileSystemWatcher watcher = new FileSystemWatcher();
             watcher.Path = directoryToWatch;
             watcher.NotifyFilter = NotifyFilters.LastAccess | NotifyFilters.LastWrite
                | NotifyFilters.FileName | NotifyFilters.DirectoryName;
 
-            watcher.Changed += new FileSystemEventHandler(OnChanged);
-            watcher.Created += new FileSystemEventHandler(OnChanged);
-            watcher.Deleted += new FileSystemEventHandler(OnChanged);
-            watcher.Renamed += new RenamedEventHandler(OnChanged);
+            watcher.Changed += new FileSystemEventHandler(onChanged);
+            watcher.Created += new FileSystemEventHandler(onChanged);
+            watcher.Deleted += new FileSystemEventHandler(onChanged);
+            watcher.Renamed += new RenamedEventHandler(onChanged);
 
             watcher.EnableRaisingEvents = true;
         }
-        private static void OnChanged(object source, FileSystemEventArgs e)
+        public static void onChanged(object source, FileSystemEventArgs e)
         {
-            // What happens when files in the designated directory are modified
+
         }
     }
 }
