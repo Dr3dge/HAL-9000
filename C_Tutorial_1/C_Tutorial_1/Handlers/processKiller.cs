@@ -44,11 +44,32 @@ namespace HAL_9000
             Console.WriteLine("Are you sure?");
             string yesNo = Console.ReadLine();
 
-            if (yesNo == "y" || yesNo == "Y" || yesNo == "yes" || yesNo == "Yes")
+            if (yesNo.ToLower() == "y" || yesNo.ToLower() == "yes")
             {
                 try
                 {
                     Process.Start("shutdown", "/s /t 0");
+                }
+                catch
+                {
+                    Writting.sorryDave();
+                }
+            }
+            else
+            {
+                Console.WriteLine("Operation Canceled");
+            }
+        }
+        public static void winRB()
+        {
+            Console.WriteLine("Are you sure?");
+            string yesNo = Console.ReadLine();
+
+            if (yesNo.ToLower() == "y" || yesNo.ToLower() == "yes")
+            {
+                try
+                {
+                    Process.Start("shutdown", "/r /t 0");
                 }
                 catch
                 {
