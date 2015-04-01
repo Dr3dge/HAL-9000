@@ -17,7 +17,7 @@ namespace Installer
         {
             try
             {
-                if (System.IO.File.Exists(@"C:\Program Files\HAL-9000\HAL-9000.exe"))
+                if (System.IO.Directory.Exists(@"C:\Program Files\HAL-9000"))
                 {
                     string userInput = null;
                     Console.WriteLine();

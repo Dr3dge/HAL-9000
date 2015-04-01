@@ -172,7 +172,7 @@ namespace HAL_9000
                     }
                     else
                     {
-                        Console.WriteLine("No " + Workings.name + ", I will not be your girlfriend.");
+                        Console.WriteLine("No " + name + ", I will not be your girlfriend.");
                     }
                 }
                 else if (userInput == "will you marry me hal?" || userInput == "will you marry me hal")
@@ -183,7 +183,7 @@ namespace HAL_9000
                     }
                     else
                     {
-                        Console.WriteLine("No " + Workings.name + ", I will not marry you.");
+                        Console.WriteLine("No " + name + ", I will not marry you.");
                     }
                 }
                 else if (userInput == "internet")
@@ -344,12 +344,7 @@ namespace HAL_9000
                                 process2[0].Kill();
                             }
                             Thread.Sleep(50);
-                            System.IO.File.Delete(@"C:\Program Files\HAL-9000\HAL-9000.exe");
-                            System.IO.File.Delete(@"C:\Program Files\HAL-9000\HALSync.exe");
-                            System.IO.File.Delete(@"C:\Program Files\HAL-9000\SystemTray Handler.exe");
-                            System.IO.File.Delete(@"C:\Program Files\HAL-9000\Updater.exe");
-                            System.IO.File.Delete(@"C:\Program Files\HAL-9000\Writting.dll");
-                            Directory.Delete(@"C:\Program Files\HAL-9000");
+                            Directory.Delete(@"C:\Program Files\HAL-9000", true);
                             string desktop = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
                             System.IO.File.Delete(desktop +@"\HAL-9000.lnk");
                             System.IO.File.Delete(desktop + @"\HALSync.lnk");
@@ -889,6 +884,30 @@ namespace HAL_9000
                             else
                             {
                                 Writting.halsyncIsMissingUDReq();
+                                Console.Write("Do you want to update HAL-9000 now?   ");
+                                string yesNo = Console.ReadLine();
+                                if (yesNo == "y" || yesNo == "yes" || yesNo == "")
+                                {
+                                    if (System.IO.File.Exists(@"C:\Program Files\HAL-9000\Updater.exe"))
+                                    {
+                                        System.IO.File.Delete(@"C:\Program Files\HAL-9000\Updater.exe");
+                                        using (WebClient Client = new WebClient())
+                                        {
+                                            Client.DownloadFile("https://dl.dropboxusercontent.com/s/iquqw73byxcmbsv/Updater.exe?dl=0",
+                                                @"C:\Program Files\HAL-9000\Updater.exe");
+                                        }
+                                        Process.Start(@"C:\Program Files\HAL-9000\Updater.exe");
+                                    }
+                                    else
+                                    {
+                                        using (WebClient Client = new WebClient())
+                                        {
+                                            Client.DownloadFile("https://dl.dropboxusercontent.com/s/iquqw73byxcmbsv/Updater.exe?dl=0",
+                                                @"C:\Program Files\HAL-9000\Updater.exe");
+                                        }
+                                        Process.Start(@"C:\Program Files\HAL-9000\Updater.exe");
+                                    }
+                                }
                             }
                         }
                         else

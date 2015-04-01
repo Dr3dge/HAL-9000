@@ -166,6 +166,7 @@ namespace HAL_9000_Writting
             Console.WriteLine("Close              -       Closes the specified process");
             Console.WriteLine("Kill               -       Kills Windows");
             Console.WriteLine("Shutdown           -       Shuts down Windows");
+            Console.WriteLine("Reboot             -       Restarts Windows completely");
             Console.WriteLine("Stop               -       Tells HAL-9000 that you are finished");
             Console.WriteLine();
         }
