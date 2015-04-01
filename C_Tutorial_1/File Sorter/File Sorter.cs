@@ -15,12 +15,12 @@ namespace File_Sorter
     {
         static void Main(string[] args)
         {
-            string[] files;
             string fileType;
             char driveLetter;
             string currentDrive;
             string driveList = null;
             string placementDirectory;
+            var searchPaths = new Queue<string>();
 
             DriveInfo[] drives = DriveInfo.GetDrives();
             Console.WriteLine("These are the drives avalible for scanning");
@@ -45,24 +45,62 @@ namespace File_Sorter
                 Console.WriteLine();
                 if (fileType.Contains("."))
                 {
-                    fileType.Replace(".", "*.");
-
                 PlacementStart:
                     Console.WriteLine("Where is the directory you want to copy the files to?");
-                    placementDirectory = Console.ReadLine();
+                    placementDirectory = Console.ReadLine().ToLower();
                     Console.WriteLine();
                     if (Directory.Exists(placementDirectory))
                     {
-                        Console.WriteLine("Searching for and sorting files now...");
-
-                        files = Directory.GetFiles(driveLetter + ":\\", fileType, SearchOption.AllDirectories);
-
-                        if (files != null)
+                    moveCopyStart:
+                        Console.WriteLine("Do you wish to Move or Copy these files?");
+                        string moveOrCopy = Console.ReadLine().ToLower();
+                        if (moveOrCopy == "move" || moveOrCopy == "copy")
                         {
-                            foreach (string file in files)
+                            Console.WriteLine("Searching for and sorting files now...");
+
+                            string searchLocationStart = driveLetter + ":\\";
+                            searchPaths.Enqueue(searchLocationStart);
+
+                            while (searchPaths.Count > 0)
                             {
-                                File.Copy(Directory.GetParent(file) + file, "C:\\Users\\" + Environment.UserName + "\\Music\\");
+                                var directory = searchPaths.Dequeue();
+
+                                try
+                                {
+                                    string[] files = Directory.GetFiles(directory);
+                                    foreach (string file in Directory.GetFiles(directory))
+                                    {
+                                        if (file.Contains(fileType))
+                                        {
+                                            Console.WriteLine(file);
+                                            if (moveOrCopy == "move")
+                                            {
+                                                File.Move(file, placementDirectory + Path.GetFileName(file));
+                                            }
+                                            else if (moveOrCopy == "copy")
+                                            {
+                                                File.Copy(file, placementDirectory + Path.GetFileName(file));
+                                            }
+                                        }
+                                    }
+
+                                    foreach (var subDirectory in Directory.GetDirectories(directory))
+                                    {
+                                        searchPaths.Enqueue(subDirectory);
+                                    }
+
+                                }
+                                catch
+                                {
+                                    Console.WriteLine("There was an error acessing a file or folder");
+                                    Console.WriteLine("Continuing...");
+                                }
                             }
+                        }
+                        else if (moveOrCopy != "move" || moveOrCopy != "copy")
+                        {
+                            Console.WriteLine("Please select a valid option");
+                            goto moveCopyStart;
                         }
                     }
                     else if (!Directory.Exists(placementDirectory))
@@ -84,6 +122,8 @@ namespace File_Sorter
                 Console.WriteLine("Please enter a valid drive letter");
                 goto DriveStart;
             }
+            Console.WriteLine("I have moved or copied all the files I could");
+            Console.ReadKey();
         }
     }
 }
