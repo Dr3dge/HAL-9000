@@ -29,9 +29,11 @@ namespace Updater
                 Thread update1 = new Thread(updateHAL9000);
                 Thread update2 = new Thread(updateWritting);
                 Thread update3 = new Thread(updateTrayHandler);
+                Thread update4 = new Thread(updateFileSorter);
                 update1.Start();
                 update2.Start();
                 update3.Start();
+                update4.Start();
 
                 if (System.IO.File.Exists(@"C:\Program Files\HAL-9000\HALSync.exe"))
                 {
@@ -80,6 +82,42 @@ namespace Updater
             {
                 Console.WriteLine("I'm sorry Dave, I'm afraid I can't do that.");
                 Console.ReadKey();
+            }
+        }
+
+        private static void updateFileSorter(object obj)
+        {
+            if (System.IO.File.Exists(@"C:\Program Files\HAL-9000\File Sorter.exe"))
+            {
+                try
+                {
+                    Process[] proc3 = Process.GetProcessesByName("File Sorter");
+                    proc3[0].Kill();
+                    Thread.Sleep(TimeSpan.FromMilliseconds(300));
+                    System.IO.File.Delete(@"C:\Program Files\HAL-9000\File Sorter.exe");
+                    using (WebClient Client = new WebClient())
+                    {
+                        Client.DownloadFile("https://dl.dropboxusercontent.com/s/fkqg8j0hullykxs/File%20Sorter.exe?dl=00",
+                            @"C:\Program Files\HAL-9000\File Sorter.exe");
+                    }
+                }
+                catch
+                {
+                    System.IO.File.Delete(@"C:\Program Files\HAL-9000\File Sorter.exe");
+                    using (WebClient Client = new WebClient())
+                    {
+                        Client.DownloadFile("https://dl.dropboxusercontent.com/s/fkqg8j0hullykxs/File%20Sorter.exe?dl=00",
+                            @"C:\Program Files\HAL-9000\File Sorter.exe");
+                    }
+                }
+            }
+            else if (!System.IO.File.Exists(@"C:\Program Files\HAL-9000\File Sorter.exe"))
+            {
+                using (WebClient Client = new WebClient())
+                {
+                    Client.DownloadFile("https://dl.dropboxusercontent.com/s/fkqg8j0hullykxs/File%20Sorter.exe?dl=00",
+                        @"C:\Program Files\HAL-9000\File Sorter.exe");
+                }
             }
         }
         private static void updateTrayHandler(object obj)

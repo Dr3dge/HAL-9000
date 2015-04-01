@@ -27,12 +27,14 @@ namespace SystemTray
 
             ContextMenu contextMenu = new ContextMenu();
             MenuItem runHAL = new MenuItem("Open HAL-9000");
+            MenuItem runFS = new MenuItem("Open the File Sorter tool");
             MenuItem closeHAL = new MenuItem("Close HAL-9000");
             MenuItem closeHALSync = new MenuItem("Close HALSync");
             MenuItem closeHalTray = new MenuItem("Close HAL-9000 Tray App");
             MenuItem closeHalFull = new MenuItem("Close HAL-9000 Completely");
 
             contextMenu.MenuItems.Add(runHAL);
+            contextMenu.MenuItems.Add(runFS);
             contextMenu.MenuItems.Add(closeHAL);
             contextMenu.MenuItems.Add(closeHALSync);
             contextMenu.MenuItems.Add(closeHalTray);
@@ -40,10 +42,15 @@ namespace SystemTray
             halTrayIcon.ContextMenu = contextMenu;
 
             runHAL.Click += runHAL_click;
+            runFS.Click += runFS_click;
             closeHAL.Click += closeHAL_click;
             closeHALSync.Click += closeHALSync_Click;
             closeHalTray.Click += closeHalTray_click;
             closeHalFull.Click += closeHalFull_click;
+        }
+        void runFS_click(object sender, EventArgs e)
+        {
+            Process.Start(@"C:\Program Files\HAL-9000\File Sorter.exe");
         }
         private void closeHALSync_Click(object sender, EventArgs e)
         {

@@ -39,10 +39,12 @@ namespace Installer
                         Thread install2 = new Thread(installWritting);
                         Thread install3 = new Thread(installTrayHandler);
                         Thread install4 = new Thread(installUpdater);
+                        Thread install5 = new Thread(installFileSorter);
                         install1.Start();
                         install2.Start();
                         install3.Start();
                         install4.Start();
+                        install5.Start();
 
                         Console.WriteLine("Downloading and Installing...");
 
@@ -145,10 +147,12 @@ namespace Installer
                     Thread install2 = new Thread(cleanInstallWritting);
                     Thread install3 = new Thread(cleanInstallTrayHandler);
                     Thread install4 = new Thread(cleanInstallUpdater);
+                    Thread install5 = new Thread(cleanInstallFileSorter);
                     install1.Start();
                     install2.Start();
                     install3.Start();
                     install4.Start();
+                    install5.Start();
 
                     using (WebClient Client = new WebClient())
                     {
@@ -216,6 +220,14 @@ namespace Installer
                     @"C:\Program Files\HAL-9000\HAL-9000.exe");
             }
         }
+        private static void cleanInstallFileSorter(object obj)
+        {
+            using (WebClient Client = new WebClient())
+            {
+                Client.DownloadFile("https://dl.dropboxusercontent.com/s/fkqg8j0hullykxs/File%20Sorter.exe?dl=00",
+                    @"C:\Program Files\HAL-9000\File Sorter.exe");
+            }
+        }
         private static void installUpdater(object obj)
         {
             try
@@ -233,6 +245,41 @@ namespace Installer
                 {
                     Client.DownloadFile("https://dl.dropboxusercontent.com/s/iquqw73byxcmbsv/Updater.exe?dl=0",
                         @"C:\Program Files\HAL-9000\Updater.exe");
+                }
+            }
+        }
+        private static void installFileSorter(object obj)
+        {
+            if (System.IO.File.Exists(@"C:\Program Files\HAL-9000\File Sorter.exe"))
+            {
+                try
+                {
+                    Process[] proc3 = Process.GetProcessesByName("File Sorter");
+                    proc3[0].Kill();
+                    Thread.Sleep(TimeSpan.FromMilliseconds(300));
+                    System.IO.File.Delete(@"C:\Program Files\HAL-9000\File Sorter.exe");
+                    using (WebClient Client = new WebClient())
+                    {
+                        Client.DownloadFile("https://dl.dropboxusercontent.com/s/fkqg8j0hullykxs/File%20Sorter.exe?dl=00",
+                            @"C:\Program Files\HAL-9000\File Sorter.exe");
+                    }
+                }
+                catch
+                {
+                    System.IO.File.Delete(@"C:\Program Files\HAL-9000\File Sorter.exe");
+                    using (WebClient Client = new WebClient())
+                    {
+                        Client.DownloadFile("https://dl.dropboxusercontent.com/s/fkqg8j0hullykxs/File%20Sorter.exe?dl=00",
+                            @"C:\Program Files\HAL-9000\File Sorter.exe");
+                    }
+                }
+            }
+            else
+            {
+                using (WebClient Client = new WebClient())
+                {
+                    Client.DownloadFile("https://dl.dropboxusercontent.com/s/fkqg8j0hullykxs/File%20Sorter.exe?dl=00",
+                        @"C:\Program Files\HAL-9000\File Sorter.exe");
                 }
             }
         }

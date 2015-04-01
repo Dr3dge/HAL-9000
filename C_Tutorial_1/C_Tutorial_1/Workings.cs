@@ -20,7 +20,7 @@ namespace HAL_9000
         public static string installPath = @"C:\Program Files\HAL-9000\";
         public static string name = null;
         public static string userInput = null;
-        public static string tryInstallingHal = "Try installing HAL-9000 to use this feature.";
+        public static string tryInstallingHal = "Try installing or updating HAL-9000 to use this feature.";
         public static bool halInstalled = false;
         public static BackgroundWorker downloader = new BackgroundWorker();
         public static void Program()
@@ -163,6 +163,17 @@ namespace HAL_9000
                 else if (userInput == "cylinder")
                 {
                     cylinderCalc.Calculate();
+                }
+                else if (userInput == "file sorter" || userInput == "sort files")
+                {
+                    if (halInstalled == true && System.IO.File.Exists(@"C:\Program Files\HAL-9000\File Sorter.exe"))
+                    {
+                        Process.Start(@"C:\Program Files\HAL-9000\File Sorter.exe");
+                    }
+                    else
+                    {
+                        Console.WriteLine(tryInstallingHal);
+                    }
                 }
                 else if (userInput == "will you be my girlfriend hal?" || userInput == "will you be my girlfriend hal")
                 {
@@ -334,7 +345,8 @@ namespace HAL_9000
                         else if (halInstalled == true)
                         {
                             Process[] process1 = Process.GetProcessesByName("HALSync");
-                            Process[] process2 = Process.GetProcessesByName("SystemTray Handler");
+                            Process[] process2 = Process.GetProcessesByName("File Sorter");
+                            Process[] process3 = Process.GetProcessesByName("SystemTray Handler");
                             if (process1.Length != 0)
                             {
                                 process1[0].Kill();
@@ -342,6 +354,10 @@ namespace HAL_9000
                             if (process2.Length != 0)
                             {
                                 process2[0].Kill();
+                            }
+                            if (process3.Length != 0)
+                            {
+                                process3[0].Kill();
                             }
                             Thread.Sleep(50);
                             Directory.Delete(@"C:\Program Files\HAL-9000", true);
