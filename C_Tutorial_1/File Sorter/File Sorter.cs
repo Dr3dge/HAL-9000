@@ -137,8 +137,8 @@ namespace File_Sorter
 
                         try
                         {
-                        GetFile:
                             string[] files = Directory.GetFiles(directory);
+                        GetFile:
                             foreach (string file in Directory.GetFiles(directory))
                             {
                                 Console.WriteLine("Scanning " + file);
