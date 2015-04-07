@@ -13,15 +13,16 @@ namespace File_Sorter
 {
     class FileSorter
     {
-        static void Main(string[] args)
+        public static string[] fileType = { };
+        public static char driveLetter;
+        public static string presetSelect;
+        public static string presetCustom;
+        public static string currentDrive;
+        public static string driveList;
+        public static string placementDirectory;
+        public static Queue<string> searchPaths = new Queue<string>();
+        static void Main()
         {
-            string fileType;
-            char driveLetter;
-            string currentDrive;
-            string driveList = null;
-            string placementDirectory;
-            var searchPaths = new Queue<string>();
-
             DriveInfo[] drives = DriveInfo.GetDrives();
             Console.WriteLine("These are the drives avalible for scanning");
             foreach (DriveInfo drive in drives)
@@ -38,83 +39,70 @@ namespace File_Sorter
             Console.WriteLine();
             if (driveList.Contains(driveLetter))
             {
-                Console.WriteLine("What type of file do you want to sort?");
-            TypeStart:
-                Console.Write("Please write the file type as '.xxx': ");
-                fileType = Console.ReadLine().ToLower();
+                Console.WriteLine("Do you wish to use a preset file type?");
+                Console.WriteLine("[P] Preset File Types");
+                Console.WriteLine("[C] Custom File Type");
+                Console.Write("Please select which you wish to use: [P/C]");
+            PresetCustomSelect:
+                char presetOrCustom = Console.ReadKey().KeyChar;
+                presetCustom = presetOrCustom.ToString();
                 Console.WriteLine();
-                if (fileType.Contains("."))
+                if (presetCustom == "p")
                 {
-                PlacementStart:
-                    Console.WriteLine("Where is the directory you want to copy the files to?");
-                    placementDirectory = Console.ReadLine().ToLower();
+                    Console.WriteLine("Which Preset files do you want to use?");
+                    Console.WriteLine("[M] Music and Audio files");
+                    Console.WriteLine("[V] Video files");
+                    Console.WriteLine("[T] Text files");
+                    Console.WriteLine("[A] Archive files (zip, rar, 7zip, ect.)");
+                PresetSelect:
+                    Console.Write("Please select which you wish to use: [M/V/T/A]");
+                    char presetSelectChar = Console.ReadKey().KeyChar;
+                    presetSelect = presetSelectChar.ToString();
                     Console.WriteLine();
-                    if (Directory.Exists(placementDirectory))
+                    if (presetSelect == "m")
                     {
-                    moveCopyStart:
-                        Console.WriteLine("Do you wish to Move or Copy these files?");
-                        string moveOrCopy = Console.ReadLine().ToLower();
-                        if (moveOrCopy == "move" || moveOrCopy == "copy")
-                        {
-                            Console.WriteLine("Searching for and sorting files now...");
-
-                            string searchLocationStart = driveLetter + ":\\";
-                            searchPaths.Enqueue(searchLocationStart);
-
-                            while (searchPaths.Count > 0)
-                            {
-                                var directory = searchPaths.Dequeue();
-
-                                try
-                                {
-                                    string[] files = Directory.GetFiles(directory);
-                                    foreach (string file in Directory.GetFiles(directory))
-                                    {
-                                        if (file.Contains(fileType))
-                                        {
-                                            Console.WriteLine(file);
-                                            if (moveOrCopy == "move")
-                                            {
-                                                File.Move(file, placementDirectory + Path.GetFileName(file));
-                                            }
-                                            else if (moveOrCopy == "copy")
-                                            {
-                                                File.Copy(file, placementDirectory + Path.GetFileName(file));
-                                            }
-                                        }
-                                    }
-
-                                    foreach (var subDirectory in Directory.GetDirectories(directory))
-                                    {
-                                        searchPaths.Enqueue(subDirectory);
-                                    }
-
-                                }
-                                catch
-                                {
-                                    Console.WriteLine("There was an error acessing a file or folder");
-                                    Console.WriteLine("Continuing...");
-                                }
-                            }
-                        }
-                        else if (moveOrCopy != "move" || moveOrCopy != "copy")
-                        {
-                            Console.WriteLine("Please select a valid option");
-                            goto moveCopyStart;
-                        }
+                        string[] fileType = { ".mp3", ".flac", ".wma", ".wav", ".aac", ".raw" };
                     }
-                    else if (!Directory.Exists(placementDirectory))
+                    else if (presetSelect == "v")
                     {
-                        Console.WriteLine("Please enter a valid location to place the files.");
-                        goto PlacementStart;
+                        string[] fileType = { ".mp4", ".flv", ".avi", ".wmv", ".mov", ".m4p", ".mpg", ".mpg2", ".mkv" };
+                    }
+                    else if (presetSelect == "t")
+                    {
+                        string[] fileType = { ".txt", ".cfg", ".nfo", ".log", ".doc", ".docx", ".text" };
+                    }
+                    else if (presetSelect == "a")
+                    {
+                        string[] fileType = { ".zip", ".rar", ".7z", ".iso", ".tar", ".gz", ".dmg", ".zipx" };
+                    }
+                    else
+                    {
+                        Console.WriteLine("Please select a valid option");
+                        goto PresetSelect;
+                    }
+                    FileSearch();
+                }
+                else if (presetCustom == "c")
+                {
+                    Console.WriteLine("What type of file do you want to sort?");
+                TypeSelect:
+                    Console.Write("Please write the file type as '.xxx': ");
+                    string fileTypeInput = Console.ReadLine().ToLower();
+                    string[] fileType = { fileTypeInput };
+                    Console.WriteLine();
+                    if (fileType.Contains("."))
+                    {
+                        FileSearch();
+                    }
+                    else
+                    {
+                        goto TypeSelect;
                     }
                 }
-                else
+                else if (!presetOrCustom.Equals("p") || !presetOrCustom.Equals("c"))
                 {
-                    Console.WriteLine("Please enter a valid file type");
-                    Console.ReadKey();
-                    Console.WriteLine();
-                    goto TypeStart;
+                    Console.Write("Please enter a valid option: ");
+                    goto PresetCustomSelect;
                 }
             }
             else if (!driveList.Contains(driveLetter))
@@ -125,5 +113,75 @@ namespace File_Sorter
             Console.WriteLine("I have moved or copied all the files I could");
             Console.ReadKey();
         }
+        static void FileSearch()
+        {
+        PlacementStart:
+            Console.WriteLine("Where is the directory you want to copy the files to?");
+            placementDirectory = Console.ReadLine().ToLower();
+            Console.WriteLine();
+            if (Directory.Exists(placementDirectory))
+            {
+            moveCopyStart:
+                Console.WriteLine("Do you wish to Move or Copy these files?");
+                string moveOrCopy = Console.ReadLine().ToLower();
+                if (moveOrCopy == "move" || moveOrCopy == "copy")
+                {
+                    Console.WriteLine("Searching for and sorting files now...");
+
+                    string searchLocationStart = driveLetter + ":\\";
+                    searchPaths.Enqueue(searchLocationStart);
+
+                    while (searchPaths.Count > 0)
+                    {
+                        var directory = searchPaths.Dequeue();
+
+                        try
+                        {
+                            string[] files = Directory.GetFiles(directory);
+                            foreach (string file in Directory.GetFiles(directory))
+                            {
+                                Console.WriteLine("Scanning " + file);
+                                foreach (string type in fileType)
+                                {
+                                    if (file.Contains(type))
+                                    {
+                                        if (moveOrCopy == "move")
+                                        {
+                                            Console.WriteLine("Moving " + file);
+                                            File.Move(file, placementDirectory + Path.GetFileName(file));
+                                        }
+                                        else if (moveOrCopy == "copy")
+                                        {
+                                            Console.WriteLine("Copying " + file);
+                                            File.Copy(file, placementDirectory + Path.GetFileName(file));
+                                        }
+                                    }
+                                }
+                            }
+                            foreach (var subDirectory in Directory.GetDirectories(directory))
+                            {
+                                searchPaths.Enqueue(subDirectory);
+                            }
+                        }
+                        catch
+                        {
+                            Console.WriteLine("There was an error acessing a file or folder");
+                            Console.WriteLine("Continuing...");
+                        }
+                    }
+                }
+                else if (moveOrCopy != "move" || moveOrCopy != "copy")
+                {
+                    Console.WriteLine("Please select a valid option");
+                    goto moveCopyStart;
+                }
+            }
+            else if (!Directory.Exists(placementDirectory))
+            {
+                Console.WriteLine("Please enter a valid location to place the files.");
+                goto PlacementStart;
+            }
+        }
     }
 }
+
