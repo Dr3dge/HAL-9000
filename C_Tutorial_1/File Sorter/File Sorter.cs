@@ -137,6 +137,7 @@ namespace File_Sorter
 
                         try
                         {
+                        GetFile:
                             string[] files = Directory.GetFiles(directory);
                             foreach (string file in Directory.GetFiles(directory))
                             {
@@ -149,11 +150,13 @@ namespace File_Sorter
                                         {
                                             Console.WriteLine("Moving " + file);
                                             File.Move(file, placementDirectory + Path.GetFileName(file));
+                                            goto GetFile;
                                         }
                                         else if (moveOrCopy == "copy")
                                         {
                                             Console.WriteLine("Copying " + file);
                                             File.Copy(file, placementDirectory + Path.GetFileName(file));
+                                            goto GetFile;
                                         }
                                     }
                                 }
