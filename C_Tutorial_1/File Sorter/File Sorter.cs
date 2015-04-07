@@ -13,13 +13,15 @@ namespace File_Sorter
 {
     class FileSorter
     {
-        public static string[] fileType = { };
+        public static object desktop = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+        public static List<string> fileType = new List<string>();
         public static char driveLetter;
         public static string presetSelect;
         public static string presetCustom;
         public static string currentDrive;
         public static string driveList;
         public static string placementDirectory;
+        public static string placementDirectoryDefault;
         public static Queue<string> searchPaths = new Queue<string>();
         static void Main()
         {
@@ -61,19 +63,50 @@ namespace File_Sorter
                     Console.WriteLine();
                     if (presetSelect == "m")
                     {
-                        string[] fileType = { ".mp3", ".flac", ".wma", ".wav", ".aac", ".raw" };
+                        fileType.Add(".mp3");
+                        fileType.Add(".flac");
+                        fileType.Add(".wma");
+                        fileType.Add(".wav");
+                        fileType.Add(".aac");
+                        fileType.Add(".raw");
+                        placementDirectoryDefault = desktop + "\\Sorted Audio Files\\";
                     }
                     else if (presetSelect == "v")
                     {
-                        string[] fileType = { ".mp4", ".flv", ".avi", ".wmv", ".mov", ".m4p", ".mpg", ".mpg2", ".mkv" };
+                        fileType.Add(".mp4");
+                        fileType.Add(".flv");
+                        fileType.Add(".avi");
+                        fileType.Add(".wmv");
+                        fileType.Add(".mov");
+                        fileType.Add(".m4p");
+                        fileType.Add(".mpg");
+                        fileType.Add(".mpg2");
+                        fileType.Add(".mkv");
+                        placementDirectoryDefault = desktop + "\\Sorted Video Files\\";
+
                     }
                     else if (presetSelect == "t")
                     {
-                        string[] fileType = { ".txt", ".cfg", ".nfo", ".log", ".doc", ".docx", ".text" };
+                        fileType.Add(".txt");
+                        fileType.Add(".cfg");
+                        fileType.Add(".nfo");
+                        fileType.Add(".log");
+                        fileType.Add(".doc");
+                        fileType.Add(".docx");
+                        fileType.Add(".text");
+                        placementDirectoryDefault = desktop + "\\Sorted Text Files\\";
                     }
                     else if (presetSelect == "a")
                     {
-                        string[] fileType = { ".zip", ".rar", ".7z", ".iso", ".tar", ".gz", ".dmg", ".zipx" };
+                        fileType.Add(".zip");
+                        fileType.Add(".rar");
+                        fileType.Add(".7z");
+                        fileType.Add(".iso");
+                        fileType.Add(".tar");
+                        fileType.Add(".gz");
+                        fileType.Add(".dmg");
+                        fileType.Add(".zipx");
+                        placementDirectoryDefault = desktop + "\\Sorted Archive Files\\";
                     }
                     else
                     {
@@ -88,10 +121,10 @@ namespace File_Sorter
                 TypeSelect:
                     Console.Write("Please write the file type as '.xxx': ");
                     string fileTypeInput = Console.ReadLine().ToLower();
-                    string[] fileType = { fileTypeInput };
-                    Console.WriteLine();
-                    if (fileType.Contains("."))
+                    if (fileTypeInput.Contains("."))
                     {
+                        fileType.Add(fileTypeInput);
+                        Console.WriteLine();
                         FileSearch();
                     }
                     else
@@ -117,7 +150,20 @@ namespace File_Sorter
         {
         PlacementStart:
             Console.WriteLine("Where is the directory you want to copy the files to?");
+            Console.WriteLine("If left blank a folder will be created on the Desktop.");
             placementDirectory = Console.ReadLine().ToLower();
+            if (placementDirectory.Length == 0)
+            {
+                if (!Directory.Exists(placementDirectoryDefault))
+                {
+                    Directory.CreateDirectory(placementDirectoryDefault);
+                    placementDirectory = placementDirectoryDefault;
+                }
+                else if (Directory.Exists(placementDirectoryDefault))
+                {
+                    placementDirectory = placementDirectoryDefault;
+                }
+            }
             Console.WriteLine();
             if (Directory.Exists(placementDirectory))
             {
@@ -141,10 +187,9 @@ namespace File_Sorter
                         GetFile:
                             foreach (string file in Directory.GetFiles(directory))
                             {
-                                Console.WriteLine("Scanning " + file);
                                 foreach (string type in fileType)
                                 {
-                                    if (file.Contains(type))
+                                    if (file.Contains(type.ToString()))
                                     {
                                         if (moveOrCopy == "move")
                                         {
@@ -166,9 +211,15 @@ namespace File_Sorter
                                 searchPaths.Enqueue(subDirectory);
                             }
                         }
-                        catch
+                        catch (System.IO.IOException)
+                        { }
+                        catch (System.UnauthorizedAccessException)
+                        { }
+                        catch (Exception e)
                         {
-                            Console.WriteLine("There was an error acessing a file or folder");
+                            Console.WriteLine("There was a " + e);
+                            Console.WriteLine("Press any key to continue...");
+                            Console.ReadKey();
                             Console.WriteLine("Continuing...");
                         }
                     }
@@ -179,7 +230,7 @@ namespace File_Sorter
                     goto moveCopyStart;
                 }
             }
-            else if (!Directory.Exists(placementDirectory))
+            else if (!Directory.Exists(placementDirectory) && placementDirectory.Length != 0)
             {
                 Console.WriteLine("Please enter a valid location to place the files.");
                 goto PlacementStart;
