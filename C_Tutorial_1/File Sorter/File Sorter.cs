@@ -15,6 +15,9 @@ namespace File_Sorter
     {
         public static object desktop = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
         public static List<string> fileType = new List<string>();
+        public static List<string> fileList = new List<string>();
+        public static bool moveCopyComplete = false;
+        public static bool moveCopy;
         public static char driveLetter;
         public static string presetSelect;
         public static string presetCustom;
@@ -174,35 +177,68 @@ namespace File_Sorter
                 {
                     Console.WriteLine("Searching for and sorting files now...");
 
+                    if (moveOrCopy == "move")
+                    {
+                        moveCopy = true;
+                    }
+                    else
+                    {
+                        moveCopy = false;
+                    }
+
                     string searchLocationStart = driveLetter + ":\\";
                     searchPaths.Enqueue(searchLocationStart);
 
                     while (searchPaths.Count > 0)
                     {
                         var directory = searchPaths.Dequeue();
-
+                        
                         try
                         {
-                            string[] files = Directory.GetFiles(directory);
-                        GetFile:
-                            foreach (string file in Directory.GetFiles(directory))
+                            fileList = Directory.GetFiles(directory).ToList();
+
+                            foreach (string file in fileList)
                             {
                                 foreach (string type in fileType)
                                 {
+                                    moveCopyComplete = false;
                                     if (file.Contains(type.ToString()))
                                     {
-                                        if (moveOrCopy == "move")
+                                        if (moveCopy)
                                         {
                                             Console.WriteLine("Moving " + file);
-                                            File.Move(file, placementDirectory + Path.GetFileName(file));
-                                            goto GetFile;
+                                            if (!File.Exists(placementDirectory + Path.GetFileName(file)))
+                                            {
+                                                File.Move(file, placementDirectory + Path.GetFileName(file));
+                                                moveCopyComplete = true;
+
+                                            }
+                                            else if (File.Exists(placementDirectory + Path.GetFileName(file)))
+                                            {
+                                                File.Delete(placementDirectory + Path.GetFileName(file));
+                                                File.Move(file, placementDirectory + Path.GetFileName(file));
+                                                moveCopyComplete = true;
+                                            }
                                         }
-                                        else if (moveOrCopy == "copy")
+                                        else
                                         {
                                             Console.WriteLine("Copying " + file);
-                                            File.Copy(file, placementDirectory + Path.GetFileName(file));
-                                            goto GetFile;
+                                            if (!File.Exists(placementDirectory + Path.GetFileName(file)))
+                                            {
+                                                File.Copy(file, placementDirectory + Path.GetFileName(file));
+                                                moveCopyComplete = true;
+                                            }
+                                            else if (File.Exists(placementDirectory + Path.GetFileName(file)))
+                                            {
+                                                File.Delete(placementDirectory + Path.GetFileName(file));
+                                                File.Copy(file, placementDirectory + Path.GetFileName(file));
+                                                moveCopyComplete = true;
+                                            }
                                         }
+                                    }
+                                    if (moveCopyComplete == true)
+                                    {
+                                        break;
                                     }
                                 }
                             }
