@@ -15,7 +15,7 @@ using System.Threading;
 
 namespace HAL_9000
 {
-    class Workings
+    class HAL_9000_Workings
     {
         public static string installPath = @"C:\Program Files\HAL-9000\";
         public static string name = null;
@@ -265,11 +265,6 @@ namespace HAL_9000
                             }
                             using (WebClient Client = new WebClient())
                             {
-                                Client.DownloadFile("https://dl.dropboxusercontent.com/s/5s39gdhyu4f03j2/SystemTray Handler.exe?dl=0",
-                                    @"C:\Program Files\HAL-9000\SystemTray Handler.exe");
-                            }
-                            using (WebClient Client = new WebClient())
-                            {
                                 Client.DownloadFile("https://dl.dropboxusercontent.com/s/yzc8m0gbi1la2zk/Writting.dll?dl=0",
                                     @"C:\Program Files\HAL-9000\Writting.dll");
                             }
@@ -346,7 +341,6 @@ namespace HAL_9000
                         {
                             Process[] process1 = Process.GetProcessesByName("HALSync");
                             Process[] process2 = Process.GetProcessesByName("File Sorter");
-                            Process[] process3 = Process.GetProcessesByName("SystemTray Handler");
                             if (process1.Length != 0)
                             {
                                 process1[0].Kill();
@@ -354,10 +348,6 @@ namespace HAL_9000
                             if (process2.Length != 0)
                             {
                                 process2[0].Kill();
-                            }
-                            if (process3.Length != 0)
-                            {
-                                process3[0].Kill();
                             }
                             Thread.Sleep(50);
                             Directory.Delete(@"C:\Program Files\HAL-9000", true);

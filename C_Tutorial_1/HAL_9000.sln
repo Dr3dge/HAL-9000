@@ -9,8 +9,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Updater", "Updater\Updater.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Installer", "Installer\Installer.csproj", "{295BDD07-E2B6-4190-9BF5-1F06BDB22B95}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SystemTray", "HAL-9000 SystemTray\SystemTray.csproj", "{3E11235C-784A-4D58-84AF-3CC3E0F74296}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Writting", "Writting DLL\Writting.csproj", "{EFFC8823-4B3E-4645-BE09-0DBD844AF316}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HALSync", "HALSync\HALSync.csproj", "{ACEE6511-6FE8-4CC1-A183-8337E9B41468}"
@@ -92,24 +90,6 @@ Global
 		{295BDD07-E2B6-4190-9BF5-1F06BDB22B95}.To Build|Mixed Platforms.Build.0 = Release|Any CPU
 		{295BDD07-E2B6-4190-9BF5-1F06BDB22B95}.To Build|x64.ActiveCfg = Release|Any CPU
 		{295BDD07-E2B6-4190-9BF5-1F06BDB22B95}.To Build|x86.ActiveCfg = Release|Any CPU
-		{3E11235C-784A-4D58-84AF-3CC3E0F74296}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3E11235C-784A-4D58-84AF-3CC3E0F74296}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3E11235C-784A-4D58-84AF-3CC3E0F74296}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{3E11235C-784A-4D58-84AF-3CC3E0F74296}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{3E11235C-784A-4D58-84AF-3CC3E0F74296}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{3E11235C-784A-4D58-84AF-3CC3E0F74296}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{3E11235C-784A-4D58-84AF-3CC3E0F74296}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3E11235C-784A-4D58-84AF-3CC3E0F74296}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3E11235C-784A-4D58-84AF-3CC3E0F74296}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{3E11235C-784A-4D58-84AF-3CC3E0F74296}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{3E11235C-784A-4D58-84AF-3CC3E0F74296}.Release|x64.ActiveCfg = Release|Any CPU
-		{3E11235C-784A-4D58-84AF-3CC3E0F74296}.Release|x86.ActiveCfg = Release|Any CPU
-		{3E11235C-784A-4D58-84AF-3CC3E0F74296}.To Build|Any CPU.ActiveCfg = Release|Any CPU
-		{3E11235C-784A-4D58-84AF-3CC3E0F74296}.To Build|Any CPU.Build.0 = Release|Any CPU
-		{3E11235C-784A-4D58-84AF-3CC3E0F74296}.To Build|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{3E11235C-784A-4D58-84AF-3CC3E0F74296}.To Build|Mixed Platforms.Build.0 = Release|Any CPU
-		{3E11235C-784A-4D58-84AF-3CC3E0F74296}.To Build|x64.ActiveCfg = Release|Any CPU
-		{3E11235C-784A-4D58-84AF-3CC3E0F74296}.To Build|x86.ActiveCfg = Release|Any CPU
 		{EFFC8823-4B3E-4645-BE09-0DBD844AF316}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{EFFC8823-4B3E-4645-BE09-0DBD844AF316}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EFFC8823-4B3E-4645-BE09-0DBD844AF316}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU

@@ -8,12 +8,44 @@ using System.Diagnostics;
 using HAL_9000_Writting;
 using System.Threading;
 using System.Net.Sockets;
+using System.Windows.Forms;
 
 namespace HAL_9000
 {
     class mainProgram
     {
+        [STAThread]
         static void Main(string[] args)
+        {
+            foreach (string arg in args)
+            {
+                if (arg.Equals("/console"))
+                {
+                    AllocConsole();
+                    mainHALInitiate();
+                }
+            }
+            if (!args.Equals(null))
+            {
+                Thread startHAL = new Thread(halStarter);
+                startHAL.Start();
+                Application.EnableVisualStyles();
+                Application.SetCompatibleTextRenderingDefault(false);
+                Application.Run(new HAL_9000.SystemTray());
+            }
+            //Thread Listener = new Thread(listenerProcess);
+
+            //Listener.Start();
+        }
+        public static void halStarter()
+        {
+            ProcessStartInfo HALConsole = new ProcessStartInfo();
+            HALConsole.FileName = "C:\\Program FIles\\HAL-9000\\HAL-9000.exe";
+            HALConsole.Arguments = "/console";
+            HALConsole.WindowStyle = ProcessWindowStyle.Normal;
+            Process.Start(HALConsole);
+        }
+        public static void mainHALInitiate()
         {
             Console.Title = "HAL-9000";
 
@@ -24,9 +56,6 @@ namespace HAL_9000
 
             Writting.startWrite();
 
-            //Thread Listener = new Thread(listenerProcess);
-
-            //Listener.Start();
             Program();
         }
 
@@ -64,16 +93,8 @@ namespace HAL_9000
 
         static void Program()
         {
-            Process[] process = Process.GetProcessesByName("SystemTray Handler");
-            if (process.Length == 0)
-            {
-                if (File.Exists(@"C:\Program Files\HAL-9000\SystemTray Handler.exe"))
-                {
-                    Process.Start(@"C:\Program Files\HAL-9000\SystemTray Handler.exe");
-                }
-            }
             Main:
-            Workings.Program();
+            HAL_9000_Workings.Program();
 
             string yesNo = Console.ReadLine().ToLower();
 
@@ -94,5 +115,8 @@ namespace HAL_9000
             Writting.terminated();
             Console.ReadKey();
         }
+        [System.Runtime.InteropServices.DllImport("kernel32.dll")]
+        private static extern bool AllocConsole();
+        
     }
 }

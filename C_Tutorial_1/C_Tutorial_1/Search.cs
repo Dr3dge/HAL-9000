@@ -14,7 +14,7 @@ namespace HAL_9000
     {
         public static void chrome()
         {
-            string preSearch = Workings.userInput.Replace("google ", "");
+            string preSearch = HAL_9000_Workings.userInput.Replace("google ", "");
             string search = preSearch.Replace(" ", "+");
 
             try
@@ -35,7 +35,7 @@ namespace HAL_9000
         }
         public static void firefox()
         {
-            string preSearch = Workings.userInput.Replace("google ", "");
+            string preSearch = HAL_9000_Workings.userInput.Replace("google ", "");
             string search = preSearch.Replace(" ", "+");
 
             try
@@ -59,7 +59,7 @@ namespace HAL_9000
     {
         public static void chrome()
         {
-            string preSearch = Workings.userInput.Replace("youtube ", "");
+            string preSearch = HAL_9000_Workings.userInput.Replace("youtube ", "");
             string search = preSearch.Replace(" ", "+");
 
             try
@@ -80,7 +80,7 @@ namespace HAL_9000
         }
         public static void firefox()
         {
-            string preSearch = Workings.userInput.Replace("youtube ", "");
+            string preSearch = HAL_9000_Workings.userInput.Replace("youtube ", "");
             string search = preSearch.Replace(" ", "+");
 
             try
@@ -106,7 +106,7 @@ namespace HAL_9000
         {
             try
             {
-                string website = Workings.userInput.Replace("website ", "");
+                string website = HAL_9000_Workings.userInput.Replace("website ", "");
                 try
                 {
                     Process.Start(@"C:\Program Files\Google\Chrome\Application\chrome.exe", website);
@@ -127,7 +127,7 @@ namespace HAL_9000
         {
             try
             {
-                string website = Workings.userInput.Replace("goto ", "");
+                string website = HAL_9000_Workings.userInput.Replace("goto ", "");
                 try
                 {
                     Process.Start(@"C:\Program Files\Google\Chrome\Application\chrome.exe", website);
@@ -149,7 +149,7 @@ namespace HAL_9000
     {
         public static void findPrograms()
         {
-            string toFind = Workings.userInput.Replace("run ", "");
+            string toFind = HAL_9000_Workings.userInput.Replace("run ", "");
             string path;
             string userName = Environment.UserName;
 

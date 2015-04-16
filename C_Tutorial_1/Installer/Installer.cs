@@ -37,14 +37,12 @@ namespace Installer
 
                         Thread install1 = new Thread(installHAL9000);
                         Thread install2 = new Thread(installWritting);
-                        Thread install3 = new Thread(installTrayHandler);
-                        Thread install4 = new Thread(installUpdater);
-                        Thread install5 = new Thread(installFileSorter);
+                        Thread install3 = new Thread(installUpdater);
+                        Thread install4 = new Thread(installFileSorter);
                         install1.Start();
                         install2.Start();
                         install3.Start();
                         install4.Start();
-                        install5.Start();
 
                         Console.WriteLine("Downloading and Installing...");
 
@@ -145,14 +143,12 @@ namespace Installer
 
                     Thread install1 = new Thread(cleanInstallHAL9000);
                     Thread install2 = new Thread(cleanInstallWritting);
-                    Thread install3 = new Thread(cleanInstallTrayHandler);
-                    Thread install4 = new Thread(cleanInstallUpdater);
-                    Thread install5 = new Thread(cleanInstallFileSorter);
+                    Thread install3 = new Thread(cleanInstallUpdater);
+                    Thread install4 = new Thread(cleanInstallFileSorter);
                     install1.Start();
                     install2.Start();
                     install3.Start();
                     install4.Start();
-                    install5.Start();
 
                     using (WebClient Client = new WebClient())
                     {
@@ -184,7 +180,6 @@ namespace Installer
                 Console.WriteLine("I'm sorry Dave, I'm afraid I can't do that.");
             }
         }
-
         private static void cleanInstallUpdater(object obj)
         {
             using (WebClient Client = new WebClient())
@@ -193,16 +188,6 @@ namespace Installer
                     @"C:\Program Files\HAL-9000\Updater.exe");
             }
         }
-
-        private static void cleanInstallTrayHandler(object obj)
-        {
-            using (WebClient Client = new WebClient())
-            {
-                Client.DownloadFile("https://dl.dropboxusercontent.com/s/5s39gdhyu4f03j2/SystemTray Handler.exe?dl=0",
-                    @"C:\Program Files\HAL-9000\SystemTray Handler.exe");
-            }
-        }
-
         private static void cleanInstallWritting(object obj)
         {
             using (WebClient Client = new WebClient())
@@ -211,7 +196,6 @@ namespace Installer
                     @"C:\Program Files\HAL-9000\Writting.dll");
             }
         }
-
         private static void cleanInstallHAL9000(object obj)
         {
             using (WebClient Client = new WebClient())
@@ -280,30 +264,6 @@ namespace Installer
                 {
                     Client.DownloadFile("https://dl.dropboxusercontent.com/s/fkqg8j0hullykxs/File%20Sorter.exe?dl=00",
                         @"C:\Program Files\HAL-9000\File Sorter.exe");
-                }
-            }
-        }
-        private static void installTrayHandler(object obj)
-        {
-            try
-            {
-                Process[] proc = Process.GetProcessesByName("SystemTray Handler");
-                proc[0].Kill();
-                Thread.Sleep(TimeSpan.FromMilliseconds(300));
-                System.IO.File.Delete(@"C:\Program Files\HAL-9000\SystemTray Handler.exe");
-                using (WebClient Client = new WebClient())
-                {
-                    Client.DownloadFile("https://dl.dropboxusercontent.com/s/5s39gdhyu4f03j2/SystemTray Handler.exe?dl=0",
-                        @"C:\Program Files\HAL-9000\SystemTray Handler.exe");
-                }
-            }
-            catch
-            {
-                System.IO.File.Delete(@"C:\Program Files\HAL-9000\SystemTray Handler.exe");
-                using (WebClient Client = new WebClient())
-                {
-                    Client.DownloadFile("https://dl.dropboxusercontent.com/s/5s39gdhyu4f03j2/SystemTray Handler.exe?dl=0",
-                        @"C:\Program Files\HAL-9000\SystemTray Handler.exe");
                 }
             }
         }

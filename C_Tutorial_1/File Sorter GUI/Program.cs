@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace SystemTray
+namespace File_Sorter_GUI
 {
     static class Program
     {
@@ -16,7 +16,7 @@ namespace SystemTray
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new SystemTray());
+            Application.Run(new FileSorterGUI());
         }
     }
 }

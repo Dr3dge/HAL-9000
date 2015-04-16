@@ -1,6 +1,6 @@
-﻿namespace SystemTray
+﻿namespace File_Sorter
 {
-    partial class SystemTray
+    partial class File_Sorter_GUI
     {
         /// <summary>
         /// Required designer variable.
@@ -28,19 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SystemTray));
             this.SuspendLayout();
             // 
-            // SystemTray
+            // File_Sorter_GUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 262);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
-            this.Name = "SystemTray";
-            this.Text = "Form1";
+            this.ClientSize = new System.Drawing.Size(748, 414);
+            this.Name = "File_Sorter_GUI";
+            this.Text = "File_Sorter_GUI";
             this.ResumeLayout(false);
 
         }
@@ -48,4 +44,3 @@
         #endregion
     }
 }
-

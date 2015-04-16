@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SystemTray.Properties {
+namespace HAL_9000.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]

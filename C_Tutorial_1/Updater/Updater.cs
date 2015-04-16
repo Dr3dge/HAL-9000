@@ -21,19 +21,17 @@ namespace Updater
                 {
                     Process[] proc = Process.GetProcessesByName("HAL-9000");
                     proc[0].Kill();
-                    Thread.Sleep(TimeSpan.FromMilliseconds(300));
+                    Thread.Sleep(300);
                 }
                 catch
                 { }
 
                 Thread update1 = new Thread(updateHAL9000);
                 Thread update2 = new Thread(updateWritting);
-                Thread update3 = new Thread(updateTrayHandler);
-                Thread update4 = new Thread(updateFileSorter);
+                Thread update3 = new Thread(updateFileSorter);
                 update1.Start();
                 update2.Start();
                 update3.Start();
-                update4.Start();
 
                 if (System.IO.File.Exists(@"C:\Program Files\HAL-9000\HALSync.exe"))
                 {
@@ -117,41 +115,6 @@ namespace Updater
                 {
                     Client.DownloadFile("https://dl.dropboxusercontent.com/s/fkqg8j0hullykxs/File%20Sorter.exe?dl=00",
                         @"C:\Program Files\HAL-9000\File Sorter.exe");
-                }
-            }
-        }
-        private static void updateTrayHandler(object obj)
-        {
-            if (System.IO.File.Exists(@"C:\Program Files\HAL-9000\SystemTray Handler.exe"))
-            {
-                try
-                {
-                    Process[] proc = Process.GetProcessesByName("SystemTray Handler");
-                    proc[0].Kill();
-                    Thread.Sleep(TimeSpan.FromMilliseconds(300));
-                    System.IO.File.Delete(@"C:\Program Files\HAL-9000\SystemTray Handler.exe");
-                    using (WebClient Client = new WebClient())
-                    {
-                        Client.DownloadFile("https://dl.dropboxusercontent.com/s/5s39gdhyu4f03j2/SystemTray Handler.exe?dl=0",
-                            @"C:\Program Files\HAL-9000\SystemTray Handler.exe");
-                    }
-                }
-                catch
-                {
-                    System.IO.File.Delete(@"C:\Program Files\HAL-9000\SystemTray Handler");
-                    using (WebClient Client = new WebClient())
-                    {
-                        Client.DownloadFile("https://dl.dropboxusercontent.com/s/5s39gdhyu4f03j2/SystemTray Handler.exe?dl=0",
-                            @"C:\Program Files\HAL-9000\SystemTray Handler.exe");
-                    }
-                }
-            }
-            else if (!System.IO.File.Exists(@"C:\Program Files\HAL-9000\SystemTray Handler.exe"))
-            {
-                using (WebClient Client = new WebClient())
-                {
-                    Client.DownloadFile("https://dl.dropboxusercontent.com/s/5s39gdhyu4f03j2/SystemTray Handler.exe?dl=0",
-                        @"C:\Program Files\HAL-9000\SystemTray Handler.exe");
                 }
             }
         }
