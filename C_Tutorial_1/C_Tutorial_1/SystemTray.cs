@@ -64,7 +64,7 @@ namespace HAL_9000
         }
         void runHAL_click(object sender, EventArgs e)
         {
-            Process.Start(@"C:\Program Files\HAL-9000\HAL-9000.exe", "/console");
+            Process.Start("C:\\Program Files\\HAL-9000\\HAL-9000.exe", "/reopen");
         }
         void closeHalFull_click(object sender, EventArgs e)
         {

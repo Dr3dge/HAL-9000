@@ -24,6 +24,11 @@ namespace HAL_9000
                     AllocConsole();
                     mainHALInitiate();
                 }
+                else if (arg.Equals("/reopen"))
+                {
+                    AllocConsole();
+                    halRestarter();
+                }
             }
             if (!args.Equals(null))
             {
@@ -36,6 +41,17 @@ namespace HAL_9000
             //Thread Listener = new Thread(listenerProcess);
 
             //Listener.Start();
+        }
+
+        public static void halRestarter()
+        {
+            Console.Title = "HAL-9000";
+            Console.ForegroundColor = ConsoleColor.Black;
+            Console.BackgroundColor = ConsoleColor.White;
+
+            Writting.startWrite();
+
+            Program();
         }
         public static void halStarter()
         {
