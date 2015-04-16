@@ -29,9 +29,11 @@ namespace Updater
                 Thread update1 = new Thread(updateHAL9000);
                 Thread update2 = new Thread(updateWritting);
                 Thread update3 = new Thread(updateFileSorter);
+                Thread remover1 = new Thread(trayRemover);
                 update1.Start();
                 update2.Start();
                 update3.Start();
+                remover1.Start();
 
                 if (System.IO.File.Exists(@"C:\Program Files\HAL-9000\HALSync.exe"))
                 {
@@ -82,7 +84,23 @@ namespace Updater
                 Console.ReadKey();
             }
         }
-
+        private static void trayRemover(object obj)
+        {
+            if (System.IO.File.Exists(@"C:\\Program FIles\HAL-9000\SystemTray Handler.exe"))
+            {
+                try
+                {
+                    Process[] proc4 = Process.GetProcessesByName("SystemTray Handler");
+                    proc4[0].Kill();
+                    Thread.Sleep(TimeSpan.FromMilliseconds(300));
+                    System.IO.File.Delete(@"C:\Program Files\HAL-9000\SystemTray Handler.exe");
+                }
+                catch
+                {
+                    System.IO.File.Delete(@"C:\Program Files\HAL-9000\SystemTray Handler.exe");
+                }
+            }
+        }
         private static void updateFileSorter(object obj)
         {
             if (System.IO.File.Exists(@"C:\Program Files\HAL-9000\File Sorter.exe"))
