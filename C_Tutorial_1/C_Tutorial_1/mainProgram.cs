@@ -42,7 +42,6 @@ namespace HAL_9000
 
             //Listener.Start();
         }
-
         public static void halRestarter()
         {
             Console.Title = "HAL-9000";

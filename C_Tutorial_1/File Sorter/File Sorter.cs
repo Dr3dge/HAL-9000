@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace File_Sorter
 {
-    class FileSorter
+    public class FileSorter
     {
         public static object desktop = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
         public static List<string> fileType = new List<string>();

@@ -40,17 +40,11 @@ namespace HAL_9000
                         tw.Close();
                     }
                 }
-            }
-            else if (halInstalled == false)
-            {
-                Console.WriteLine("Try installing HAL-9000 for more features.");
-            }
-            if (halInstalled == true)
-            {
                 name = System.IO.File.ReadLines(@"C:\Program Files\HAL-9000\config.txt").Take(1).First().Replace("name = ", "");
             }
             else if (halInstalled == false)
             {
+                Console.WriteLine("Try installing HAL-9000 for more features.");
                 name = "Dave";
             }
             int guess;
@@ -110,10 +104,10 @@ namespace HAL_9000
                 {
                     Writting.wrongRepl();
                 }
-                // else if (userInput == "arduino")
-                // {
-                //     Arduino.Start();     // Will be used for handling interactions with an Arduino
-                // }
+                /*else if (userInput == "arduino")
+                {
+                    Arduino.Start();     // Will be used for handling interactions with an Arduino
+                }*/
                 else if (userInput == "hello" || userInput == "hi" || userInput == "hey")
                 {
                     Writting.sayHello();
@@ -188,7 +182,7 @@ namespace HAL_9000
                 }
                 else if (userInput == "will you marry me hal?" || userInput == "will you marry me hal")
                 {
-                    if(name == "Noah")
+                    if (name == "Noah")
                     {
                         Console.WriteLine("Yes Noah, I will marry you.");
                     }
@@ -294,7 +288,7 @@ namespace HAL_9000
                     try
                     {
                         if (halInstalled == true)
-                            {
+                        {
                             if (System.IO.File.Exists(@"C:\Program Files\HAL-9000\Updater.exe"))
                             {
                                 System.IO.File.Delete(@"C:\Program Files\HAL-9000\Updater.exe");
@@ -352,7 +346,7 @@ namespace HAL_9000
                             Thread.Sleep(50);
                             Directory.Delete(@"C:\Program Files\HAL-9000", true);
                             string desktop = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-                            System.IO.File.Delete(desktop +@"\HAL-9000.lnk");
+                            System.IO.File.Delete(desktop + @"\HAL-9000.lnk");
                             System.IO.File.Delete(desktop + @"\HALSync.lnk");
                             Console.WriteLine();
                             Console.WriteLine("HAL-9000 has been successfully uninstalled");
@@ -815,7 +809,7 @@ namespace HAL_9000
                             {
                                 downloadHandler.Handler();
                                 WebClient Client = new WebClient();
-                                Client.DownloadFile("http://download-new.utorrent.com/endpoint/bittorrent/os/win/track/stable", 
+                                Client.DownloadFile("http://download-new.utorrent.com/endpoint/bittorrent/os/win/track/stable",
                                     @"HAL's Downloads\BitTorrent.exe");
                                 ProcessStartInfo Installer = new ProcessStartInfo();
                                 Installer.Arguments = "/S";
@@ -976,7 +970,7 @@ namespace HAL_9000
                         Writting.youtubeSearched();
                     }
                 }
-                else if ( userInput.Contains("youtube ") && halInstalled == false)
+                else if (userInput.Contains("youtube ") && halInstalled == false)
                 {
                     Console.WriteLine(tryInstallingHal);
                 }
@@ -1029,7 +1023,6 @@ namespace HAL_9000
                 {
                     Writting.arduinoHelp();
                 }
-
                 else if (userInput == "arduino help" && halInstalled == false)
                 {
                     Console.WriteLine(tryInstallingHal);

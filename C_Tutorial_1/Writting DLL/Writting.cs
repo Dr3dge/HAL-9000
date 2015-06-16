@@ -148,7 +148,7 @@ namespace HAL_9000_Writting
             Console.WriteLine("Help               -       Displays this help message");
             Console.WriteLine("Install help       -       Displays what programs can be installed");
             Console.WriteLine("Websites help      -       Displays what websites can be opened");
-            Console.WriteLine("Arduino help       -       Displays what aurduino programs can be run");
+            //Console.WriteLine("Arduino help       -       Displays what aurduino programs can be run");
             Console.WriteLine("Update HAL-9000    -       Updates HAL if there is an existing installation");
             Console.WriteLine("My name is         -       Tell HAL your name");
             Console.WriteLine("# Between 1 & 10   -       Pick a number and hope that it's the winning one");
@@ -201,7 +201,6 @@ namespace HAL_9000_Writting
             Console.WriteLine("Arduino           -       Launches the arduino program");
             Console.WriteLine();
         }
-
         public static void alreadyInstalled()
         {
             Console.WriteLine();
